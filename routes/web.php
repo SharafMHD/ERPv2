@@ -11,6 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+
+
+Route::resource('categories', 'categoryController');
+
+Route::resource('categories', 'categoryController');
+
+Route::resource('units', 'unitsController');
+
+Route::resource('units', 'unitsController');
+
+Route::resource('hrDepartments', 'hr_departmentController');
+
+Route::resource('hrDepartments', 'hr_departmentController');
+
+Route::resource('units', 'unitsController');
