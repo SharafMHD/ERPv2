@@ -106,7 +106,7 @@
                     <ul class="dropdown-menu">
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <li>
-                                <a href="{{LaravelLocalization::getLocalizedURL($localeCode) }}" hreflang="{{$localeCode}}"><img alt="" src="img/flags/es.png">{{{ $properties['native'] }}}</a>
+                                <a href="{{LaravelLocalization::getLocalizedURL($localeCode) }}" hreflang="{{$localeCode}}"> <img alt="" src="/assets/flags/{{$localeCode}}.png"> {{{ $properties['native'] }}}</a>
 
                             </li>
                         @endforeach
@@ -128,8 +128,15 @@
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li class="divider"></li>
                         <li>
-                            <a href="{!! url('/logout') !!}">
-                                <i class="icon-key"></i> Log Out </a>
+                            <a href="{!! url('/logout') !!} "onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="icon-key"></i> {{__('fully.logout')}} </a>
+
+                                {{-- <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
+                                > --}}
+                            </a>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                     </ul>
                 </li>

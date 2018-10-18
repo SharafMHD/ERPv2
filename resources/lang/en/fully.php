@@ -3,6 +3,7 @@
 return array(
 
     /* footer start */
+    'logout'          => 'logout',
     'description'          => 'description',
     'button_save'         => 'Kaydet',
     'enter_your_email'    => 'E-posta Adresinizi Girin',

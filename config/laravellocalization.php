@@ -186,7 +186,7 @@ return [
 		//'lu'          => ['name' => 'Luba-Katanga',           'script' => 'Latn', 'native' => 'Tshiluba'],
 		//'ve'          => ['name' => 'Venda',                  'script' => 'Latn', 'native' => 'Tshivenḓa'],
 		//'tw'          => ['name' => 'Twi',                    'script' => 'Latn', 'native' => 'Twi'],
-		'tr'          => ['name' => 'Turkish',                'script' => 'Latn', 'native' => 'Türkçe'],
+	//	'tr'          => ['name' => 'Turkish',                'script' => 'Latn', 'native' => 'Türkçe'],
 		//'ale'         => ['name' => 'Aleut',                  'script' => 'Latn', 'native' => 'Unangax tunuu'],
 		//'ca-valencia' => ['name' => 'Valencian',              'script' => 'Latn', 'native' => 'valencià'],
 		//'vai-Latn'    => ['name' => 'Vai (Latin)',            'script' => 'Latn', 'native' => 'Viyamíĩ'],
@@ -255,7 +255,7 @@ return [
 		//'mr'          => ['name' => 'Marathi',                'script' => 'Deva', 'native' => 'मराठी'],
 		//'mai'         => ['name' => 'Maithili',               'script' => 'Tirh', 'native' => 'मैथिली'],
 		//'raj'         => ['name' => 'Rajasthani',             'script' => 'Deva', 'native' => 'राजस्थानी'],
-		'sa'          => ['name' => 'Sanskrit',               'script' => 'Deva', 'native' => 'संस्कृतम्'],
+		//'sa'          => ['name' => 'Sanskrit',               'script' => 'Deva', 'native' => 'संस्कृतम्'],
 		//'hi'          => ['name' => 'Hindi',                  'script' => 'Deva', 'native' => 'हिन्दी'],
 		//'as'          => ['name' => 'Assamese',               'script' => 'Beng', 'native' => 'অসমীয়া'],
 		//'bn'          => ['name' => 'Bengali',                'script' => 'Beng', 'native' => 'বাংলা'],
@@ -294,7 +294,7 @@ return [
 		//'ii'          => ['name' => 'Sichuan Yi',             'script' => 'Yiii', 'native' => 'ꆈꌠꉙ'],
 		//'vai'         => ['name' => 'Vai (Vai)',              'script' => 'Vaii', 'native' => 'ꕙꔤ'],
 		//'jv-Java'     => ['name' => 'Javanese (Javanese)',    'script' => 'Java', 'native' => 'ꦧꦱꦗꦮ'],
-		'ko'          => ['name' => 'Korean',                 'script' => 'Hang', 'native' => '한국어'],
+		//'ko'          => ['name' => 'Korean',                 'script' => 'Hang', 'native' => '한국어'],
 	],
 
 	// Negotiate for the user locale using the Accept-Language header if it's not defined in the URL?

@@ -19,6 +19,7 @@ class categoryController extends AppBaseController
     public function __construct(categoryRepository $categoryRepo)
     {
         $this->categoryRepository = $categoryRepo;
+        $this->middleware('auth');
     }
 
     /**

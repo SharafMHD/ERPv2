@@ -22,15 +22,13 @@ if (in_array($locale, $supportedLocales)) {
     App::setLocale($locale);
 }
 // Route::get('/', function () {
-//     return view('welcome');
+//     return redirect('/en/home');
 // });
-Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), function () {
-
+Route::get('/', 'HomeController@index');
 Auth::routes();
-
+Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), function () {
+    Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::get('/', 'HomeController@index')->name('home');
-
 
 Route::resource('categories', 'categoryController');
 
