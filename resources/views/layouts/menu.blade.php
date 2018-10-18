@@ -12,7 +12,7 @@
 <li class="{!! Request::is('categories*') ? 'active' : '' !!}">
     <a class="nav-link nav-toggle" href="{!! route('categories.index') !!}">
     <i class="fa fa-edit"></i>
-    <span  class="title">categories</span></a>
+    <span  class="title">{{__('fully.description')}}</span></a>
 </li>
 
 <li class="{!! Request::is('units*') ? 'active' : '' !!}">

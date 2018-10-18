@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 
 <!--[if !IE]><!-->
-<html lang="en">
+    @if(LaravelLocalization::getCurrentLocale() =='ar')  
+    <html  dir="rtl">
+
+        @else
+        <html lang="en">
+                @endif
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
@@ -15,8 +20,17 @@
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    @if(LaravelLocalization::getCurrentLocale() =='ar')         
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" />
+@else
+<link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+@endif
+
+@if(LaravelLocalization::getCurrentLocale() =='ar')         
+<link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css" rel="stylesheet" type="text/css" />
+@else
+<link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+@endif
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
@@ -24,15 +38,35 @@
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <link href="/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-    <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    @if(LaravelLocalization::getCurrentLocale() =='ar')         
+    <link href="/assets/global/css/components-rtl.min.css" rel="stylesheet" id="style_components" type="text/css" />
+@else
+<link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+@endif
+@if(LaravelLocalization::getCurrentLocale() =='ar')         
+<link href="/assets/global/css/plugins-rtl.min.css" rel="stylesheet" type="text/css" />
+@else
+<link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+@endif
     <!-- END THEME GLOBAL STYLES -->
     <link href="/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/pages/css/search.min.css" rel="stylesheet" type="text/css" />
     <!-- BEGIN THEME LAYOUT STYLES -->
-    <link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
-    <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+    @if(LaravelLocalization::getCurrentLocale() =='ar')         
+    <link href="/assets/layouts/layout/css/layout-rtl.min.css" rel="stylesheet" type="text/css" />
+@else
+<link href="/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+@endif
+@if(LaravelLocalization::getCurrentLocale() =='ar')         
+<link href="/assets/layouts/layout/css/themes/darkblue-rtl.min.css" rel="stylesheet" type="text/css" id="style_color" />
+@else
+<link href="/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+@endif
+@if(LaravelLocalization::getCurrentLocale() =='ar')         
+<link href="/assets/layouts/layout/css/custom-rtl.min.css" rel="stylesheet" type="text/css" />
+@else
+<link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+@endif
     
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -63,6 +97,21 @@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <!-- BEGIN USER LOGIN DROPDOWN -->
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <img alt="" src="img/flags/us.png">
+                        <span class="username">{{ LaravelLocalization::getCurrentLocaleName() }}</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a href="{{LaravelLocalization::getLocalizedURL($localeCode) }}" hreflang="{{$localeCode}}"><img alt="" src="img/flags/es.png">{{{ $properties['native'] }}}</a>
+
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"

@@ -11,10 +11,20 @@
 |
 */
 
+$languages = LaravelLocalization::getSupportedLocales();
+foreach ($languages as $language => $values) {
+    $supportedLocales[] = $language;
+}
+
+$locale = Request::segment(1);
+if (in_array($locale, $supportedLocales)) {
+    LaravelLocalization::setLocale($locale);
+    App::setLocale($locale);
+}
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), function () {
 
 Auth::routes();
 
@@ -35,3 +45,7 @@ Route::resource('hrDepartments', 'hr_departmentController');
 Route::resource('hrDepartments', 'hr_departmentController');
 
 Route::resource('units', 'unitsController');
+        // language
+        Route::get('language/set-locale/{language}', array('as' => 'admin.language.set',
+                                                           'uses' => 'LanguageController@setLocale', ));
+});
