@@ -3,6 +3,8 @@
 return array(
 
     /* footer start */
+    'AddNew'          => 'إضافه جديد',
+    'Save'          => 'حفظ',
     'logout'          => 'تسجيل خروج',
     'description'          => 'وصف',
     'button_save'         => 'Kaydet',

@@ -14,7 +14,9 @@
 <div class="form-group col-sm-12">
     <div class="form-actions">
         <div class="row  col-md-offset-0">
-            {!! Form::submit('Save', ['class' => 'btn green']) !!}
+                @lang('fully.Save')
+                {{-- {{__('fully.Save')}} --}}
+            {!! Form::submit('dsd', ['class' => 'btn green']) !!}
             <a href="{!! route('units.index') !!}" class="btn btn-default">Cancel</a>
         </div>
     </div>

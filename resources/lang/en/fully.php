@@ -3,6 +3,8 @@
 return array(
 
     /* footer start */
+    'AddNew'          => 'Add New',
+    'Save'          => 'Save',
     'logout'          => 'logout',
     'description'          => 'description',
     'button_save'         => 'Kaydet',

@@ -97,7 +97,7 @@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <!-- BEGIN USER LOGIN DROPDOWN -->
-                <li class="dropdown messages-menu">
+                <li class="dropdown dropdown-user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <img alt="" src="img/flags/us.png">
                         <span class="username">{{ LaravelLocalization::getCurrentLocaleName() }}</span>

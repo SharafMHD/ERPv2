@@ -47,3 +47,5 @@ Route::resource('units', 'unitsController');
         Route::get('language/set-locale/{language}', array('as' => 'admin.language.set',
                                                            'uses' => 'LanguageController@setLocale', ));
 });
+
+Route::resource('units', 'unitsController');

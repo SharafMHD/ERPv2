@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'mysql5015.site4now.net'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'erp_db'),
-            'username' => env('DB_USERNAME', 'phpmyadmin'),
-            'password' => env('DB_PASSWORD', 'root'),
+            'database' => env('DB_DATABASE', 'db_9fcb70_erp'),
+            'username' => env('DB_USERNAME', '9fcb70_erp'),
+            'password' => env('DB_PASSWORD', '8CbqJTvokdy'),
             
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
