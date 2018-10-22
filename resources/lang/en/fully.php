@@ -3,10 +3,19 @@
 return array(
 
     /* footer start */
+    'Copyright'          =>'Copyright © 2018 BlueTech. All rights reserved.',
     'AddNew'          => 'Add New',
+    'Actions'          => 'Actions',
+    'Back'          => 'Back',
+    'Name'          => 'Name', 
+    'Created At'          => 'Created At', 
+    'Updated At'          => 'Updated At', 
+    'Delete_Confirm'          => 'Are you sure ?',
+    'units'          => 'Units',
     'Save'          => 'Save',
+    'Cancel'          => 'Cancel',
     'logout'          => 'logout',
-    'description'          => 'description',
+    'Description'          => 'description',
     'button_save'         => 'Kaydet',
     'enter_your_email'    => 'E-posta Adresinizi Girin',
     'all_rights_reserved' => 'Tüm Hakları Saklıdır',

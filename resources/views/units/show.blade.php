@@ -5,7 +5,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-equalizer font-red-sunglo"></i>
-                    <span class="caption-subject font-red-sunglo bold uppercase">units</span>
+                    <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.units')</span>
                 </div>
             </div>
             <div>
@@ -14,7 +14,7 @@
             <div class="portlet-body form">
                 <div class="row" style="padding-left: 20px">
                    @include('units.show_fields')
-                   <a href="{!! route('units.index') !!}" class="btn btn-default">Back</a>
+                   <a href="{!! route('units.index') !!}" class="btn btn-default">@lang('fully.Back')</a>
                 </div>
             </div>
         </div>

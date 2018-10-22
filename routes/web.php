@@ -36,7 +36,6 @@ Route::resource('categories', 'categoryController');
 
 Route::resource('units', 'unitsController');
 
-Route::resource('units', 'unitsController');
 
 Route::resource('hrDepartments', 'hr_departmentController');
 
@@ -48,4 +47,3 @@ Route::resource('units', 'unitsController');
                                                            'uses' => 'LanguageController@setLocale', ));
 });
 
-Route::resource('units', 'unitsController');

@@ -5,7 +5,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">units</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.units')</span>
             </div>
         </div>
         <div>

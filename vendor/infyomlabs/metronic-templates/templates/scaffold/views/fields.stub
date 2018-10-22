@@ -4,8 +4,8 @@ $FIELDS$
 <div class="form-group col-sm-12">
     <div class="form-actions">
         <div class="row  col-md-offset-0">
-            {!! Form::submit({{__('fully.Save')}}, ['class' => 'btn green']) !!}
-            <a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') !!}" class="btn btn-default">Cancel</a>
+        <button type="submit"  class="btn blue"><i class="fa fa-save"></i> @lang('fully.Save')</button>
+<a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') !!}" class="btn red"><i class="fa fa-times"> @lang('fully.Cancel')</i></a>
         </div>
     </div>
 </div>
