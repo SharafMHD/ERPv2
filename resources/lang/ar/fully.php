@@ -5,6 +5,7 @@ return array(
     /* footer start */
     'Copyright'          =>'جميع الحقوق محفوظه © بلوتك',
     'AddNew'          => 'إضافه جديد',
+    'department'          => 'أقسام',
     'units'          => 'الوحدات',
     'Actions'          => 'عمليات', 
     'Name'          => 'الإسم', 

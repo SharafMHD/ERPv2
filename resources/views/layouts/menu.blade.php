@@ -83,3 +83,9 @@
     <span  class="title">@lang('fully.units')</span></a>
 </li>
 
+<li class="{!! Request::is('departments*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('departments.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.departments')</span></a>
+</li>
+

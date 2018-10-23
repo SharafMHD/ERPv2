@@ -7,6 +7,7 @@ return array(
     'AddNew'          => 'Add New',
     'Actions'          => 'Actions',
     'Back'          => 'Back',
+    'department'          => 'department',
     'Name'          => 'Name', 
     'Created At'          => 'Created At', 
     'Updated At'          => 'Updated At', 
