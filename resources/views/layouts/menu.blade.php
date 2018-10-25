@@ -3,7 +3,8 @@
         <i class="icon-home"></i>
         <span class="title">Home</span>
     </a>
-</li><li class="{!! Request::is('categories*') ? 'active' : '' !!}">
+</li>
+<li class="{!! Request::is('categories*') ? 'active' : '' !!}">
     <a class="nav-link nav-toggle" href="{!! route('categories.index') !!}">
     <i class="fa fa-edit"></i>
     <span  class="title">categories</span></a>
@@ -87,5 +88,11 @@
     <a class="nav-link nav-toggle" href="{!! route('departments.index') !!}">
     <i class="fa fa-edit"></i>
     <span  class="title">@lang('fully.departments')</span></a>
+</li>
+
+<li class="{!! Request::is('roles*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('roles.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.roles')</span></a>
 </li>
 

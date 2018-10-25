@@ -30,7 +30,7 @@
                     </div>
                 </form>
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
-            @include('layouts.menu')
+            @include('layouts.menua')
 
         </ul>
         <!-- END SIDEBAR MENU -->

@@ -4,6 +4,8 @@ return array(
 
     /* footer start */
     'Copyright'          =>'Copyright © 2018 BlueTech. All rights reserved.',
+    'Home'          =>'Home',
+
     'AddNew'          => 'Add New',
     'Actions'          => 'Actions',
     'Back'          => 'Back',
@@ -35,5 +37,10 @@ return array(
     /*pagination start*/
     'link_previous' =>'Geri',
     'link_next' =>'İleri',
+    'Users' =>'User',
+    'Roles' =>'Roles',
+    'Users management' =>' Users management'
+
+
     /*pagination end*/
 );

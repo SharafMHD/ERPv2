@@ -4,6 +4,8 @@ return array(
 
     /* footer start */
     'Copyright'          =>'جميع الحقوق محفوظه © بلوتك',
+    'Home'          =>'الرئيسية',
+
     'AddNew'          => 'إضافه جديد',
     'department'          => 'أقسام',
     'units'          => 'الوحدات',
@@ -35,5 +37,11 @@ return array(
     /*pagination start*/
     'link_previous' =>'Geri',
     'link_next' =>'İleri',
+    'Users' =>'مستخدمين النظام',
+    'Roles' =>'الصلاحيات',
+    'Users management' =>'إدارة المستخدمين'
+
+
+
     /*pagination end*/
 );
