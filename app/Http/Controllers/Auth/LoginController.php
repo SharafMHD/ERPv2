@@ -24,7 +24,7 @@ class LoginController extends Controller
     protected function authenticated($user)
 {
 
- //dd(Auth::user());
+ Auth::user()->SetAuthTable();
 
 }
 

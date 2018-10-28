@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models as db;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class User extends Authenticatable
 {
@@ -43,19 +44,55 @@ class User extends Authenticatable
         return db\models::all();
     }
 
+    public function SetAuthTable()
+    {
+        $privileges =[];
+            foreach (db\privileges::all()->where('role',auth::user()->role) as $men ) { 
+                        $arrayName = array('name' =>$men->models->name, 'actions' =>$men->actions->name);
+                        $privileges[]= $arrayName ;
+                        if ($men->actions->name=="create")
+                            {
+                                $arrayName = array('name' =>$men->models->name, 'actions' =>'store');
+                                $privileges[]= $arrayName ;  
+                            }
+                        if ($men->actions->name=="edit")
+                            {
+                                $arrayName = array('name' =>$men->models->name, 'actions' =>'update');
+                                $privileges[]= $arrayName ;  
+                            }
+                        if ($men->actions->name=="delete")
+                            {
+                                $arrayName = array('name' =>$men->models->name, 'actions' =>'destroy');
+                                $privileges[]= $arrayName ;  
+                            }
+                       
+            }
+            //dd($privileges);
+            Session::put(['AuthTable'=> $privileges]);
+    }
+
+    public function GetAuthTable($controller, $action)
+    {
+        $collection = collect(Session::get('AuthTable'));
+            if ($collection->where('name',$controller)->where('actions',$action)->count()==0)
+                {
+                    return false;
+                }
+        return true;
+    }
+
     public function isauther($action,$model)
     {
         $privileges =db\privileges::all()->where('action',$action)->where('role', Auth::user()->role)->first();
-       
-       
-        if ( $privileges>0)
+         if ( $privileges > 0 )
         { 
-            
-  
-            return true ;}
-          else {
-        return false;}
+            return true ;
+        }
+        else {
+            return false ;
+        }
     }
+
     public function isautherd($action,$model)
     {
         $modelid=db\models::where('name',$model)->first()->id;
@@ -93,7 +130,6 @@ class User extends Authenticatable
                 { 
                     // return redirect('error.403');
                     abort(403, '', ['Location' => '/errors']);
-
                 }
      }
 
@@ -108,8 +144,7 @@ class User extends Authenticatable
                              else
                                  {
                                      return 'not';
-                                 } 
-                   
+                                 }                
          }
 
 

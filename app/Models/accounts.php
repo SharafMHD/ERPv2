@@ -6,23 +6,22 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class actions
+ * Class accounts
  * @package App\Models
- * @version October 23, 2018, 2:11 pm UTC
+ * @version October 27, 2018, 7:37 pm UTC
  *
- * @property \App\Models\Model model
- * @property \Illuminate\Database\Eloquent\Collection accountsTransaction
+ * @property \Illuminate\Database\Eloquent\Collection AccountsTransaction
  * @property \Illuminate\Database\Eloquent\Collection attendance
  * @property \Illuminate\Database\Eloquent\Collection bonuses
  * @property \Illuminate\Database\Eloquent\Collection certifications
  * @property \Illuminate\Database\Eloquent\Collection coursesDetails
+ * @property \Illuminate\Database\Eloquent\Collection Employee
  * @property \Illuminate\Database\Eloquent\Collection employeeLeave
  * @property \Illuminate\Database\Eloquent\Collection items
  * @property \Illuminate\Database\Eloquent\Collection movementDetails
  * @property \Illuminate\Database\Eloquent\Collection orderDetails
  * @property \Illuminate\Database\Eloquent\Collection orders
  * @property \Illuminate\Database\Eloquent\Collection payroll
- * @property \Illuminate\Database\Eloquent\Collection Privilege
  * @property \Illuminate\Database\Eloquent\Collection projectOrder
  * @property \Illuminate\Database\Eloquent\Collection projectOrderDetails
  * @property \Illuminate\Database\Eloquent\Collection projectVisitSchedular
@@ -33,16 +32,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection stockDetails
  * @property \Illuminate\Database\Eloquent\Collection trainingMembers
  * @property \Illuminate\Database\Eloquent\Collection workGroupMember
+ * @property string no
  * @property string name
- * @property string label
- * @property integer model
- * @property boolean type
+ * @property string main_account
+ * @property string description
+ * @property string status
  */
-class actions extends Model
+class accounts extends Model
 {
     use SoftDeletes;
 
-    public $table = 'actions';
+    public $table = 'accounts';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -52,10 +52,11 @@ class actions extends Model
 
 
     public $fillable = [
+        'no',
         'name',
-        'label',
-        'model',
-        'type'
+        'main_account',
+        'description',
+        'status'
     ];
 
     /**
@@ -65,10 +66,11 @@ class actions extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'no' => 'string',
         'name' => 'string',
-        'label' => 'string',
-        'model' => 'integer',
-        'type' => 'boolean'
+        'main_account' => 'string',
+        'description' => 'string',
+        'status' => 'string'
     ];
 
     /**
@@ -81,18 +83,18 @@ class actions extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function model()
+    public function accountsTransactions()
     {
-        return $this->belongsTo(\App\Models\models::class,'model','id');
+        return $this->hasMany(\App\Models\AccountsTransaction::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function privileges()
+    public function employees()
     {
-        return $this->hasMany(\App\Models\Privilege::class);
+        return $this->hasMany(\App\Models\Employee::class);
     }
 }

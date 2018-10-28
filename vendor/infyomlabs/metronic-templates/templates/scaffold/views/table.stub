@@ -1,7 +1,7 @@
 <table class="table table-striped table-bordered table-hover dt-responsive DataTable">
     <thead>
         $FIELD_HEADERS$
-        <th >@lang('fully.Actions')</th>
+        <th  width="20%">@lang('fully.Actions')</th>
     </thead>
     <tbody>
     @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)

@@ -96,3 +96,15 @@
     <span  class="title">@lang('fully.roles')</span></a>
 </li>
 
+<li class="{!! Request::is('models*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('models.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.models')</span></a>
+</li>
+
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+

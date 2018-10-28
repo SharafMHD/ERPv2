@@ -81,17 +81,17 @@ class privileges extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function model()
+    public function models()
     {
-        return $this->belongsTo(\App\Models\Model::class);
+        return $this->belongsTo(\App\Models\models::class,'model','id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function action()
+    public function actions()
     {
-        return $this->belongsTo(\App\Models\Action::class);
+        return $this->belongsTo(\App\Models\actions::class,'action','id');
     }
 
     /**

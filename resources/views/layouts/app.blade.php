@@ -71,7 +71,11 @@
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
-
+<style>
+        .table-scrollable {
+            overflow-y: -webkit-paged-y;
+        }
+</style>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
 @if (!Auth::guest())
 <!-- BEGIN HEADER -->
