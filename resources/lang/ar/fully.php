@@ -3,10 +3,22 @@
 return array(
 
     /* footer start */
+    'Copyright'          =>'جميع الحقوق محفوظه © بلوتك',
+    'Home'          =>'الرئيسية',
+
     'AddNew'          => 'إضافه جديد',
+    'department'          => 'أقسام',
+    'units'          => 'الوحدات',
+    'Actions'          => 'عمليات', 
+    'Name'          => 'الإسم', 
+    'Created At'          => 'وقت إنشاء السجل', 
+    'Updated At'          => 'وقت التعديل', 
+    'Delete_Confirm'          => 'هل انت متاكد ؟',
+    'Cancel'          => 'إلغاء',
+    'Back'          => 'رجوع',
     'Save'          => 'حفظ',
     'logout'          => 'تسجيل خروج',
-    'description'          => 'وصف',
+    'Description'          => 'وصف',
     'button_save'         => 'Kaydet',
     'enter_your_email'    => 'E-posta Adresinizi Girin',
     'all_rights_reserved' => 'Tüm Hakları Saklıdır',
@@ -25,5 +37,11 @@ return array(
     /*pagination start*/
     'link_previous' =>'Geri',
     'link_next' =>'İleri',
+    'Users' =>'مستخدمين النظام',
+    'Roles' =>'الصلاحيات',
+    'Users management' =>'إدارة المستخدمين'
+
+
+
     /*pagination end*/
 );

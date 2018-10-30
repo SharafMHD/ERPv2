@@ -1,5 +1,5 @@
 <div class="form-group col-sm-2">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
+    <label for="$FIELD_NAME$" class="col-md-3 control-label">@lang('fully.$FIELD_NAME_TITLE$'):</label>
     <label class="checkbox-inline">
    {!! Form::checkbox('$FIELD_NAME$', 1, true, ['class' => 'icheckbox_minimal-blue checkbox']) !!}
    $FIELD_NAME_TITLE$

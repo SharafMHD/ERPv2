@@ -13,7 +13,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        
+        app('view')->composer('*', function ($view) {
+            $action = app('request')->route()->getAction();
+    
+            $controller = class_basename($action['controller']);
+    
+            list($ucontroller, $uaction) = explode('Controller@', $controller);
+           // dd($ucontroller);
+
+            $view->with(compact('ucontroller', 'uaction'));
+        });
     }
 
     /**

@@ -1,1 +1,1 @@
-<th>$FIELD_NAME_TITLE$</th>
+<th>@lang('fully.$FIELD_NAME_TITLE$')</th>

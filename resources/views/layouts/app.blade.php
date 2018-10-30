@@ -71,7 +71,11 @@
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
-
+<style>
+        .table-scrollable {
+            overflow-y: -webkit-paged-y;
+        }
+</style>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
 @if (!Auth::guest())
 <!-- BEGIN HEADER -->
@@ -264,7 +268,7 @@
 @endif
 
 <div class="page-footer">
-    <div class="page-footer-inner"> 2016 &copy; Generator by InfyOm
+    <div class="page-footer-inner">  @lang('fully.Copyright')
     </div>
     <div class="scroll-to-top">
         <i class="icon-arrow-up"></i>
