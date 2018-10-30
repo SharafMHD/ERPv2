@@ -49,3 +49,10 @@ Route::resource('units', 'unitsController');
 });
 
 Route::resource('units', 'unitsController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
