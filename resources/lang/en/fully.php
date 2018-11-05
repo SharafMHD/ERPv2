@@ -39,7 +39,23 @@ return array(
     'link_next' =>'İleri',
     'Users' =>'User',
     'Roles' =>'Roles',
-    'Users management' =>' Users management'
+    'Users management' =>' Users management',
+    'Settings' =>'Settings',
+    'Menu' =>'Menu',
+    'Accounts' =>'Accounts',
+    'Main Account' =>'Main Account',
+    'No' =>'No',
+
+    'Email' =>'Email',
+    'User Name' =>'اسم User name',
+    'Role' =>'Role',
+    'Status' =>'Status',
+//Actions
+'Create' =>'Create',
+'Edit' =>'Edit',
+'Delete' =>'Delete',
+'Details' =>'Details',
+
 
 
     /*pagination end*/

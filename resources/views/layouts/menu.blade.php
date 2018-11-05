@@ -108,3 +108,21 @@
     <span  class="title">@lang('fully.accounts')</span></a>
 </li>
 
+<li class="{!! Request::is('courses*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('courses.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.courses')</span></a>
+</li>
+
+<li class="{!! Request::is('courses*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('courses.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.courses')</span></a>
+</li>
+
+<li class="{!! Request::is('courses*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('courses.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.courses')</span></a>
+</li>
+
