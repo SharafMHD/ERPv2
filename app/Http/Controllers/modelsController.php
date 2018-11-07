@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models as db;
 
 class modelsController extends AppBaseController
 {
@@ -56,13 +57,34 @@ class modelsController extends AppBaseController
     public function store(CreatemodelsRequest $request)
     {
         $input = $request->all();
+        //check if model name exist
+        if (db\models::where('name',$input['name'])->first()) {
+            Flash::error('Model alrady exist.');
+            return view('models.create')->with('models', $input);
+        }
+        
 
         $models = $this->modelsRepository->create($input);
+        //if crud requirde
+      if ($input['crud']==true) {
+         //dd($models['id']);
 
+         $arr=['index','create','edit','delete','show'];
+        foreach ($arr as $key => $value)
+          {
+            $index =new db\actions;
+            $index->name=$value;
+            $index->label=$value;
+            $index->model=$models['id'];
+            $index->save();
+            }
+
+        }
         Flash::success('Models saved successfully.');
 
         return redirect(route('models.index'));
     }
+
 
     /**
      * Display the specified models.
