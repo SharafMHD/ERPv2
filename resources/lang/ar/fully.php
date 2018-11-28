@@ -61,7 +61,12 @@ return array(
 'Edit' =>'تعديل',
 'Delete' =>'حذف',
 'Details' =>'تفاصيل',
-
+'create' =>'انشاء',
+'edit' =>'تعديل',
+'delete' =>'حذف',
+'details' =>'تفاصيل',
+'index' =>'عرض الكل',
+'show' =>'تفاصيل',
 
 
     /*pagination end*/

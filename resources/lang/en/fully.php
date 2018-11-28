@@ -59,6 +59,12 @@ return array(
 'Delete' =>'Delete',
 'Details' =>'Details',
 
+'create' =>'Create',
+'edit' =>'Edit',
+'delete' =>'Delete',
+'details' =>'Details',
+'index' =>'Show all',
+'show' =>'Details',
 
 
     /*pagination end*/

@@ -16,7 +16,7 @@
 <div class="portlet-title">
                         <div class="caption font-red-sunglo">
                             <i class="icon-settings font-red-sunglo"></i>
-                            <span class="caption-subject bold uppercase">  {!! $model->name !!}</span>
+                            <span class="caption-subject bold uppercase"> @lang('fully.'.$model->name )</span>
                         </div>
                         </br>
                         <!-- <button type="button" onclick="checkAllBoxe('Roles');" class="btn btn-primary">Check All</button>
@@ -29,10 +29,10 @@
 <tbody>
 
     @foreach ($model->actions as $cct)
-     {!! $cct->name !!} 
+     {{-- {!! $cct->name !!}  --}}
 
     <tr class="Roles">
-        <td><center>{!! $cct->name !!}</center></td>
+        <td><center>@lang('fully.'.$cct->name )</center></td>
         <td>
             <center>
                 <input id="{!! $model->id !!}_{!! $cct->id !!}" name="role[{!! $model->id !!}_{!! $cct->id !!}]" value="{!! $model->id !!}_{!! $cct->id !!}" type="checkbox" {!! auth::user()->checked($role,$cct->id,$model->id ) !!}>
