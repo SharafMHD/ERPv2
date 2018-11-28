@@ -108,3 +108,45 @@
     <span  class="title">@lang('fully.accounts')</span></a>
 </li>
 
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+
+<li class="{!! Request::is('accounts*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('accounts.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.accounts')</span></a>
+</li>
+
+<li class="{!! Request::is('jobs*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('jobs.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.jobs')</span></a>
+</li>
+

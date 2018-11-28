@@ -44,13 +44,18 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale(),'middlewa
         Route::get('/roles/{id}/assign', 'rolesController@assign')->name('roles.assign');
         Route::post('/roles/assignpost', 'rolesController@assignpost')->name('roles.assignpost');
         Route::resource('roles', 'rolesController');
-    //users
+    // users
         Route::resource('users', 'usersController');
         Route::resource('privileges', 'privilegesController');
         Route::get('/errors/403', 'rolesController@assign')->name('403');
         Route::resource('accounts', 'accountsController');
+    // 
+    Route::resource('jobs', 'jobsController');
+    Route::resource('models', 'modelsController');
+
 
    });
+
 
 
 

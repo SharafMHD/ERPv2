@@ -6,11 +6,12 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class accounts
+ * Class jobs
  * @package App\Models
- * @version October 30, 2018, 7:13 am UTC
+ * @version October 30, 2018, 7:20 am UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection AccountsTransaction
+ * @property \App\Models\Department department
+ * @property \Illuminate\Database\Eloquent\Collection accountsTransaction
  * @property \Illuminate\Database\Eloquent\Collection attendance
  * @property \Illuminate\Database\Eloquent\Collection bonuses
  * @property \Illuminate\Database\Eloquent\Collection certifications
@@ -27,22 +28,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection projectVisitSchedular
  * @property \Illuminate\Database\Eloquent\Collection purchaseDetails
  * @property \Illuminate\Database\Eloquent\Collection qoutationDetails
- * @property \Illuminate\Database\Eloquent\Collection salaryProfile
+ * @property \Illuminate\Database\Eloquent\Collection SalaryProfile
  * @property \Illuminate\Database\Eloquent\Collection salesDetails
  * @property \Illuminate\Database\Eloquent\Collection stockDetails
  * @property \Illuminate\Database\Eloquent\Collection trainingMembers
  * @property \Illuminate\Database\Eloquent\Collection workGroupMember
- * @property string no
+ * @property string code
  * @property string name
- * @property string main_account
  * @property string description
- * @property string status
+ * @property integer departmentID
  */
-class accounts extends Model
+class jobs extends Model
 {
     use SoftDeletes;
 
-    public $table = 'accounts';
+    public $table = 'jobs';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -52,11 +52,10 @@ class accounts extends Model
 
 
     public $fillable = [
-        'no',
+        'code',
         'name',
-        'main_account',
         'description',
-        'status'
+        'departmentID'
     ];
 
     /**
@@ -66,11 +65,10 @@ class accounts extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'no' => 'string',
+        'code' => 'string',
         'name' => 'string',
-        'main_account' => 'string',
         'description' => 'string',
-        'status' => 'string'
+        'departmentID' => 'integer'
     ];
 
     /**
@@ -83,11 +81,11 @@ class accounts extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function accountsTransactions()
+    public function department()
     {
-        return $this->hasMany(\App\Models\AccountsTransaction::class);
+        return $this->belongsTo(\App\Models\Department::class);
     }
 
     /**
@@ -96,5 +94,13 @@ class accounts extends Model
     public function employees()
     {
         return $this->hasMany(\App\Models\Employee::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function salaryProfiles()
+    {
+        return $this->hasMany(\App\Models\SalaryProfile::class);
     }
 }

@@ -7,6 +7,9 @@ return array(
     'Home'          =>'Home',
 
     'AddNew'          => 'Add New',
+    'Delete'          => 'Delete',
+    'Details'          => 'Details',
+    'Edit'          => 'Edit',
     'Actions'          => 'Actions',
     'Back'          => 'Back',
     'department'          => 'department',

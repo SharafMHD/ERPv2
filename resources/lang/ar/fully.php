@@ -7,6 +7,10 @@ return array(
     'Home'          =>'الرئيسية',
 
     'AddNew'          => 'إضافه جديد',
+    'Delete'          => 'حذف',
+    'Details'          => 'تفاصيل',
+    'Edit'          => 'تعديل',
+
     'department'          => 'أقسام',
     'units'          => 'الوحدات',
     'Actions'          => 'عمليات', 

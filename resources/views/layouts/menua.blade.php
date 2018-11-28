@@ -11,7 +11,7 @@
 
    <li class="nav-item ">
                                <a href="javascript:;" class="nav-link nav-toggle">
-                                   <i class="icon-users"></i>
+                               <i class="{{$model->icon}}"></i>
                                    <span class="title"> @lang('fully.'.$model->label)</span>
                                    <span class="arrow"></span>
                                </a>
