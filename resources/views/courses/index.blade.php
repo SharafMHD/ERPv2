@@ -5,17 +5,19 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">categories</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.courses')</span>
             </div>
+             @if (auth::user()->GetAuthTable($ucontroller,'create'))
             <h1 class="pull-right">
-                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('categories.create') !!}">Add New</a>
+                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('courses.create') !!}">{{__('fully.AddNew')}}</a>
             </h1>
+            @endif
         </div>
         @include('flash::message')
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('categories.table')
+                @include('courses.table')
             </div>
         </div>
  </div>

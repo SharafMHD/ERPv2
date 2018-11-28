@@ -18,14 +18,16 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\LanguageController' => $baseDir . '/app/Http/Controllers/LanguageController.php',
     'App\\Http\\Controllers\\accountsController' => $baseDir . '/app/Http/Controllers/accountsController.php',
-    'App\\Http\\Controllers\\categoryController' => $baseDir . '/app/Http/Controllers/categoryController.php',
+    'App\\Http\\Controllers\\coursesController' => $baseDir . '/app/Http/Controllers/coursesController.php',
     'App\\Http\\Controllers\\departmentController' => $baseDir . '/app/Http/Controllers/departmentController.php',
+<<<<<<< HEAD
     'App\\Http\\Controllers\\hr_departmentController' => $baseDir . '/app/Http/Controllers/hr_departmentController.php',
     'App\\Http\\Controllers\\jobsController' => $baseDir . '/app/Http/Controllers/jobsController.php',
+=======
+>>>>>>> 7afefae8f4a1defbe27a029778891390a199b47b
     'App\\Http\\Controllers\\modelsController' => $baseDir . '/app/Http/Controllers/modelsController.php',
     'App\\Http\\Controllers\\privilegesController' => $baseDir . '/app/Http/Controllers/privilegesController.php',
     'App\\Http\\Controllers\\rolesController' => $baseDir . '/app/Http/Controllers/rolesController.php',
-    'App\\Http\\Controllers\\unitsController' => $baseDir . '/app/Http/Controllers/unitsController.php',
     'App\\Http\\Controllers\\usersController' => $baseDir . '/app/Http/Controllers/usersController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
@@ -38,6 +40,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CreateaccountsRequest' => $baseDir . '/app/Http/Requests/CreateaccountsRequest.php',
     'App\\Http\\Requests\\CreatecategoryRequest' => $baseDir . '/app/Http/Requests/CreatecategoryRequest.php',
+    'App\\Http\\Requests\\CreatecoursesRequest' => $baseDir . '/app/Http/Requests/CreatecoursesRequest.php',
     'App\\Http\\Requests\\CreatedepartmentRequest' => $baseDir . '/app/Http/Requests/CreatedepartmentRequest.php',
     'App\\Http\\Requests\\Createhr_departmentRequest' => $baseDir . '/app/Http/Requests/Createhr_departmentRequest.php',
     'App\\Http\\Requests\\CreatejobsRequest' => $baseDir . '/app/Http/Requests/CreatejobsRequest.php',
@@ -48,6 +51,7 @@ return array(
     'App\\Http\\Requests\\CreateusersRequest' => $baseDir . '/app/Http/Requests/CreateusersRequest.php',
     'App\\Http\\Requests\\UpdateaccountsRequest' => $baseDir . '/app/Http/Requests/UpdateaccountsRequest.php',
     'App\\Http\\Requests\\UpdatecategoryRequest' => $baseDir . '/app/Http/Requests/UpdatecategoryRequest.php',
+    'App\\Http\\Requests\\UpdatecoursesRequest' => $baseDir . '/app/Http/Requests/UpdatecoursesRequest.php',
     'App\\Http\\Requests\\UpdatedepartmentRequest' => $baseDir . '/app/Http/Requests/UpdatedepartmentRequest.php',
     'App\\Http\\Requests\\Updatehr_departmentRequest' => $baseDir . '/app/Http/Requests/Updatehr_departmentRequest.php',
     'App\\Http\\Requests\\UpdatejobsRequest' => $baseDir . '/app/Http/Requests/UpdatejobsRequest.php',
@@ -58,10 +62,13 @@ return array(
     'App\\Http\\Requests\\UpdateusersRequest' => $baseDir . '/app/Http/Requests/UpdateusersRequest.php',
     'App\\Models\\accounts' => $baseDir . '/app/Models/accounts.php',
     'App\\Models\\actions' => $baseDir . '/app/Models/actions.php',
-    'App\\Models\\category' => $baseDir . '/app/Models/category.php',
+    'App\\Models\\courses' => $baseDir . '/app/Models/courses.php',
     'App\\Models\\department' => $baseDir . '/app/Models/department.php',
+<<<<<<< HEAD
     'App\\Models\\hr_department' => $baseDir . '/app/Models/hr_department.php',
     'App\\Models\\jobs' => $baseDir . '/app/Models/jobs.php',
+=======
+>>>>>>> 7afefae8f4a1defbe27a029778891390a199b47b
     'App\\Models\\models' => $baseDir . '/app/Models/models.php',
     'App\\Models\\privileges' => $baseDir . '/app/Models/privileges.php',
     'App\\Models\\roles' => $baseDir . '/app/Models/roles.php',
@@ -74,6 +81,7 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Repositories\\accountsRepository' => $baseDir . '/app/Repositories/accountsRepository.php',
     'App\\Repositories\\categoryRepository' => $baseDir . '/app/Repositories/categoryRepository.php',
+    'App\\Repositories\\coursesRepository' => $baseDir . '/app/Repositories/coursesRepository.php',
     'App\\Repositories\\departmentRepository' => $baseDir . '/app/Repositories/departmentRepository.php',
     'App\\Repositories\\hr_departmentRepository' => $baseDir . '/app/Repositories/hr_departmentRepository.php',
     'App\\Repositories\\jobsRepository' => $baseDir . '/app/Repositories/jobsRepository.php',

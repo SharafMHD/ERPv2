@@ -5,7 +5,7 @@
     <div class="portlet-title">
         <div class="caption">
             <i class="icon-equalizer font-red-sunglo"></i>
-            <span class="caption-subject font-red-sunglo bold uppercase">hr_department</span>
+            <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.courses')</span>
         </div>
     </div>
     <div>
@@ -13,9 +13,9 @@
     </div>
     <div class="portlet-body form">
         <div class="row">
-           {!! Form::model($hrDepartment, ['route' => ['hrDepartments.update', $hrDepartment->id], 'method' => 'patch']) !!}
+           {!! Form::model($courses, ['route' => ['courses.update', $courses->id], 'method' => 'patch']) !!}
 
-            @include('hrDepartments.fields')
+            @include('courses.fields')
 
            {!! Form::close() !!}
         </div>

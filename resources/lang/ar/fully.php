@@ -43,7 +43,24 @@ return array(
     'link_next' =>'İleri',
     'Users' =>'مستخدمين النظام',
     'Roles' =>'الصلاحيات',
-    'Users management' =>'إدارة المستخدمين'
+    'Users management' =>'إدارة المستخدمين',
+    'Settings' =>'الاعدادات',
+    'Menu' =>'القائمة',
+    'Accounts' =>'الحسابات',
+    'Main Account' =>'الحساب الاساسي',
+    'No' =>'الرقم',
+
+    'Email' =>'الايميل',
+    'User Name' =>'اسم المستخدم',
+    'Role' =>'الصلاحية',
+    'Status' =>'الحالة',
+
+
+//Actions
+'Create' =>'انشاء',
+'Edit' =>'تعديل',
+'Delete' =>'حذف',
+'Details' =>'تفاصيل',
 
 
 

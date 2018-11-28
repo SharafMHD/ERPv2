@@ -24,7 +24,13 @@
     <label for="icon" class="col-md-3 control-label">@lang('fully.Icon'):</label>
     {!! Form::text('icon', null, ['class' => 'form-control']) !!}
 </div>
+<div class="form-group col-sm-6">
 
+    <label class="checkbox-inline">
+        {!! Form::hidden('crud', false) !!}
+        {!! Form::checkbox('crud', 1, null) !!} crud
+    </label>
+</div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     <div class="form-actions">

@@ -5,7 +5,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-equalizer font-red-sunglo"></i>
-                    <span class="caption-subject font-red-sunglo bold uppercase">hr_department</span>
+                    <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.courses')</span>
                 </div>
             </div>
             <div>
@@ -13,8 +13,8 @@
             </div>
             <div class="portlet-body form">
                 <div class="row" style="padding-left: 20px">
-                   @include('hrDepartments.show_fields')
-                   <a href="{!! route('hrDepartments.index') !!}" class="btn btn-default">Back</a>
+                   @include('courses.show_fields')
+                   <a href="{!! route('courses.index') !!}" class="btn btn-default">@lang('fully.Back')</a>
                 </div>
             </div>
         </div>

@@ -326,7 +326,6 @@
     $(document).ready(function() {
     $('.DataTable').DataTable();
 });
-
     </script>
 <!-- END THEME LAYOUT SCRIPTS -->
 </body>

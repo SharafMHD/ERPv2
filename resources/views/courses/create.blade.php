@@ -5,7 +5,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">category</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.courses')</span>
             </div>
         </div>
         <div>
@@ -13,9 +13,9 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'categories.store']) !!}
+                {!! Form::open(['route' => 'courses.store']) !!}
 
-                    @include('categories.fields')
+                    @include('courses.fields')
 
                  {!! Form::close() !!}
             </div>
