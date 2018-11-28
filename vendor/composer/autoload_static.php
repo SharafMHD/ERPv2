@@ -479,14 +479,11 @@ class ComposerStaticInitec9cb840910f005d4398a3b6520fef6a
         'App\\Http\\Controllers\\accountsController' => __DIR__ . '/../..' . '/app/Http/Controllers/accountsController.php',
         'App\\Http\\Controllers\\coursesController' => __DIR__ . '/../..' . '/app/Http/Controllers/coursesController.php',
         'App\\Http\\Controllers\\departmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/departmentController.php',
-<<<<<<< HEAD
-        'App\\Http\\Controllers\\hr_departmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/hr_departmentController.php',
         'App\\Http\\Controllers\\jobsController' => __DIR__ . '/../..' . '/app/Http/Controllers/jobsController.php',
-=======
->>>>>>> 7afefae8f4a1defbe27a029778891390a199b47b
         'App\\Http\\Controllers\\modelsController' => __DIR__ . '/../..' . '/app/Http/Controllers/modelsController.php',
         'App\\Http\\Controllers\\privilegesController' => __DIR__ . '/../..' . '/app/Http/Controllers/privilegesController.php',
         'App\\Http\\Controllers\\rolesController' => __DIR__ . '/../..' . '/app/Http/Controllers/rolesController.php',
+        'App\\Http\\Controllers\\unitsController' => __DIR__ . '/../..' . '/app/Http/Controllers/unitsController.php',
         'App\\Http\\Controllers\\usersController' => __DIR__ . '/../..' . '/app/Http/Controllers/usersController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -523,11 +520,7 @@ class ComposerStaticInitec9cb840910f005d4398a3b6520fef6a
         'App\\Models\\actions' => __DIR__ . '/../..' . '/app/Models/actions.php',
         'App\\Models\\courses' => __DIR__ . '/../..' . '/app/Models/courses.php',
         'App\\Models\\department' => __DIR__ . '/../..' . '/app/Models/department.php',
-<<<<<<< HEAD
-        'App\\Models\\hr_department' => __DIR__ . '/../..' . '/app/Models/hr_department.php',
         'App\\Models\\jobs' => __DIR__ . '/../..' . '/app/Models/jobs.php',
-=======
->>>>>>> 7afefae8f4a1defbe27a029778891390a199b47b
         'App\\Models\\models' => __DIR__ . '/../..' . '/app/Models/models.php',
         'App\\Models\\privileges' => __DIR__ . '/../..' . '/app/Models/privileges.php',
         'App\\Models\\roles' => __DIR__ . '/../..' . '/app/Models/roles.php',

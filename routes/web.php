@@ -24,12 +24,14 @@ if (in_array($locale, $supportedLocales)) {
 // Route::get('/', function () {
 //     return redirect('/en/home');
 // });
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+
+ Route::get('/home', 'HomeController@index')->name('home');
+ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::group(array('prefix' => LaravelLocalization::getCurrentLocale(),'middleware'=>'CheckRole'), function () {
+    Route::get('/', 'HomeController@index');
         Route::get('/home', 'HomeController@index')->name('home');
         Route::resource('categories', 'categoryController');
         Route::resource('categories', 'categoryController');
@@ -54,17 +56,6 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale(),'middlewa
     // 
     Route::resource('jobs', 'jobsController');
     Route::resource('models', 'modelsController');
-
+    Route::resource('units', 'unitsController');
 
    });
-
-
-
-
-
-
-
-
-
-
-

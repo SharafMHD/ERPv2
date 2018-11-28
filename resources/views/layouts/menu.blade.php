@@ -150,3 +150,9 @@
     <span  class="title">@lang('fully.jobs')</span></a>
 </li>
 
+<li class="{!! Request::is('units*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('units.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.units')</span></a>
+</li>
+

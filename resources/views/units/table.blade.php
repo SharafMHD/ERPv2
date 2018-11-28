@@ -9,13 +9,38 @@
         <tr>
             <td>{!! $units->name !!}</td>
             <td>{!! $units->description !!}</td>
-            <td width="8%">
+            <td >
                 {!! Form::open(['route' => ['units.destroy', $units->id], 'method' => 'delete']) !!}
-                <div class='btn-group'>
-                    <a href="{!! route('units.show', [$units->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('units.edit', [$units->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                            <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('fully.Delete_Confirm')')"><i class="glyphicon glyphicon-trash"></i></button>
-                </div>
+             
+                 <div class="btn-group">
+                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">@lang('fully.Actions')
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            @if (auth::user()->GetAuthTable($ucontroller, 'show'))
+                            <li>
+                                <a href="{!! route('units.show', [$units->id]) !!}">
+                                    <i class="icon-docs"></i> @lang('fully.Details')  </a>
+                            </li>
+                            @endif
+                            @if (auth::user()->GetAuthTable($ucontroller, 'edit'))
+
+                            <li>
+                                <a href="{!! route('units.edit', [$units->id]) !!}">
+                                    <i class="icon-tag"></i> @lang('fully.Edit') </a>
+                            </li>
+                            @endif
+                            @if (auth::user()->GetAuthTable($ucontroller, 'delete'))
+
+                          <li>
+                                <a onclick="return confirm('@lang('fully.Delete_Confirm')'"  href="{!! route('units.edit', [$units->id]) !!}">
+                                   <i class="glyphicon glyphicon-trash"></i>@lang('fully.Delete') </a>
+                            </li>
+                            @endif
+
+                          
+                        </ul>
+                    </div>
                 {!! Form::close() !!}
             </td>
         </tr>

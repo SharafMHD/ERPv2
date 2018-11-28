@@ -30,7 +30,7 @@
 
     @foreach ($model->actions as $cct)
      {!! $cct->name !!} 
-       
+
     <tr class="Roles">
         <td><center>{!! $cct->name !!}</center></td>
         <td>

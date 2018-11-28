@@ -28,3 +28,9 @@
     <p>{!! $units->updated_at !!}</p>
 </div>
 
+<!-- Deleted At Field -->
+<div class="form-group">
+<label for="deleted_at" class="col-md-3 control-label">@lang('fully.Deleted At'):</label>
+    <p>{!! $units->deleted_at !!}</p>
+</div>
+

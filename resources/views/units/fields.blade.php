@@ -6,9 +6,10 @@
 </div>
 
 <!-- Description Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6">
+
     <label for="description" class="col-md-3 control-label">@lang('fully.Description'):</label>
-    {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '5']) !!}
+    {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

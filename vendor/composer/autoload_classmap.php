@@ -20,14 +20,11 @@ return array(
     'App\\Http\\Controllers\\accountsController' => $baseDir . '/app/Http/Controllers/accountsController.php',
     'App\\Http\\Controllers\\coursesController' => $baseDir . '/app/Http/Controllers/coursesController.php',
     'App\\Http\\Controllers\\departmentController' => $baseDir . '/app/Http/Controllers/departmentController.php',
-<<<<<<< HEAD
-    'App\\Http\\Controllers\\hr_departmentController' => $baseDir . '/app/Http/Controllers/hr_departmentController.php',
     'App\\Http\\Controllers\\jobsController' => $baseDir . '/app/Http/Controllers/jobsController.php',
-=======
->>>>>>> 7afefae8f4a1defbe27a029778891390a199b47b
     'App\\Http\\Controllers\\modelsController' => $baseDir . '/app/Http/Controllers/modelsController.php',
     'App\\Http\\Controllers\\privilegesController' => $baseDir . '/app/Http/Controllers/privilegesController.php',
     'App\\Http\\Controllers\\rolesController' => $baseDir . '/app/Http/Controllers/rolesController.php',
+    'App\\Http\\Controllers\\unitsController' => $baseDir . '/app/Http/Controllers/unitsController.php',
     'App\\Http\\Controllers\\usersController' => $baseDir . '/app/Http/Controllers/usersController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
@@ -64,11 +61,7 @@ return array(
     'App\\Models\\actions' => $baseDir . '/app/Models/actions.php',
     'App\\Models\\courses' => $baseDir . '/app/Models/courses.php',
     'App\\Models\\department' => $baseDir . '/app/Models/department.php',
-<<<<<<< HEAD
-    'App\\Models\\hr_department' => $baseDir . '/app/Models/hr_department.php',
     'App\\Models\\jobs' => $baseDir . '/app/Models/jobs.php',
-=======
->>>>>>> 7afefae8f4a1defbe27a029778891390a199b47b
     'App\\Models\\models' => $baseDir . '/app/Models/models.php',
     'App\\Models\\privileges' => $baseDir . '/app/Models/privileges.php',
     'App\\Models\\roles' => $baseDir . '/app/Models/roles.php',
