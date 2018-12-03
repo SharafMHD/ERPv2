@@ -16,7 +16,7 @@
                 {!! Form::open(['route' => 'models.store']) !!}
 
                     @include('models.fields')
-
+{{-- hhiuyiuy --}}
                  {!! Form::close() !!}
             </div>
         </div>
