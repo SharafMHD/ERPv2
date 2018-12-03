@@ -4,8 +4,8 @@
  <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
-                <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.transfer')</span>
+                <i class="glyphicon glyphicon-transfer"></i>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.Warehouses transfer')</span>
             </div>
         </div>
         <div>

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use \App\Models\Inventory\warehouses;
 class transferController extends AppBaseController
 {
     /** @var  transferRepository */
@@ -43,7 +43,9 @@ class transferController extends AppBaseController
      */
     public function create()
     {
-        return view('inventory.transfers.create');
+        $warehouses= warehouses::pluck('name','id');
+        $items= \App\Models\Inventory\items::pluck('name','id');
+        return view('inventory.transfers.create')->with('warehouses', $warehouses)->with('items',$items);
     }
 
     /**

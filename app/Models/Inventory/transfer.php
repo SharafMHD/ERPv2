@@ -94,31 +94,27 @@ class transfer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function inventoryWarehouse()
+    public function Warehouse()
     {
-        return $this->belongsTo(\App\Models\Inventory\InventoryWarehouse::class);
+        return $this->belongsTo(\App\Models\Inventory\Warehouse::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function inventoryWarehouse()
-    {
-        return $this->belongsTo(\App\Models\Inventory\InventoryWarehouse::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\Inventory\User::class);
+        return $this->belongsTo(\App\Models\user::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function inventoryMovementDetails()
+    public function MovementDetails()
     {
         return $this->hasMany(\App\Models\Inventory\InventoryMovementDetail::class);
     }

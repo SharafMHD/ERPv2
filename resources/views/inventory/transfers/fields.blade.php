@@ -1,47 +1,33 @@
-<!-- No Field -->
 <div class="form-group col-sm-6">
-
-    <label for="no" class="col-md-3 control-label">@lang('fully.No'):</label>
-    {!! Form::text('no', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Date Field -->
-<div class="form-group col-sm-6">
-    <label for="date" class="col-md-3 control-label">@lang('fully.Date'):</label>
-    {!! Form::date('date', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- From Warehouse Id Field -->
-<div class="form-group col-sm-6">
-    <label for="from_warehouse_id" class="col-md-3 control-label">@lang('fully.From Warehouse Id'):</label>
-    {!! Form::number('from_warehouse_id', null, ['class' => 'form-control']) !!}
-</div>
-
+        <label for="from_warehouse_id" class="control-label">@lang('fully.warehouse from')</label>
+        {!! Form::select('from_warehouse_id', $warehouses, null, ['class' => 'form-control select2']) !!}
+        </div>
 <!-- To Warehouse Id Field -->
 <div class="form-group col-sm-6">
-    <label for="to_warehouse_id" class="col-md-3 control-label">@lang('fully.To Warehouse Id'):</label>
-    {!! Form::number('to_warehouse_id', null, ['class' => 'form-control']) !!}
-</div>
-
+        <label for="to_warehouse_id" class="control-label">@lang('fully.warehouse to')</label>
+        {!! Form::select('to_warehouse_id', $warehouses, null, ['class' => 'form-control select2']) !!}
+        </div>
+        <!-- To Warehouse Id Field -->
+<div class="form-group col-sm-6">
+        <label for="item_id" class="control-label">@lang('fully.Item Name ')</label>
+        {!! Form::select('item_id', $items, null, ['class' => 'form-control select2']) !!}
+        </div>
+<!-- QTY Field -->
+        <div class="form-group col-sm-6">
+                <label for="qty" class="col-md-3 control-label">@lang('fully.Qty')</label>
+                {!! Form::number('qty', null, ['class' => 'form-control']) !!}
+            </div>
 <!-- Notes Field -->
 <div class="form-group col-sm-6">
-
-    <label for="notes" class="col-md-3 control-label">@lang('fully.Notes'):</label>
-    {!! Form::text('notes', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Status Field -->
-<div class="form-group col-sm-6">
-
-    <label for="status" class="col-md-3 control-label">@lang('fully.Status'):</label>
-    {!! Form::text('status', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- User Id Field -->
-<div class="form-group col-sm-6">
-    <label for="user_id" class="col-md-3 control-label">@lang('fully.User Id'):</label>
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-</div>
+        <label for="notes" class="col-md-3 control-label">@lang('fully.Remark')</label>
+        {!! Form::text('notes', null, ['class' => 'form-control']) !!}
+        {{-- {!! Form::textarea('notes', null, ['class' => 'form-control']) !!} --}}
+    </div>
+    <div class="form-group col-sm-6">
+            <button type="submit"  class="btn green"><i class="fa fa-plus-circle"></i> @lang('fully.Add')</button>
+        </div>
+ 
+<hr/>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

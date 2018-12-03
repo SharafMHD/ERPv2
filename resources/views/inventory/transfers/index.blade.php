@@ -7,11 +7,11 @@
                 <i class="icon-equalizer font-red-sunglo"></i>
                 <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.transfers')</span>
             </div>
-             @if (auth::user()->GetAuthTable($ucontroller,'create'))
+             {{-- @if (auth::user()->GetAuthTable($ucontroller,'create')) --}}
             <h1 class="pull-right">
                 <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('inventory.transfers.create') !!}">{{__('fully.AddNew')}}</a>
             </h1>
-            @endif
+            {{-- @endif --}}
         </div>
         @include('flash::message')
         <div class="clearfix"></div>
