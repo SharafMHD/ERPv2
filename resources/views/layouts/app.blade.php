@@ -33,6 +33,7 @@
 @endif
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
 
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -312,7 +313,7 @@
 <!-- END THEME GLOBAL SCRIPTS -->
 <script src="/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
 <script src="/assets/pages/scripts/table-datatables-scroller.min.js" type="text/javascript"></script>
-        
+<script src="/assets/pages/scripts/table-datatables-managed.min.js" type="text/javascript"></script>
 <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 <script src="/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
     <script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>

@@ -1,45 +1,44 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Inventory;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class courses
- * @package App\Models
- * @version November 5, 2018, 12:24 pm UTC
+ * Class units
+ * @package App\Models\Inventory
+ * @version December 2, 2018, 3:09 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection accountsTransaction
- * @property \Illuminate\Database\Eloquent\Collection attendance
+ * @property \Illuminate\Database\Eloquent\Collection accountingTransactions
+ * @property \Illuminate\Database\Eloquent\Collection attendances
  * @property \Illuminate\Database\Eloquent\Collection bonuses
  * @property \Illuminate\Database\Eloquent\Collection certifications
- * @property \Illuminate\Database\Eloquent\Collection CoursesDetail
- * @property \Illuminate\Database\Eloquent\Collection employeeLeave
- * @property \Illuminate\Database\Eloquent\Collection items
+ * @property \Illuminate\Database\Eloquent\Collection coursesDetails
+ * @property \Illuminate\Database\Eloquent\Collection employeeLeaves
+ * @property \Illuminate\Database\Eloquent\Collection Item
  * @property \Illuminate\Database\Eloquent\Collection movementDetails
  * @property \Illuminate\Database\Eloquent\Collection orderDetails
  * @property \Illuminate\Database\Eloquent\Collection orders
- * @property \Illuminate\Database\Eloquent\Collection payroll
- * @property \Illuminate\Database\Eloquent\Collection projectOrder
+ * @property \Illuminate\Database\Eloquent\Collection payrolls
  * @property \Illuminate\Database\Eloquent\Collection projectOrderDetails
- * @property \Illuminate\Database\Eloquent\Collection projectVisitSchedular
+ * @property \Illuminate\Database\Eloquent\Collection projectOrders
+ * @property \Illuminate\Database\Eloquent\Collection projectVisitSchedulars
  * @property \Illuminate\Database\Eloquent\Collection purchaseDetails
  * @property \Illuminate\Database\Eloquent\Collection qoutationDetails
- * @property \Illuminate\Database\Eloquent\Collection salaryProfile
+ * @property \Illuminate\Database\Eloquent\Collection salaryProfiles
  * @property \Illuminate\Database\Eloquent\Collection salesDetails
  * @property \Illuminate\Database\Eloquent\Collection stockDetails
  * @property \Illuminate\Database\Eloquent\Collection trainingMembers
- * @property \Illuminate\Database\Eloquent\Collection workGroupMember
+ * @property \Illuminate\Database\Eloquent\Collection workGroupMembers
  * @property string name
- * @property string descritpion
- * @property string award_point
+ * @property string description
  */
-class courses extends Model
+class units extends Model
 {
     use SoftDeletes;
 
-    public $table = 'courses';
+    public $table = 'inventory__units';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -47,11 +46,11 @@ class courses extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $primaryKey = 'id';
 
     public $fillable = [
         'name',
-        'descritpion',
-        'award_point'
+        'description'
     ];
 
     /**
@@ -62,8 +61,7 @@ class courses extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'descritpion' => 'string',
-        'award_point' => 'string'
+        'description' => 'string'
     ];
 
     /**
@@ -78,8 +76,8 @@ class courses extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function coursesDetails()
+    public function items()
     {
-        return $this->hasMany(\App\Models\CoursesDetail::class);
+        return $this->hasMany(\App\Models\Inventory\Item::class);
     }
 }

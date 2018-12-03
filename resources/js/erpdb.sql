@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 29, 2018 at 06:37 PM
+-- Generation Time: Dec 03, 2018 at 12:34 PM
 -- Server version: 5.7.23-0ubuntu0.18.04.1
 -- PHP Version: 7.2.12-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts`
+-- Table structure for table `accounting__accounts`
 --
 
-CREATE TABLE `accounts` (
+CREATE TABLE `accounting__accounts` (
   `id` int(11) NOT NULL,
   `no` varchar(20) NOT NULL,
   `name` varchar(150) NOT NULL,
@@ -39,10 +39,10 @@ CREATE TABLE `accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `accounts`
+-- Dumping data for table `accounting__accounts`
 --
 
-INSERT INTO `accounts` (`id`, `no`, `name`, `main_account`, `description`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `accounting__accounts` (`id`, `no`, `name`, `main_account`, `description`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'ACC-00010290', '--', '--', '--', '--', '2018-10-18 11:42:00', NULL, NULL),
 (2, 'ACC-000000013', '--', 'Customers', '--', 'is active', '2018-10-18 11:42:00', NULL, NULL),
 (3, '2', '2', '2', '2', '2', '2018-10-28 00:05:29', '2018-10-27 22:05:29', NULL);
@@ -50,10 +50,10 @@ INSERT INTO `accounts` (`id`, `no`, `name`, `main_account`, `description`, `stat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts_transactions`
+-- Table structure for table `accounting__transactions`
 --
 
-CREATE TABLE `accounts_transactions` (
+CREATE TABLE `accounting__transactions` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `no` varchar(20) NOT NULL,
@@ -114,10 +114,10 @@ INSERT INTO `actions` (`id`, `name`, `label`, `deleted_at`, `model`, `type`, `cr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `attendances`
+-- Table structure for table `hr__attendances`
 --
 
-CREATE TABLE `attendances` (
+CREATE TABLE `hr__attendances` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `employee_id` int(11) NOT NULL,
@@ -135,10 +135,10 @@ CREATE TABLE `attendances` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bonuses`
+-- Table structure for table `hr__bonuses`
 --
 
-CREATE TABLE `bonuses` (
+CREATE TABLE `hr__bonuses` (
   `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `salary_item_id` int(11) NOT NULL,
@@ -151,32 +151,10 @@ CREATE TABLE `bonuses` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Table structure for table `hr__certifications`
 --
 
-CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'fsdfsdf', 'fsdfsdfsdf', '2018-10-22 17:06:41', '2018-10-22 17:06:41', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `certifications`
---
-
-CREATE TABLE `certifications` (
+CREATE TABLE `hr__certifications` (
   `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `cretification_id` int(11) NOT NULL,
@@ -189,10 +167,10 @@ CREATE TABLE `certifications` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `certification_configs`
+-- Table structure for table `hr__certification_configs`
 --
 
-CREATE TABLE `certification_configs` (
+CREATE TABLE `hr__certification_configs` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -204,10 +182,10 @@ CREATE TABLE `certification_configs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contracts`
+-- Table structure for table `hr__contracts`
 --
 
-CREATE TABLE `contracts` (
+CREATE TABLE `hr__contracts` (
   `id` int(11) NOT NULL,
   `no` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
@@ -223,10 +201,10 @@ CREATE TABLE `contracts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses`
+-- Table structure for table `hr__courses`
 --
 
-CREATE TABLE `courses` (
+CREATE TABLE `hr__courses` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `descritpion` varchar(500) NOT NULL,
@@ -237,19 +215,19 @@ CREATE TABLE `courses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `courses`
+-- Dumping data for table `hr__courses`
 --
 
-INSERT INTO `courses` (`id`, `name`, `descritpion`, `award_point`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `hr__courses` (`id`, `name`, `descritpion`, `award_point`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, '11', '11', '11', '2018-11-05 11:09:53', '2018-11-05 11:09:53', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `courses_details`
+-- Table structure for table `hr__courses_details`
 --
 
-CREATE TABLE `courses_details` (
+CREATE TABLE `hr__courses_details` (
   `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
   `period` float NOT NULL,
@@ -264,38 +242,10 @@ CREATE TABLE `courses_details` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Table structure for table `hr__deductions`
 --
 
-CREATE TABLE `customers` (
-  `id` int(11) NOT NULL,
-  `no` varchar(20) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `type` varchar(30) NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `mobile` varchar(50) NOT NULL,
-  `email` varchar(150) NOT NULL,
-  `web_site` varchar(150) NOT NULL,
-  `fax` varchar(20) NOT NULL,
-  `account_id` int(11) NOT NULL,
-  `have_ceilling` tinyint(1) NOT NULL,
-  `ceilling_amount` float NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `deductions`
---
-
-CREATE TABLE `deductions` (
+CREATE TABLE `hr__deductions` (
   `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -312,10 +262,10 @@ CREATE TABLE `deductions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departments`
+-- Table structure for table `hr__departments`
 --
 
-CREATE TABLE `departments` (
+CREATE TABLE `hr__departments` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -325,19 +275,19 @@ CREATE TABLE `departments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `departments`
+-- Dumping data for table `hr__departments`
 --
 
-INSERT INTO `departments` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
+INSERT INTO `hr__departments` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'بشسيبشسيبسشيب', 'بيلسيبلسيلس', '2018-10-23 15:00:01', '2018-10-23 15:00:01', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `documents`
+-- Table structure for table `hr__documents`
 --
 
-CREATE TABLE `documents` (
+CREATE TABLE `hr__documents` (
   `id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -350,10 +300,10 @@ CREATE TABLE `documents` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employees`
+-- Table structure for table `hr__employees`
 --
 
-CREATE TABLE `employees` (
+CREATE TABLE `hr__employees` (
   `id` int(11) NOT NULL,
   `no` varchar(50) NOT NULL,
   `name` varchar(250) NOT NULL,
@@ -381,10 +331,10 @@ CREATE TABLE `employees` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee_exits`
+-- Table structure for table `hr__employee_exits`
 --
 
-CREATE TABLE `employee_exits` (
+CREATE TABLE `hr__employee_exits` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `employee_id` int(11) NOT NULL,
@@ -399,10 +349,10 @@ CREATE TABLE `employee_exits` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee_leaves`
+-- Table structure for table `hr__employee_leaves`
 --
 
-CREATE TABLE `employee_leaves` (
+CREATE TABLE `hr__employee_leaves` (
   `id` int(11) NOT NULL,
   `vaction_id` int(11) NOT NULL,
   `reason` varchar(250) NOT NULL,
@@ -419,10 +369,10 @@ CREATE TABLE `employee_leaves` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `familys`
+-- Table structure for table `hr__familys`
 --
 
-CREATE TABLE `familys` (
+CREATE TABLE `hr__familys` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `relationship` varchar(50) NOT NULL,
@@ -435,10 +385,10 @@ CREATE TABLE `familys` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `holydays`
+-- Table structure for table `hr__holydays`
 --
 
-CREATE TABLE `holydays` (
+CREATE TABLE `hr__holydays` (
   `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `date` date NOT NULL,
@@ -457,10 +407,10 @@ CREATE TABLE `holydays` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `identity_types`
+-- Table structure for table `hr__identity_types`
 --
 
-CREATE TABLE `identity_types` (
+CREATE TABLE `hr__identity_types` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(500) NOT NULL,
@@ -472,10 +422,10 @@ CREATE TABLE `identity_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `insurances`
+-- Table structure for table `hr__insurances`
 --
 
-CREATE TABLE `insurances` (
+CREATE TABLE `hr__insurances` (
   `id` int(11) NOT NULL,
   `no` varchar(20) NOT NULL,
   `company` varchar(250) NOT NULL,
@@ -494,10 +444,295 @@ CREATE TABLE `insurances` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Table structure for table `hr__jobs`
 --
 
-CREATE TABLE `items` (
+CREATE TABLE `hr__jobs` (
+  `id` int(11) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `departmentID` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `hr__jobs`
+--
+
+INSERT INTO `hr__jobs` (`id`, `code`, `name`, `description`, `departmentID`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, '11', '11', '11', 1, '2018-10-30 06:28:39', '2018-10-30 06:28:39', NULL),
+(3, '1', '1', '1', 1, '2018-10-30 06:29:02', '2018-10-30 06:29:02', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__loans`
+--
+
+CREATE TABLE `hr__loans` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `amount` float NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `pay_slip` tinyint(1) NOT NULL,
+  `monthly_amount` float NOT NULL,
+  `payment_start_date` date NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__loans_payments`
+--
+
+CREATE TABLE `hr__loans_payments` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL,
+  `no` varchar(20) NOT NULL,
+  `loan_id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__nationalities`
+--
+
+CREATE TABLE `hr__nationalities` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__payrolls`
+--
+
+CREATE TABLE `hr__payrolls` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `salary_item_id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `issue_by` varchar(100) NOT NULL,
+  `hr_admin_accept` tinyint(1) NOT NULL,
+  `acc_admin_accept` tinyint(1) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__resignations`
+--
+
+CREATE TABLE `hr__resignations` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `reason` varchar(500) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `hr_admin_opinion` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__salary_items`
+--
+
+CREATE TABLE `hr__salary_items` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `direction` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__salary_profiles`
+--
+
+CREATE TABLE `hr__salary_profiles` (
+  `id` int(11) NOT NULL,
+  `salary_item_id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `job_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__terminations`
+--
+
+CREATE TABLE `hr__terminations` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__trainings`
+--
+
+CREATE TABLE `hr__trainings` (
+  `id` int(11) NOT NULL,
+  `training_subject` varchar(500) NOT NULL,
+  `training_type` varchar(150) NOT NULL,
+  `training_nature` varchar(150) NOT NULL,
+  `training_title` varchar(150) NOT NULL,
+  `trainer_name` varchar(150) NOT NULL,
+  `training_location` varchar(150) NOT NULL,
+  `sponesored_by` varchar(150) NOT NULL,
+  `organized_by` varchar(150) NOT NULL,
+  `training_from` date NOT NULL,
+  `training_to` date NOT NULL,
+  `training_cost` float NOT NULL,
+  `travel_cost` float NOT NULL,
+  `department_id` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `reason` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__training_members`
+--
+
+CREATE TABLE `hr__training_members` (
+  `id` int(11) NOT NULL,
+  `training_id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__vacations`
+--
+
+CREATE TABLE `hr__vacations` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `vacation_type` varchar(50) NOT NULL,
+  `vacation_balance` int(11) NOT NULL,
+  `current_balance` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hr__warnings`
+--
+
+CREATE TABLE `hr__warnings` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `emp_opinion` varchar(500) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory__categories`
+--
+
+CREATE TABLE `inventory__categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__categories`
+--
+
+INSERT INTO `inventory__categories` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'testing', 'fsdfsdfsdf', '2018-12-03 10:10:48', '2018-10-22 17:06:41', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory__details`
+--
+
+CREATE TABLE `inventory__details` (
+  `id` int(11) NOT NULL,
+  `warehouse_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `qty` float NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory__items`
+--
+
+CREATE TABLE `inventory__items` (
   `id` int(11) NOT NULL,
   `no` varchar(20) NOT NULL,
   `name` varchar(250) NOT NULL,
@@ -518,45 +753,93 @@ CREATE TABLE `items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jobs`
+-- Table structure for table `inventory__movements`
 --
 
-CREATE TABLE `jobs` (
+CREATE TABLE `inventory__movements` (
   `id` int(11) NOT NULL,
-  `code` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `departmentID` int(11) NOT NULL,
+  `no` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `from_warehouse_id` int(11) NOT NULL,
+  `to_warehouse_id` int(11) NOT NULL,
+  `notes` varchar(500) NOT NULL,
+  `status` varchar(15) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `jobs`
+-- Table structure for table `inventory__movement_details`
 --
 
-INSERT INTO `jobs` (`id`, `code`, `name`, `description`, `departmentID`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, '11', '11', '11', 1, '2018-10-30 06:28:39', '2018-10-30 06:28:39', NULL),
-(3, '1', '1', '1', 1, '2018-10-30 06:29:02', '2018-10-30 06:29:02', NULL);
+CREATE TABLE `inventory__movement_details` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `qty` float NOT NULL,
+  `notes` varchar(250) NOT NULL,
+  `movement_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loans`
+-- Table structure for table `inventory__orders`
 --
 
-CREATE TABLE `loans` (
+CREATE TABLE `inventory__orders` (
+  `id` int(11) NOT NULL,
+  `no` varchar(20) NOT NULL,
+  `date` date NOT NULL,
+  `warehouse_id` int(11) NOT NULL,
+  `status` varchar(15) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory__order_details`
+--
+
+CREATE TABLE `inventory__order_details` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `qty` float NOT NULL,
+  `notes` varchar(250) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory__transactions`
+--
+
+CREATE TABLE `inventory__transactions` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `amount` float NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `pay_slip` tinyint(1) NOT NULL,
-  `monthly_amount` float NOT NULL,
-  `payment_start_date` date NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `no` varchar(20) NOT NULL,
+  `warehouse_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `transaction_type` int(10) NOT NULL,
+  `qty` float NOT NULL,
+  `price` float NOT NULL,
   `description` varchar(500) NOT NULL,
-  `status` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -565,16 +848,45 @@ CREATE TABLE `loans` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loans_payments`
+-- Table structure for table `inventory__units`
 --
 
-CREATE TABLE `loans_payments` (
+CREATE TABLE `inventory__units` (
   `id` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
-  `no` varchar(20) NOT NULL,
-  `loan_id` int(11) NOT NULL,
-  `amount` float NOT NULL,
-  `description` varchar(500) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__units`
+--
+
+INSERT INTO `inventory__units` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'test', 'gdfgdfg', '2018-10-22 13:06:28', '2018-10-22 17:06:28', '2018-10-22 17:06:28'),
+(2, 'gdfgdfgdfg', 'gdfgdfgdfg', '2018-10-22 13:12:57', '2018-10-22 17:12:57', '2018-10-22 17:12:57'),
+(3, 'dfgdsfgdgsdg', 'dsfgsdfgdsgdsgdsfg', '2018-10-22 13:19:35', '2018-10-22 17:19:35', '2018-10-22 17:19:35'),
+(4, 'hfghfghfgh', 'fghfghfgh', '2018-10-22 13:29:29', '2018-10-22 17:29:29', '2018-10-22 17:29:29'),
+(5, 'fasdfsadfasdf', 'dgdgdfg', '2018-12-02 11:08:42', '2018-12-02 09:08:41', '2018-12-02 09:08:41'),
+(6, 'sssss', 'ssss', '2018-12-02 11:11:04', '2018-12-02 09:11:04', '2018-12-02 09:11:04'),
+(7, 'ssssssssssssssasssssssssssssaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaa', '2018-12-02 14:08:00', '2018-12-02 12:08:00', '2018-12-02 12:08:00'),
+(8, 'fsafsdfasdf', 'sdfsadfsadf', '2018-12-02 12:08:29', '2018-12-02 12:08:29', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inventory__warehouses`
+--
+
+CREATE TABLE `inventory__warehouses` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `keeper` varchar(100) NOT NULL,
+  `location` varchar(500) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `status` varchar(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -611,115 +923,6 @@ INSERT INTO `models` (`id`, `name`, `label`, `parent`, `deleted_at`, `created_at
 (7, 'models55', 'Settings', NULL, NULL, '2018-10-31 10:09:42', NULL, NULL),
 (8, 'models', 'Menu', 6, NULL, '2018-10-31 10:10:38', 'icon-menu', '2018-10-31'),
 (10, 'Accounts', 'Accounts management', NULL, NULL, '2018-11-05 12:44:52', NULL, '2018-11-05');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `movements`
---
-
-CREATE TABLE `movements` (
-  `id` int(11) NOT NULL,
-  `no` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `from_warehouse_id` int(11) NOT NULL,
-  `to_warehouse_id` int(11) NOT NULL,
-  `notes` varchar(500) NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `movement_details`
---
-
-CREATE TABLE `movement_details` (
-  `id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `qty` float NOT NULL,
-  `notes` varchar(250) NOT NULL,
-  `movement_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nationalities`
---
-
-CREATE TABLE `nationalities` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `code` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `id` int(11) NOT NULL,
-  `no` varchar(20) NOT NULL,
-  `date` date NOT NULL,
-  `warehouse_id` int(11) NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order_details`
---
-
-CREATE TABLE `order_details` (
-  `id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `qty` float NOT NULL,
-  `notes` varchar(250) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payrolls`
---
-
-CREATE TABLE `payrolls` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `salary_item_id` int(11) NOT NULL,
-  `amount` float NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `issue_by` varchar(100) NOT NULL,
-  `hr_admin_accept` tinyint(1) NOT NULL,
-  `acc_admin_accept` tinyint(1) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1036,10 +1239,67 @@ INSERT INTO `privileges` (`id`, `role`, `action`, `model`, `deleted_at`, `create
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Table structure for table `project__attachments`
 --
 
-CREATE TABLE `projects` (
+CREATE TABLE `project__attachments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `file_name` varchar(500) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project__orders`
+--
+
+CREATE TABLE `project__orders` (
+  `id` int(11) NOT NULL,
+  `no` int(20) NOT NULL,
+  `date` date NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `shipping_date` date NOT NULL,
+  `receiving_date` date NOT NULL,
+  `recipient_name` varchar(150) NOT NULL,
+  `recipient_phone` varchar(50) NOT NULL,
+  `recipient_address` varchar(500) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project__order_details`
+--
+
+CREATE TABLE `project__order_details` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `qty` float NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `status` varchar(50) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project__projects`
+--
+
+CREATE TABLE `project__projects` (
   `id` int(11) NOT NULL,
   `name` varchar(150) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -1061,67 +1321,10 @@ CREATE TABLE `projects` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project_attachments`
+-- Table structure for table `project__visits`
 --
 
-CREATE TABLE `project_attachments` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `file_name` varchar(500) NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `project_orders`
---
-
-CREATE TABLE `project_orders` (
-  `id` int(11) NOT NULL,
-  `no` int(20) NOT NULL,
-  `date` date NOT NULL,
-  `project_id` int(11) NOT NULL,
-  `shipping_date` date NOT NULL,
-  `receiving_date` date NOT NULL,
-  `recipient_name` varchar(150) NOT NULL,
-  `recipient_phone` varchar(50) NOT NULL,
-  `recipient_address` varchar(500) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `project_order_details`
---
-
-CREATE TABLE `project_order_details` (
-  `id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `qty` float NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `project_visits`
---
-
-CREATE TABLE `project_visits` (
+CREATE TABLE `project__visits` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `project_id` int(11) NOT NULL,
@@ -1134,10 +1337,10 @@ CREATE TABLE `project_visits` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `project_visit_schedulars`
+-- Table structure for table `project__visit_schedulars`
 --
 
-CREATE TABLE `project_visit_schedulars` (
+CREATE TABLE `project__visit_schedulars` (
   `id` int(11) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
@@ -1153,10 +1356,40 @@ CREATE TABLE `project_visit_schedulars` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchases`
+-- Table structure for table `project__work_groups`
 --
 
-CREATE TABLE `purchases` (
+CREATE TABLE `project__work_groups` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `project__work_group_members`
+--
+
+CREATE TABLE `project__work_group_members` (
+  `id` int(11) NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `work_group_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase__purchases`
+--
+
+CREATE TABLE `purchase__purchases` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `no` varchar(20) NOT NULL,
@@ -1181,10 +1414,10 @@ CREATE TABLE `purchases` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchase_details`
+-- Table structure for table `purchase__purchase_details`
 --
 
-CREATE TABLE `purchase_details` (
+CREATE TABLE `purchase__purchase_details` (
   `id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `qty` float NOT NULL,
@@ -1200,60 +1433,23 @@ CREATE TABLE `purchase_details` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `qoutations`
+-- Table structure for table `purchase__suppliers`
 --
 
-CREATE TABLE `qoutations` (
+CREATE TABLE `purchase__suppliers` (
   `id` int(11) NOT NULL,
-  `date` date NOT NULL,
   `no` varchar(20) NOT NULL,
-  `customer_name` varchar(250) NOT NULL,
-  `customer_phone` varchar(50) NOT NULL,
-  `customer_address` varchar(500) NOT NULL,
-  `valide_date` date NOT NULL,
-  `notes` varchar(500) NOT NULL,
-  `amount` float NOT NULL,
-  `discount` float NOT NULL,
-  `net_amount` float NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `qoutation_details`
---
-
-CREATE TABLE `qoutation_details` (
-  `id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `qty` float NOT NULL,
-  `price` float NOT NULL,
-  `total` float NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `qoutation_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `resignations`
---
-
-CREATE TABLE `resignations` (
-  `id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `reason` varchar(500) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `hr_admin_opinion` varchar(500) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `web_site` varchar(150) NOT NULL,
+  `fax` varchar(20) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `status` varchar(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -1284,14 +1480,26 @@ INSERT INTO `roles` (`id`, `role_name`, `created_at`, `created_by`, `deleted_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salary_items`
+-- Table structure for table `sales__customers`
 --
 
-CREATE TABLE `salary_items` (
+CREATE TABLE `sales__customers` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `direction` varchar(50) NOT NULL,
+  `no` varchar(20) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `mobile` varchar(50) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `web_site` varchar(150) NOT NULL,
+  `fax` varchar(20) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `have_ceilling` tinyint(1) NOT NULL,
+  `ceilling_amount` float NOT NULL,
+  `status` varchar(10) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -1300,14 +1508,23 @@ CREATE TABLE `salary_items` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salary_profiles`
+-- Table structure for table `sales__qoutations`
 --
 
-CREATE TABLE `salary_profiles` (
+CREATE TABLE `sales__qoutations` (
   `id` int(11) NOT NULL,
-  `salary_item_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `no` varchar(20) NOT NULL,
+  `customer_name` varchar(250) NOT NULL,
+  `customer_phone` varchar(50) NOT NULL,
+  `customer_address` varchar(500) NOT NULL,
+  `valide_date` date NOT NULL,
+  `notes` varchar(500) NOT NULL,
   `amount` float NOT NULL,
-  `job_id` int(11) NOT NULL,
+  `discount` float NOT NULL,
+  `net_amount` float NOT NULL,
+  `status` varchar(15) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -1316,10 +1533,29 @@ CREATE TABLE `salary_profiles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales`
+-- Table structure for table `sales__qoutation_details`
 --
 
-CREATE TABLE `sales` (
+CREATE TABLE `sales__qoutation_details` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `qty` float NOT NULL,
+  `price` float NOT NULL,
+  `total` float NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `qoutation_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales__sales`
+--
+
+CREATE TABLE `sales__sales` (
   `id` int(11) NOT NULL,
   `no` varchar(20) NOT NULL,
   `date` date NOT NULL,
@@ -1345,10 +1581,10 @@ CREATE TABLE `sales` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_details`
+-- Table structure for table `sales__sales_details`
 --
 
-CREATE TABLE `sales_details` (
+CREATE TABLE `sales__sales_details` (
   `id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `qty` float NOT NULL,
@@ -1360,155 +1596,6 @@ CREATE TABLE `sales_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stock_details`
---
-
-CREATE TABLE `stock_details` (
-  `id` int(11) NOT NULL,
-  `warehouse_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `qty` float NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stock_transactions`
---
-
-CREATE TABLE `stock_transactions` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `no` varchar(20) NOT NULL,
-  `warehouse_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `transaction_type` int(10) NOT NULL,
-  `qty` float NOT NULL,
-  `price` float NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `suppliers`
---
-
-CREATE TABLE `suppliers` (
-  `id` int(11) NOT NULL,
-  `no` varchar(20) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `country` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `address` varchar(500) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `mobile` varchar(50) NOT NULL,
-  `email` varchar(150) NOT NULL,
-  `web_site` varchar(150) NOT NULL,
-  `fax` varchar(20) NOT NULL,
-  `account_id` int(11) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `terminations`
---
-
-CREATE TABLE `terminations` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `trainings`
---
-
-CREATE TABLE `trainings` (
-  `id` int(11) NOT NULL,
-  `training_subject` varchar(500) NOT NULL,
-  `training_type` varchar(150) NOT NULL,
-  `training_nature` varchar(150) NOT NULL,
-  `training_title` varchar(150) NOT NULL,
-  `trainer_name` varchar(150) NOT NULL,
-  `training_location` varchar(150) NOT NULL,
-  `sponesored_by` varchar(150) NOT NULL,
-  `organized_by` varchar(150) NOT NULL,
-  `training_from` date NOT NULL,
-  `training_to` date NOT NULL,
-  `training_cost` float NOT NULL,
-  `travel_cost` float NOT NULL,
-  `department_id` int(11) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `reason` varchar(500) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `training_members`
---
-
-CREATE TABLE `training_members` (
-  `id` int(11) NOT NULL,
-  `training_id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `units`
---
-
-CREATE TABLE `units` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `units`
---
-
-INSERT INTO `units` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'test', 'gdfgdfg', '2018-10-22 13:06:28', '2018-10-22 17:06:28', '2018-10-22 17:06:28'),
-(2, 'gdfgdfgdfg', 'gdfgdfgdfg', '2018-10-22 13:12:57', '2018-10-22 17:12:57', '2018-10-22 17:12:57'),
-(3, 'dfgdsfgdgsdg', 'dsfgsdfgdsgdsgdsfg', '2018-10-22 13:19:35', '2018-10-22 17:19:35', '2018-10-22 17:19:35'),
-(4, 'hfghfghfgh', 'fghfghfgh', '2018-10-22 13:29:29', '2018-10-22 17:29:29', '2018-10-22 17:29:29'),
-(5, 'fasdfsadfasdf', 'dgdgdfg', '2018-10-22 13:32:18', '2018-10-22 17:32:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -1539,104 +1626,20 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `user_name`, `role`, `password`, `user_group`, `image`, `status`, `created_at`, `updated_at`, `deleted_at`, `remember_token`, `email`) VALUES
 (2, 'admin@admin.com', 'admin@admin.com', 1, '$2y$10$VSM40wvyEkRAe92rI86Nt.Kyd8dQhBeyVgCWf27CzHC3aoj7UMrcW', '123', 'https://cdn0.iconfinder.com/data/icons/mobile-device/512/man-body-person-blue-round-512.png', '', '2018-11-06 14:16:05', NULL, NULL, 'aITpDcTwzbe7kG4NqTQ8GsMoz3RKDzoAvJlkaI9HuPHEflfkclLLoG8KIVoD', 'admin@admin.com');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `vacations`
---
-
-CREATE TABLE `vacations` (
-  `id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `vacation_type` varchar(50) NOT NULL,
-  `vacation_balance` int(11) NOT NULL,
-  `current_balance` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `warehouse`
---
-
-CREATE TABLE `warehouse` (
-  `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `keeper` varchar(100) NOT NULL,
-  `location` varchar(500) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `warnings`
---
-
-CREATE TABLE `warnings` (
-  `id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `subject` varchar(50) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `emp_opinion` varchar(500) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `work_groups`
---
-
-CREATE TABLE `work_groups` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` varchar(500) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `work_group_members`
---
-
-CREATE TABLE `work_group_members` (
-  `id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `work_group_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `accounts`
+-- Indexes for table `accounting__accounts`
 --
-ALTER TABLE `accounts`
+ALTER TABLE `accounting__accounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `accounts_transactions`
+-- Indexes for table `accounting__transactions`
 --
-ALTER TABLE `accounts_transactions`
+ALTER TABLE `accounting__transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `account_id` (`account_id`),
   ADD KEY `user_id` (`user_id`),
@@ -1652,221 +1655,301 @@ ALTER TABLE `actions`
   ADD KEY `model` (`model`);
 
 --
--- Indexes for table `attendances`
+-- Indexes for table `hr__attendances`
 --
-ALTER TABLE `attendances`
+ALTER TABLE `hr__attendances`
   ADD PRIMARY KEY (`id`),
   ADD KEY `deduction_id` (`deduction_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `bonuses`
+-- Indexes for table `hr__bonuses`
 --
-ALTER TABLE `bonuses`
+ALTER TABLE `hr__bonuses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`),
   ADD KEY `salary_item_id` (`salary_item_id`);
 
 --
--- Indexes for table `categories`
+-- Indexes for table `hr__certifications`
 --
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `certifications`
---
-ALTER TABLE `certifications`
+ALTER TABLE `hr__certifications`
   ADD KEY `employee_id` (`employee_id`),
   ADD KEY `cretification_id` (`cretification_id`);
 
 --
--- Indexes for table `certification_configs`
+-- Indexes for table `hr__certification_configs`
 --
-ALTER TABLE `certification_configs`
+ALTER TABLE `hr__certification_configs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `contracts`
+-- Indexes for table `hr__contracts`
 --
-ALTER TABLE `contracts`
+ALTER TABLE `hr__contracts`
   ADD KEY `id` (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `courses`
+-- Indexes for table `hr__courses`
 --
-ALTER TABLE `courses`
+ALTER TABLE `hr__courses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `courses_details`
+-- Indexes for table `hr__courses_details`
 --
-ALTER TABLE `courses_details`
+ALTER TABLE `hr__courses_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `customers`
+-- Indexes for table `hr__deductions`
 --
-ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `deductions`
---
-ALTER TABLE `deductions`
+ALTER TABLE `hr__deductions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `departments`
+-- Indexes for table `hr__departments`
 --
-ALTER TABLE `departments`
+ALTER TABLE `hr__departments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `documents`
+-- Indexes for table `hr__documents`
 --
-ALTER TABLE `documents`
+ALTER TABLE `hr__documents`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `employees`
+-- Indexes for table `hr__employees`
 --
-ALTER TABLE `employees`
+ALTER TABLE `hr__employees`
   ADD PRIMARY KEY (`id`),
   ADD KEY `identity_id` (`identity_id`),
   ADD KEY `job_id` (`job_id`),
   ADD KEY `account_id` (`account_id`);
 
 --
--- Indexes for table `employee_exits`
+-- Indexes for table `hr__employee_exits`
 --
-ALTER TABLE `employee_exits`
+ALTER TABLE `hr__employee_exits`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `employee_leaves`
+-- Indexes for table `hr__employee_leaves`
 --
-ALTER TABLE `employee_leaves`
+ALTER TABLE `hr__employee_leaves`
   ADD PRIMARY KEY (`id`),
   ADD KEY `vaction_id` (`vaction_id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `familys`
+-- Indexes for table `hr__familys`
 --
-ALTER TABLE `familys`
+ALTER TABLE `hr__familys`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `holydays`
+-- Indexes for table `hr__holydays`
 --
-ALTER TABLE `holydays`
+ALTER TABLE `hr__holydays`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `identity_types`
+-- Indexes for table `hr__identity_types`
 --
-ALTER TABLE `identity_types`
+ALTER TABLE `hr__identity_types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `insurances`
+-- Indexes for table `hr__insurances`
 --
-ALTER TABLE `insurances`
+ALTER TABLE `hr__insurances`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`);
 
 --
--- Indexes for table `items`
+-- Indexes for table `hr__jobs`
 --
-ALTER TABLE `items`
+ALTER TABLE `hr__jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `departmentID` (`departmentID`);
+
+--
+-- Indexes for table `hr__loans`
+--
+ALTER TABLE `hr__loans`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `hr__loans_payments`
+--
+ALTER TABLE `hr__loans_payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `loan_id` (`loan_id`);
+
+--
+-- Indexes for table `hr__nationalities`
+--
+ALTER TABLE `hr__nationalities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hr__payrolls`
+--
+ALTER TABLE `hr__payrolls`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`),
+  ADD KEY `salary_item_id` (`salary_item_id`);
+
+--
+-- Indexes for table `hr__resignations`
+--
+ALTER TABLE `hr__resignations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `hr__salary_items`
+--
+ALTER TABLE `hr__salary_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hr__salary_profiles`
+--
+ALTER TABLE `hr__salary_profiles`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `salary_item_id` (`salary_item_id`),
+  ADD KEY `job_id` (`job_id`);
+
+--
+-- Indexes for table `hr__terminations`
+--
+ALTER TABLE `hr__terminations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `hr__trainings`
+--
+ALTER TABLE `hr__trainings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `department_id` (`department_id`);
+
+--
+-- Indexes for table `hr__training_members`
+--
+ALTER TABLE `hr__training_members`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `training_id` (`training_id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `hr__vacations`
+--
+ALTER TABLE `hr__vacations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `hr__warnings`
+--
+ALTER TABLE `hr__warnings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`);
+
+--
+-- Indexes for table `inventory__categories`
+--
+ALTER TABLE `inventory__categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inventory__details`
+--
+ALTER TABLE `inventory__details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `warehouse_id` (`warehouse_id`),
+  ADD KEY `item_id` (`item_id`);
+
+--
+-- Indexes for table `inventory__items`
+--
+ALTER TABLE `inventory__items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`),
   ADD KEY `unit_id` (`unit_id`),
   ADD KEY `category_id_2` (`category_id`);
 
 --
--- Indexes for table `jobs`
+-- Indexes for table `inventory__movements`
 --
-ALTER TABLE `jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `departmentID` (`departmentID`);
-
---
--- Indexes for table `loans`
---
-ALTER TABLE `loans`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`);
-
---
--- Indexes for table `loans_payments`
---
-ALTER TABLE `loans_payments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `loan_id` (`loan_id`);
-
---
--- Indexes for table `models`
---
-ALTER TABLE `models`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `movements`
---
-ALTER TABLE `movements`
+ALTER TABLE `inventory__movements`
   ADD PRIMARY KEY (`id`),
   ADD KEY `from_warehouse_id` (`from_warehouse_id`),
   ADD KEY `to_warehouse_id` (`to_warehouse_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `movement_details`
+-- Indexes for table `inventory__movement_details`
 --
-ALTER TABLE `movement_details`
+ALTER TABLE `inventory__movement_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `movement_id` (`movement_id`);
 
 --
--- Indexes for table `nationalities`
+-- Indexes for table `inventory__orders`
 --
-ALTER TABLE `nationalities`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
+ALTER TABLE `inventory__orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `warehouse_id` (`warehouse_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `order_details`
+-- Indexes for table `inventory__order_details`
 --
-ALTER TABLE `order_details`
+ALTER TABLE `inventory__order_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `id` (`id`),
   ADD KEY `order_id` (`order_id`);
 
 --
--- Indexes for table `payrolls`
+-- Indexes for table `inventory__transactions`
 --
-ALTER TABLE `payrolls`
+ALTER TABLE `inventory__transactions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`),
-  ADD KEY `salary_item_id` (`salary_item_id`);
+  ADD KEY `warehouse_id` (`warehouse_id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `inventory__units`
+--
+ALTER TABLE `inventory__units`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inventory__warehouses`
+--
+ALTER TABLE `inventory__warehouses`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `models`
+--
+ALTER TABLE `models`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `privileges`
@@ -1878,56 +1961,70 @@ ALTER TABLE `privileges`
   ADD KEY `model` (`model`);
 
 --
--- Indexes for table `projects`
+-- Indexes for table `project__attachments`
 --
-ALTER TABLE `projects`
+ALTER TABLE `project__attachments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `project_id` (`project_id`);
+
+--
+-- Indexes for table `project__orders`
+--
+ALTER TABLE `project__orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `project_id` (`project_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `project__order_details`
+--
+ALTER TABLE `project__order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `project__projects`
+--
+ALTER TABLE `project__projects`
   ADD PRIMARY KEY (`id`),
   ADD KEY `work_group_id` (`work_group_id`),
   ADD KEY `employee_id` (`employee_id`),
   ADD KEY `customer_id` (`customer_id`);
 
 --
--- Indexes for table `project_attachments`
+-- Indexes for table `project__visits`
 --
-ALTER TABLE `project_attachments`
+ALTER TABLE `project__visits`
   ADD PRIMARY KEY (`id`),
   ADD KEY `project_id` (`project_id`);
 
 --
--- Indexes for table `project_orders`
+-- Indexes for table `project__visit_schedulars`
 --
-ALTER TABLE `project_orders`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `project_id` (`project_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `project_order_details`
---
-ALTER TABLE `project_order_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `item_id` (`item_id`),
-  ADD KEY `order_id` (`order_id`);
-
---
--- Indexes for table `project_visits`
---
-ALTER TABLE `project_visits`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `project_id` (`project_id`);
-
---
--- Indexes for table `project_visit_schedulars`
---
-ALTER TABLE `project_visit_schedulars`
+ALTER TABLE `project__visit_schedulars`
   ADD PRIMARY KEY (`id`),
   ADD KEY `employee_id` (`employee_id`),
   ADD KEY `project_id` (`project_id`);
 
 --
--- Indexes for table `purchases`
+-- Indexes for table `project__work_groups`
 --
-ALTER TABLE `purchases`
+ALTER TABLE `project__work_groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `project__work_group_members`
+--
+ALTER TABLE `project__work_group_members`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `employee_id` (`employee_id`),
+  ADD KEY `work_group_id` (`work_group_id`);
+
+--
+-- Indexes for table `purchase__purchases`
+--
+ALTER TABLE `purchase__purchases`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
   ADD KEY `warehouse_id` (`warehouse_id`),
@@ -1935,35 +2032,19 @@ ALTER TABLE `purchases`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `purchase_details`
+-- Indexes for table `purchase__purchase_details`
 --
-ALTER TABLE `purchase_details`
+ALTER TABLE `purchase__purchase_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `purchase_id` (`purchase_id`),
   ADD KEY `purchase_id_2` (`purchase_id`);
 
 --
--- Indexes for table `qoutations`
+-- Indexes for table `purchase__suppliers`
 --
-ALTER TABLE `qoutations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `qoutation_details`
---
-ALTER TABLE `qoutation_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `item_id` (`item_id`),
-  ADD KEY `qoutation_id` (`qoutation_id`);
-
---
--- Indexes for table `resignations`
---
-ALTER TABLE `resignations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`);
+ALTER TABLE `purchase__suppliers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roles`
@@ -1972,86 +2053,42 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `salary_items`
+-- Indexes for table `sales__customers`
 --
-ALTER TABLE `salary_items`
+ALTER TABLE `sales__customers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `salary_profiles`
+-- Indexes for table `sales__qoutations`
 --
-ALTER TABLE `salary_profiles`
+ALTER TABLE `sales__qoutations`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `salary_item_id` (`salary_item_id`),
-  ADD KEY `job_id` (`job_id`);
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `sales`
+-- Indexes for table `sales__qoutation_details`
 --
-ALTER TABLE `sales`
+ALTER TABLE `sales__qoutation_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `item_id` (`item_id`),
+  ADD KEY `qoutation_id` (`qoutation_id`);
+
+--
+-- Indexes for table `sales__sales`
+--
+ALTER TABLE `sales__sales`
   ADD PRIMARY KEY (`id`),
   ADD KEY `warehouse_id` (`warehouse_id`),
   ADD KEY `customer_id` (`customer_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `sales_details`
+-- Indexes for table `sales__sales_details`
 --
-ALTER TABLE `sales_details`
+ALTER TABLE `sales__sales_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `item_id` (`item_id`),
   ADD KEY `sales_id` (`sales_id`);
-
---
--- Indexes for table `stock_details`
---
-ALTER TABLE `stock_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `warehouse_id` (`warehouse_id`),
-  ADD KEY `item_id` (`item_id`);
-
---
--- Indexes for table `stock_transactions`
---
-ALTER TABLE `stock_transactions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `warehouse_id` (`warehouse_id`),
-  ADD KEY `item_id` (`item_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `suppliers`
---
-ALTER TABLE `suppliers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `terminations`
---
-ALTER TABLE `terminations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`);
-
---
--- Indexes for table `trainings`
---
-ALTER TABLE `trainings`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `department_id` (`department_id`);
-
---
--- Indexes for table `training_members`
---
-ALTER TABLE `training_members`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `training_id` (`training_id`),
-  ADD KEY `employee_id` (`employee_id`);
-
---
--- Indexes for table `units`
---
-ALTER TABLE `units`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -2061,167 +2098,218 @@ ALTER TABLE `users`
   ADD KEY `role` (`role`);
 
 --
--- Indexes for table `vacations`
---
-ALTER TABLE `vacations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`);
-
---
--- Indexes for table `warehouse`
---
-ALTER TABLE `warehouse`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `warnings`
---
-ALTER TABLE `warnings`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`);
-
---
--- Indexes for table `work_groups`
---
-ALTER TABLE `work_groups`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `work_group_members`
---
-ALTER TABLE `work_group_members`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `employee_id` (`employee_id`),
-  ADD KEY `work_group_id` (`work_group_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `accounts`
+-- AUTO_INCREMENT for table `accounting__accounts`
 --
-ALTER TABLE `accounts`
+ALTER TABLE `accounting__accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `accounts_transactions`
+-- AUTO_INCREMENT for table `accounting__transactions`
 --
-ALTER TABLE `accounts_transactions`
+ALTER TABLE `accounting__transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `actions`
 --
 ALTER TABLE `actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
--- AUTO_INCREMENT for table `attendances`
+-- AUTO_INCREMENT for table `hr__attendances`
 --
-ALTER TABLE `attendances`
+ALTER TABLE `hr__attendances`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `bonuses`
+-- AUTO_INCREMENT for table `hr__bonuses`
 --
-ALTER TABLE `bonuses`
+ALTER TABLE `hr__bonuses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT for table `hr__certification_configs`
 --
-ALTER TABLE `categories`
+ALTER TABLE `hr__certification_configs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__contracts`
+--
+ALTER TABLE `hr__contracts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__courses`
+--
+ALTER TABLE `hr__courses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `certification_configs`
+-- AUTO_INCREMENT for table `hr__courses_details`
 --
-ALTER TABLE `certification_configs`
+ALTER TABLE `hr__courses_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `contracts`
+-- AUTO_INCREMENT for table `hr__deductions`
 --
-ALTER TABLE `contracts`
+ALTER TABLE `hr__deductions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `courses`
+-- AUTO_INCREMENT for table `hr__departments`
 --
-ALTER TABLE `courses`
+ALTER TABLE `hr__departments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `courses_details`
+-- AUTO_INCREMENT for table `hr__documents`
 --
-ALTER TABLE `courses_details`
+ALTER TABLE `hr__documents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `customers`
+-- AUTO_INCREMENT for table `hr__employees`
 --
-ALTER TABLE `customers`
+ALTER TABLE `hr__employees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `deductions`
+-- AUTO_INCREMENT for table `hr__employee_exits`
 --
-ALTER TABLE `deductions`
+ALTER TABLE `hr__employee_exits`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `departments`
+-- AUTO_INCREMENT for table `hr__employee_leaves`
 --
-ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `documents`
---
-ALTER TABLE `documents`
+ALTER TABLE `hr__employee_leaves`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `employees`
+-- AUTO_INCREMENT for table `hr__familys`
 --
-ALTER TABLE `employees`
+ALTER TABLE `hr__familys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `employee_exits`
+-- AUTO_INCREMENT for table `hr__holydays`
 --
-ALTER TABLE `employee_exits`
+ALTER TABLE `hr__holydays`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `employee_leaves`
+-- AUTO_INCREMENT for table `hr__identity_types`
 --
-ALTER TABLE `employee_leaves`
+ALTER TABLE `hr__identity_types`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `familys`
+-- AUTO_INCREMENT for table `hr__insurances`
 --
-ALTER TABLE `familys`
+ALTER TABLE `hr__insurances`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `holydays`
+-- AUTO_INCREMENT for table `hr__jobs`
 --
-ALTER TABLE `holydays`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `identity_types`
---
-ALTER TABLE `identity_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `insurances`
---
-ALTER TABLE `insurances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `items`
---
-ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `jobs`
---
-ALTER TABLE `jobs`
+ALTER TABLE `hr__jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `loans`
+-- AUTO_INCREMENT for table `hr__loans`
 --
-ALTER TABLE `loans`
+ALTER TABLE `hr__loans`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `loans_payments`
+-- AUTO_INCREMENT for table `hr__loans_payments`
 --
-ALTER TABLE `loans_payments`
+ALTER TABLE `hr__loans_payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__nationalities`
+--
+ALTER TABLE `hr__nationalities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__payrolls`
+--
+ALTER TABLE `hr__payrolls`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__resignations`
+--
+ALTER TABLE `hr__resignations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__salary_items`
+--
+ALTER TABLE `hr__salary_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__salary_profiles`
+--
+ALTER TABLE `hr__salary_profiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__terminations`
+--
+ALTER TABLE `hr__terminations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__trainings`
+--
+ALTER TABLE `hr__trainings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__training_members`
+--
+ALTER TABLE `hr__training_members`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__vacations`
+--
+ALTER TABLE `hr__vacations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `hr__warnings`
+--
+ALTER TABLE `hr__warnings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__categories`
+--
+ALTER TABLE `inventory__categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `inventory__details`
+--
+ALTER TABLE `inventory__details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__items`
+--
+ALTER TABLE `inventory__items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__movements`
+--
+ALTER TABLE `inventory__movements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__movement_details`
+--
+ALTER TABLE `inventory__movement_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__orders`
+--
+ALTER TABLE `inventory__orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__order_details`
+--
+ALTER TABLE `inventory__order_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__transactions`
+--
+ALTER TABLE `inventory__transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `inventory__units`
+--
+ALTER TABLE `inventory__units`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `inventory__warehouses`
+--
+ALTER TABLE `inventory__warehouses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `models`
@@ -2229,94 +2317,64 @@ ALTER TABLE `loans_payments`
 ALTER TABLE `models`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `movements`
---
-ALTER TABLE `movements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `movement_details`
---
-ALTER TABLE `movement_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `nationalities`
---
-ALTER TABLE `nationalities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `order_details`
---
-ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `payrolls`
---
-ALTER TABLE `payrolls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `privileges`
 --
 ALTER TABLE `privileges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=362;
 --
--- AUTO_INCREMENT for table `projects`
+-- AUTO_INCREMENT for table `project__attachments`
 --
-ALTER TABLE `projects`
+ALTER TABLE `project__attachments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `project_attachments`
+-- AUTO_INCREMENT for table `project__orders`
 --
-ALTER TABLE `project_attachments`
+ALTER TABLE `project__orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `project_orders`
+-- AUTO_INCREMENT for table `project__order_details`
 --
-ALTER TABLE `project_orders`
+ALTER TABLE `project__order_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `project_order_details`
+-- AUTO_INCREMENT for table `project__projects`
 --
-ALTER TABLE `project_order_details`
+ALTER TABLE `project__projects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `project_visits`
+-- AUTO_INCREMENT for table `project__visits`
 --
-ALTER TABLE `project_visits`
+ALTER TABLE `project__visits`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `project_visit_schedulars`
+-- AUTO_INCREMENT for table `project__visit_schedulars`
 --
-ALTER TABLE `project_visit_schedulars`
+ALTER TABLE `project__visit_schedulars`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `purchases`
+-- AUTO_INCREMENT for table `project__work_groups`
 --
-ALTER TABLE `purchases`
+ALTER TABLE `project__work_groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `purchase_details`
+-- AUTO_INCREMENT for table `project__work_group_members`
 --
-ALTER TABLE `purchase_details`
+ALTER TABLE `project__work_group_members`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `qoutations`
+-- AUTO_INCREMENT for table `purchase__purchases`
 --
-ALTER TABLE `qoutations`
+ALTER TABLE `purchase__purchases`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `qoutation_details`
+-- AUTO_INCREMENT for table `purchase__purchase_details`
 --
-ALTER TABLE `qoutation_details`
+ALTER TABLE `purchase__purchase_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `resignations`
+-- AUTO_INCREMENT for table `purchase__suppliers`
 --
-ALTER TABLE `resignations`
+ALTER TABLE `purchase__suppliers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `roles`
@@ -2324,100 +2382,45 @@ ALTER TABLE `resignations`
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `salary_items`
+-- AUTO_INCREMENT for table `sales__customers`
 --
-ALTER TABLE `salary_items`
+ALTER TABLE `sales__customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `salary_profiles`
+-- AUTO_INCREMENT for table `sales__qoutations`
 --
-ALTER TABLE `salary_profiles`
+ALTER TABLE `sales__qoutations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `sales`
+-- AUTO_INCREMENT for table `sales__qoutation_details`
 --
-ALTER TABLE `sales`
+ALTER TABLE `sales__qoutation_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `sales_details`
+-- AUTO_INCREMENT for table `sales__sales`
 --
-ALTER TABLE `sales_details`
+ALTER TABLE `sales__sales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `stock_details`
+-- AUTO_INCREMENT for table `sales__sales_details`
 --
-ALTER TABLE `stock_details`
+ALTER TABLE `sales__sales_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `stock_transactions`
---
-ALTER TABLE `stock_transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `suppliers`
---
-ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `terminations`
---
-ALTER TABLE `terminations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `trainings`
---
-ALTER TABLE `trainings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `training_members`
---
-ALTER TABLE `training_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `units`
---
-ALTER TABLE `units`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `vacations`
---
-ALTER TABLE `vacations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `warehouse`
---
-ALTER TABLE `warehouse`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `warnings`
---
-ALTER TABLE `warnings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `work_groups`
---
-ALTER TABLE `work_groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `work_group_members`
---
-ALTER TABLE `work_group_members`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `accounts_transactions`
+-- Constraints for table `accounting__transactions`
 --
-ALTER TABLE `accounts_transactions`
-  ADD CONSTRAINT `accounts_transactions_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `accounts_transactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `accounting__transactions`
+  ADD CONSTRAINT `accounting__transactions_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `accounting__accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `accounting__transactions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `actions`
@@ -2426,150 +2429,209 @@ ALTER TABLE `actions`
   ADD CONSTRAINT `actions_ibfk_1` FOREIGN KEY (`model`) REFERENCES `models` (`id`);
 
 --
--- Constraints for table `attendances`
+-- Constraints for table `hr__attendances`
 --
-ALTER TABLE `attendances`
-  ADD CONSTRAINT `attendances_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `attendances_ibfk_2` FOREIGN KEY (`deduction_id`) REFERENCES `deductions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__attendances`
+  ADD CONSTRAINT `hr__attendances_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__attendances_ibfk_2` FOREIGN KEY (`deduction_id`) REFERENCES `hr__deductions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `bonuses`
+-- Constraints for table `hr__bonuses`
 --
-ALTER TABLE `bonuses`
-  ADD CONSTRAINT `bonuses_ibfk_1` FOREIGN KEY (`salary_item_id`) REFERENCES `salary_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `bonuses_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__bonuses`
+  ADD CONSTRAINT `hr__bonuses_ibfk_1` FOREIGN KEY (`salary_item_id`) REFERENCES `hr__salary_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__bonuses_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `certifications`
+-- Constraints for table `hr__certifications`
 --
-ALTER TABLE `certifications`
-  ADD CONSTRAINT `certifications_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `certifications_ibfk_2` FOREIGN KEY (`cretification_id`) REFERENCES `certification_configs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__certifications`
+  ADD CONSTRAINT `hr__certifications_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__certifications_ibfk_2` FOREIGN KEY (`cretification_id`) REFERENCES `hr__certification_configs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `contracts`
+-- Constraints for table `hr__contracts`
 --
-ALTER TABLE `contracts`
-  ADD CONSTRAINT `contracts_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__contracts`
+  ADD CONSTRAINT `hr__contracts_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `courses_details`
+-- Constraints for table `hr__courses_details`
 --
-ALTER TABLE `courses_details`
-  ADD CONSTRAINT `courses_details_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `courses_details_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__courses_details`
+  ADD CONSTRAINT `hr__courses_details_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `hr__courses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__courses_details_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `deductions`
+-- Constraints for table `hr__deductions`
 --
-ALTER TABLE `deductions`
-  ADD CONSTRAINT `deductions_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__deductions`
+  ADD CONSTRAINT `hr__deductions_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `documents`
+-- Constraints for table `hr__documents`
 --
-ALTER TABLE `documents`
-  ADD CONSTRAINT `documents_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__documents`
+  ADD CONSTRAINT `hr__documents_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `employees`
+-- Constraints for table `hr__employees`
 --
-ALTER TABLE `employees`
-  ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`identity_id`) REFERENCES `identity_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `employees_ibfk_3` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__employees`
+  ADD CONSTRAINT `hr__employees_ibfk_1` FOREIGN KEY (`identity_id`) REFERENCES `hr__identity_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__employees_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `hr__jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__employees_ibfk_3` FOREIGN KEY (`account_id`) REFERENCES `accounting__accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `employee_exits`
+-- Constraints for table `hr__employee_exits`
 --
-ALTER TABLE `employee_exits`
-  ADD CONSTRAINT `employee_exits_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__employee_exits`
+  ADD CONSTRAINT `hr__employee_exits_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `employee_leaves`
+-- Constraints for table `hr__employee_leaves`
 --
-ALTER TABLE `employee_leaves`
-  ADD CONSTRAINT `employee_leaves_ibfk_1` FOREIGN KEY (`vaction_id`) REFERENCES `vacations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `employee_leaves_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__employee_leaves`
+  ADD CONSTRAINT `hr__employee_leaves_ibfk_1` FOREIGN KEY (`vaction_id`) REFERENCES `hr__vacations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__employee_leaves_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `familys`
+-- Constraints for table `hr__familys`
 --
-ALTER TABLE `familys`
-  ADD CONSTRAINT `familys_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__familys`
+  ADD CONSTRAINT `hr__familys_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `holydays`
+-- Constraints for table `hr__holydays`
 --
-ALTER TABLE `holydays`
-  ADD CONSTRAINT `holydays_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__holydays`
+  ADD CONSTRAINT `hr__holydays_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `insurances`
+-- Constraints for table `hr__insurances`
 --
-ALTER TABLE `insurances`
-  ADD CONSTRAINT `insurances_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__insurances`
+  ADD CONSTRAINT `hr__insurances_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `items`
+-- Constraints for table `hr__jobs`
 --
-ALTER TABLE `items`
-  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__jobs`
+  ADD CONSTRAINT `hr__jobs_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `hr__departments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `jobs`
+-- Constraints for table `hr__loans`
 --
-ALTER TABLE `jobs`
-  ADD CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`departmentID`) REFERENCES `departments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__loans`
+  ADD CONSTRAINT `hr__loans_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `loans`
+-- Constraints for table `hr__loans_payments`
 --
-ALTER TABLE `loans`
-  ADD CONSTRAINT `loans_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__loans_payments`
+  ADD CONSTRAINT `hr__loans_payments_ibfk_1` FOREIGN KEY (`loan_id`) REFERENCES `hr__loans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `loans_payments`
+-- Constraints for table `hr__payrolls`
 --
-ALTER TABLE `loans_payments`
-  ADD CONSTRAINT `loans_payments_ibfk_1` FOREIGN KEY (`loan_id`) REFERENCES `loans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__payrolls`
+  ADD CONSTRAINT `hr__payrolls_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__payrolls_ibfk_2` FOREIGN KEY (`salary_item_id`) REFERENCES `hr__salary_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `movements`
+-- Constraints for table `hr__resignations`
 --
-ALTER TABLE `movements`
-  ADD CONSTRAINT `movements_ibfk_1` FOREIGN KEY (`from_warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `movements_ibfk_2` FOREIGN KEY (`to_warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `movements_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__resignations`
+  ADD CONSTRAINT `hr__resignations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `movement_details`
+-- Constraints for table `hr__salary_profiles`
 --
-ALTER TABLE `movement_details`
-  ADD CONSTRAINT `movement_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `movement_details_ibfk_2` FOREIGN KEY (`movement_id`) REFERENCES `movements` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__salary_profiles`
+  ADD CONSTRAINT `hr__salary_profiles_ibfk_1` FOREIGN KEY (`salary_item_id`) REFERENCES `hr__salary_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hr__salary_profiles_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `hr__jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `orders`
+-- Constraints for table `hr__terminations`
 --
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__terminations`
+  ADD CONSTRAINT `hr__terminations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `order_details`
+-- Constraints for table `hr__trainings`
 --
-ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__trainings`
+  ADD CONSTRAINT `hr__trainings_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `hr__departments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `payrolls`
+-- Constraints for table `hr__training_members`
 --
-ALTER TABLE `payrolls`
-  ADD CONSTRAINT `payrolls_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `payrolls_ibfk_2` FOREIGN KEY (`salary_item_id`) REFERENCES `salary_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `hr__training_members`
+  ADD CONSTRAINT `hr__training_members_ibfk_1` FOREIGN KEY (`training_id`) REFERENCES `hr__trainings` (`id`),
+  ADD CONSTRAINT `hr__training_members_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `hr__vacations`
+--
+ALTER TABLE `hr__vacations`
+  ADD CONSTRAINT `hr__vacations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `hr__warnings`
+--
+ALTER TABLE `hr__warnings`
+  ADD CONSTRAINT `hr__warnings_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__details`
+--
+ALTER TABLE `inventory__details`
+  ADD CONSTRAINT `inventory__details_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__details_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__items`
+--
+ALTER TABLE `inventory__items`
+  ADD CONSTRAINT `inventory__items_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `inventory__categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__items_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `inventory__units` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__movements`
+--
+ALTER TABLE `inventory__movements`
+  ADD CONSTRAINT `inventory__movements_ibfk_1` FOREIGN KEY (`from_warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__movements_ibfk_2` FOREIGN KEY (`to_warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__movements_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__movement_details`
+--
+ALTER TABLE `inventory__movement_details`
+  ADD CONSTRAINT `inventory__movement_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__movement_details_ibfk_2` FOREIGN KEY (`movement_id`) REFERENCES `inventory__movements` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__orders`
+--
+ALTER TABLE `inventory__orders`
+  ADD CONSTRAINT `inventory__orders_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__order_details`
+--
+ALTER TABLE `inventory__order_details`
+  ADD CONSTRAINT `inventory__order_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `inventory__orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `inventory__transactions`
+--
+ALTER TABLE `inventory__transactions`
+  ADD CONSTRAINT `inventory__transactions_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__transactions_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory__transactions_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `privileges`
@@ -2580,160 +2642,101 @@ ALTER TABLE `privileges`
   ADD CONSTRAINT `privileges_ibfk_3` FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
 
 --
--- Constraints for table `projects`
+-- Constraints for table `project__attachments`
 --
-ALTER TABLE `projects`
-  ADD CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
-  ADD CONSTRAINT `projects_ibfk_2` FOREIGN KEY (`work_group_id`) REFERENCES `work_groups` (`id`),
-  ADD CONSTRAINT `projects_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__attachments`
+  ADD CONSTRAINT `project__attachments_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project__attachments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `project_attachments`
+-- Constraints for table `project__orders`
 --
-ALTER TABLE `project_attachments`
-  ADD CONSTRAINT `project_attachments_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project_attachments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__orders`
+  ADD CONSTRAINT `project__orders_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project__projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `project__orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `project_orders`
+-- Constraints for table `project__order_details`
 --
-ALTER TABLE `project_orders`
-  ADD CONSTRAINT `project_orders_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `project_orders_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__order_details`
+  ADD CONSTRAINT `project__order_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `project__order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `inventory__orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `project_order_details`
+-- Constraints for table `project__projects`
 --
-ALTER TABLE `project_order_details`
-  ADD CONSTRAINT `project_order_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `project_order_details_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__projects`
+  ADD CONSTRAINT `project__projects_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`),
+  ADD CONSTRAINT `project__projects_ibfk_2` FOREIGN KEY (`work_group_id`) REFERENCES `project__work_groups` (`id`),
+  ADD CONSTRAINT `project__projects_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `sales__customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `project_visits`
+-- Constraints for table `project__visits`
 --
-ALTER TABLE `project_visits`
-  ADD CONSTRAINT `project_visits_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__visits`
+  ADD CONSTRAINT `project__visits_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project__projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `project_visit_schedulars`
+-- Constraints for table `project__visit_schedulars`
 --
-ALTER TABLE `project_visit_schedulars`
-  ADD CONSTRAINT `project_visit_schedulars_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `project_visit_schedulars_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__visit_schedulars`
+  ADD CONSTRAINT `project__visit_schedulars_ibfk_1` FOREIGN KEY (`project_id`) REFERENCES `project__projects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `project__visit_schedulars_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `purchases`
+-- Constraints for table `project__work_group_members`
 --
-ALTER TABLE `purchases`
-  ADD CONSTRAINT `purchases_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `purchases_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `purchases_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `project__work_group_members`
+  ADD CONSTRAINT `project__work_group_members_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `hr__employees` (`id`),
+  ADD CONSTRAINT `project__work_group_members_ibfk_2` FOREIGN KEY (`work_group_id`) REFERENCES `project__work_groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `purchase_details`
+-- Constraints for table `purchase__purchases`
 --
-ALTER TABLE `purchase_details`
-  ADD CONSTRAINT `purchase_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `purchase_details_ibfk_2` FOREIGN KEY (`purchase_id`) REFERENCES `purchases` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `purchase__purchases`
+  ADD CONSTRAINT `purchase__purchases_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchase__purchases_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `purchase__suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchase__purchases_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `qoutations`
+-- Constraints for table `purchase__purchase_details`
 --
-ALTER TABLE `qoutations`
-  ADD CONSTRAINT `qoutations_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `purchase__purchase_details`
+  ADD CONSTRAINT `purchase__purchase_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `purchase__purchase_details_ibfk_2` FOREIGN KEY (`purchase_id`) REFERENCES `purchase__purchases` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `qoutation_details`
+-- Constraints for table `sales__qoutations`
 --
-ALTER TABLE `qoutation_details`
-  ADD CONSTRAINT `qoutation_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `qoutation_details_ibfk_2` FOREIGN KEY (`qoutation_id`) REFERENCES `qoutations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sales__qoutations`
+  ADD CONSTRAINT `sales__qoutations_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `resignations`
+-- Constraints for table `sales__qoutation_details`
 --
-ALTER TABLE `resignations`
-  ADD CONSTRAINT `resignations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sales__qoutation_details`
+  ADD CONSTRAINT `sales__qoutation_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sales__qoutation_details_ibfk_2` FOREIGN KEY (`qoutation_id`) REFERENCES `sales__qoutations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `salary_profiles`
+-- Constraints for table `sales__sales`
 --
-ALTER TABLE `salary_profiles`
-  ADD CONSTRAINT `salary_profiles_ibfk_1` FOREIGN KEY (`salary_item_id`) REFERENCES `salary_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `salary_profiles_ibfk_2` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sales__sales`
+  ADD CONSTRAINT `sales__sales_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `inventory__warehouses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sales__sales_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `sales__customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sales__sales_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales`
+-- Constraints for table `sales__sales_details`
 --
-ALTER TABLE `sales`
-  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `sales_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `sales_details`
---
-ALTER TABLE `sales_details`
-  ADD CONSTRAINT `sales_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `sales_details_ibfk_2` FOREIGN KEY (`sales_id`) REFERENCES `sales` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `stock_details`
---
-ALTER TABLE `stock_details`
-  ADD CONSTRAINT `stock_details_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stock_details_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `stock_transactions`
---
-ALTER TABLE `stock_transactions`
-  ADD CONSTRAINT `stock_transactions_ibfk_1` FOREIGN KEY (`warehouse_id`) REFERENCES `warehouse` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stock_transactions_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stock_transactions_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `terminations`
---
-ALTER TABLE `terminations`
-  ADD CONSTRAINT `terminations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `trainings`
---
-ALTER TABLE `trainings`
-  ADD CONSTRAINT `trainings_ibfk_1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `training_members`
---
-ALTER TABLE `training_members`
-  ADD CONSTRAINT `training_members_ibfk_1` FOREIGN KEY (`training_id`) REFERENCES `trainings` (`id`),
-  ADD CONSTRAINT `training_members_ibfk_2` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sales__sales_details`
+  ADD CONSTRAINT `sales__sales_details_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `inventory__items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sales__sales_details_ibfk_2` FOREIGN KEY (`sales_id`) REFERENCES `sales__sales` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
-
---
--- Constraints for table `vacations`
---
-ALTER TABLE `vacations`
-  ADD CONSTRAINT `vacations_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `warnings`
---
-ALTER TABLE `warnings`
-  ADD CONSTRAINT `warnings_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `work_group_members`
---
-ALTER TABLE `work_group_members`
-  ADD CONSTRAINT `work_group_members_ibfk_1` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`),
-  ADD CONSTRAINT `work_group_members_ibfk_2` FOREIGN KEY (`work_group_id`) REFERENCES `work_groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -156,3 +156,39 @@
     <span  class="title">@lang('fully.units')</span></a>
 </li>
 
+<li class="{!! Request::is('warehouses*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.warehouses.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.warehouses')</span></a>
+</li>
+
+<li class="{!! Request::is('units*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.units.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.units')</span></a>
+</li>
+
+<li class="{!! Request::is('units*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.units.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.units')</span></a>
+</li>
+
+<li class="{!! Request::is('units*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.units.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.units')</span></a>
+</li>
+
+<li class="{!! Request::is('units*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.units.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.units')</span></a>
+</li>
+
+<li class="{!! Request::is('categories*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.categories.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.categories')</span></a>
+</li>
+

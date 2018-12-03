@@ -1,20 +1,22 @@
-<table class="table table-striped table-bordered table-hover dt-responsive DataTable" id="$MODEL_NAME_PLURAL_CAMEL$-table">
+<table class="table table-striped table-bordered table-hover dt-responsive DataTable" id="categories-table">
     <thead>
-        $FIELD_HEADERS$
+        <th>@lang('fully.Name')</th>
+        <th>@lang('fully.Description')</th>
         <th >@lang('fully.Actions')</th>
     </thead>
     <tbody>
-    @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+    @foreach($categories as $categories)
         <tr>
-            $FIELD_BODY$
+            <td>{!! $categories->name !!}</td>
+            <td>{!! $categories->description !!}</td>
                 <td width="8%">
-                {!! Form::open(['route' => ['$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.destroy', $$MODEL_NAME_CAMEL$->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['inventory.categories.destroy', $categories->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
                    @if (auth::user()->GetAuthTable($ucontroller, 'show'))
-                    <a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.show', [$$MODEL_NAME_CAMEL$->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('inventory.categories.show', [$categories->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                       @endif
                                 @if (auth::user()->GetAuthTable($ucontroller, 'edit'))
-                    <a href="{!! route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', [$$MODEL_NAME_CAMEL$->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('inventory.categories.edit', [$categories->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                          @endif
                            @if (auth::user()->GetAuthTable($ucontroller, 'delete'))
                        <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('fully.Delete_Confirm')')"><i class="glyphicon glyphicon-trash"></i></button>

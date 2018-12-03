@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Inventory;
 
-use App\Http\Requests\CreateunitsRequest;
-use App\Http\Requests\UpdateunitsRequest;
-use App\Repositories\unitsRepository;
+use App\Http\Requests\Inventory\CreateunitsRequest;
+use App\Http\Requests\Inventory\UpdateunitsRequest;
+use App\Repositories\Inventory\unitsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -30,9 +30,9 @@ class unitsController extends AppBaseController
     public function index(Request $request)
     {
         $this->unitsRepository->pushCriteria(new RequestCriteria($request));
-        $units = $this->unitsRepository->all();
+        $units = $this->unitsRepository->paginate(10);
 
-        return view('units.index')
+        return view('inventory.units.index')
             ->with('units', $units);
     }
 
@@ -43,7 +43,7 @@ class unitsController extends AppBaseController
      */
     public function create()
     {
-        return view('units.create');
+        return view('inventory.units.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class unitsController extends AppBaseController
 
         Flash::success('Units saved successfully.');
 
-        return redirect(route('units.index'));
+        return redirect(route('inventory.units.index'));
     }
 
     /**
@@ -78,10 +78,10 @@ class unitsController extends AppBaseController
         if (empty($units)) {
             Flash::error('Units not found');
 
-            return redirect(route('units.index'));
+            return redirect(route('inventory.units.index'));
         }
 
-        return view('units.show')->with('units', $units);
+        return view('inventory.units.show')->with('units', $units);
     }
 
     /**
@@ -98,10 +98,10 @@ class unitsController extends AppBaseController
         if (empty($units)) {
             Flash::error('Units not found');
 
-            return redirect(route('units.index'));
+            return redirect(route('inventory.units.index'));
         }
 
-        return view('units.edit')->with('units', $units);
+        return view('inventory.units.edit')->with('units', $units);
     }
 
     /**
@@ -119,14 +119,14 @@ class unitsController extends AppBaseController
         if (empty($units)) {
             Flash::error('Units not found');
 
-            return redirect(route('units.index'));
+            return redirect(route('inventory.units.index'));
         }
 
         $units = $this->unitsRepository->update($request->all(), $id);
 
         Flash::success('Units updated successfully.');
 
-        return redirect(route('units.index'));
+        return redirect(route('inventory.units.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class unitsController extends AppBaseController
         if (empty($units)) {
             Flash::error('Units not found');
 
-            return redirect(route('units.index'));
+            return redirect(route('inventory.units.index'));
         }
 
         $this->unitsRepository->delete($id);
 
         Flash::success('Units deleted successfully.');
 
-        return redirect(route('units.index'));
+        return redirect(route('inventory.units.index'));
     }
 }
