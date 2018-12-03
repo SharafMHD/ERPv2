@@ -13,6 +13,7 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
+            <!-- sss -->
                 {!! Form::open(['route' => 'inventory.units.store']) !!}
 
                     @include('inventory.units.fields')
