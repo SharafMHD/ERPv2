@@ -14,7 +14,7 @@
             <div class="portlet-body form">
                 <div class="row" style="padding-left: 20px">
                    @include('models.show_fields')
-                   <a href="{!! route('models.index') !!}" class="btn btn-default">@lang('fully.Back')</a>
+                   <a href="{!! route('settings.models.index') !!}" class="btn btn-default">@lang('fully.Back')</a>
                 </div>
             </div>
         </div>

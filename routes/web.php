@@ -39,16 +39,53 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::get('language/set-locale/{language}', array('as' => 'admin.language.set','uses' => 'LanguageController@setLocale', ));
 
     // roles
-        Route::get('/roles/{id}/assign', 'rolesController@assign')->name('roles.assign');
-        Route::post('/roles/assignpost', 'rolesController@assignpost')->name('roles.assignpost');
-        Route::resource('roles', 'rolesController');
-    // users
-        Route::resource('users', 'usersController');
+        Route::get('settings/roles/{id}/assign', ['as'=> 'settings.roles.assign', 'uses' => 'rolesController@assign']);
+        Route::post('settings/roles/assignpost', ['as'=> 'settings.roles.assignpost', 'uses' => 'rolesController@assignpost']);
+        Route::get('settings/roles', ['as'=> 'settings.roles.index', 'uses' => 'rolesController@index']);
+        Route::post('settings/roles', ['as'=> 'settings.roles.store', 'uses' => 'rolesController@store']);
+        Route::get('settings/roles/create', ['as'=> 'settings.roles.create', 'uses' => 'rolesController@create']);
+        Route::put('settings/roles/{roles}', ['as'=> 'settings.roles.update', 'uses' => 'rolesController@update']);
+        Route::patch('settings/roles/{roles}', ['as'=> 'settings.roles.update', 'uses' => 'rolesController@update']);
+        Route::delete('settings/roles/{roles}', ['as'=> 'settings.roles.destroy', 'uses' => 'rolesController@destroy']);
+        Route::get('settings/roles/{roles}', ['as'=> 'settings.roles.show', 'uses' => 'rolesController@show']);
+        Route::get('settings/roles/{roles}/edit', ['as'=> 'settings.roles.edit', 'uses' => 'rolesController@edit']);
+    
+    
+        // users
+        Route::get('settings/users', ['as'=> 'settings.users.index', 'uses' => 'usersController@index']);
+        Route::post('settings/users', ['as'=> 'settings.users.store', 'uses' => 'usersController@store']);
+        Route::get('settings/users/create', ['as'=> 'settings.users.create', 'uses' => 'usersController@create']);
+        Route::put('settings/users/{users}', ['as'=> 'settings.users.update', 'uses' => 'usersController@update']);
+        Route::patch('settings/users/{users}', ['as'=> 'settings.users.update', 'uses' => 'usersController@update']);
+        Route::delete('settings/users/{users}', ['as'=> 'settings.users.destroy', 'uses' => 'usersController@destroy']);
+        Route::get('settings/users/{users}', ['as'=> 'settings.users.show', 'uses' => 'usersController@show']);
+        Route::get('settings/users/{users}/edit', ['as'=> 'settings.users.edit', 'uses' => 'usersController@edit']);
+    
+
+
+
+
+
+
         Route::resource('privileges', 'privilegesController');
         Route::get('/errors/403', 'rolesController@assign')->name('403');
     // 
+//models
+   // Route::resource('settings/models', 'modelsController');
 
-    Route::resource('models', 'modelsController');
+    Route::get('settings/models', ['as'=> 'settings.models.index', 'uses' => 'modelsController@index']);
+    Route::post('settings/models', ['as'=> 'settings.models.store', 'uses' => 'modelsController@store']);
+    Route::get('settings/models/create', ['as'=> 'settings.models.create', 'uses' => 'modelsController@create']);
+    Route::put('settings/models/{models}', ['as'=> 'settings.models.update', 'uses' => 'modelsController@update']);
+    Route::patch('settings/models/{models}', ['as'=> 'settings.models.update', 'uses' => 'modelsController@update']);
+    Route::delete('settings/models/{models}', ['as'=> 'settings.models.destroy', 'uses' => 'modelsController@destroy']);
+    Route::get('settings/models/{models}', ['as'=> 'settings.models.show', 'uses' => 'modelsController@show']);
+    Route::get('settings/models/{models}/edit', ['as'=> 'settings.models.edit', 'uses' => 'modelsController@edit']);
+
+
+
+
+
 //warehouses
     Route::get('inventory/warehouses', ['as'=> 'inventory.warehouses.index', 'uses' => 'Inventory\warehousesController@index']);
     Route::post('inventory/warehouses', ['as'=> 'inventory.warehouses.store', 'uses' => 'Inventory\warehousesController@store']);
@@ -96,7 +133,8 @@ Route::patch('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.upd
 Route::delete('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.destroy', 'uses' => 'Inventory\transferController@destroy']);
 Route::get('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.show', 'uses' => 'Inventory\transferController@show']);
 Route::get('inventory/transfers/{transfers}/edit', ['as'=> 'inventory.transfers.edit', 'uses' => 'Inventory\transferController@edit']);
-   });
+ 
+});
 
 
 
