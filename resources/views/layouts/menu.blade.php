@@ -198,3 +198,9 @@
     <span  class="title">@lang('fully.items')</span></a>
 </li>
 
+<li class="{!! Request::is('transfers*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.transfers.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.transfers')</span></a>
+</li>
+
