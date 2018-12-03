@@ -54,8 +54,8 @@ return array(
     'User Name' =>'اسم المستخدم',
     'Role' =>'الصلاحية',
     'Status' =>'الحالة',
-
-
+    'Sales Price' =>'سعر البيع',
+    
 //Actions
 'Create' =>'انشاء',
 'Edit' =>'تعديل',

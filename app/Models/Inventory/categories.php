@@ -76,8 +76,8 @@ class categories extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function inventoryItems()
+    public function items()
     {
-        return $this->hasMany(\App\Models\Inventory\InventoryItem::class);
+        return $this->hasMany(\App\Models\Inventory\items::class , 'category_id', 'id');
     }
 }

@@ -78,6 +78,6 @@ class units extends Model
      **/
     public function items()
     {
-        return $this->hasMany(\App\Models\Inventory\Item::class);
+        return $this->hasMany(\App\Models\Inventory\Item::class, 'unit_id', 'id');
     }
 }

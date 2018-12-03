@@ -49,7 +49,7 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
     // 
 
     Route::resource('models', 'modelsController');
-
+//warehouses
     Route::get('inventory/warehouses', ['as'=> 'inventory.warehouses.index', 'uses' => 'Inventory\warehousesController@index']);
     Route::post('inventory/warehouses', ['as'=> 'inventory.warehouses.store', 'uses' => 'Inventory\warehousesController@store']);
     Route::get('inventory/warehouses/create', ['as'=> 'inventory.warehouses.create', 'uses' => 'Inventory\warehousesController@create']);
@@ -58,7 +58,7 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
     Route::delete('inventory/warehouses/{warehouses}', ['as'=> 'inventory.warehouses.destroy', 'uses' => 'Inventory\warehousesController@destroy']);
     Route::get('inventory/warehouses/{warehouses}', ['as'=> 'inventory.warehouses.show', 'uses' => 'Inventory\warehousesController@show']);
     Route::get('inventory/warehouses/{warehouses}/edit', ['as'=> 'inventory.warehouses.edit', 'uses' => 'Inventory\warehousesController@edit']);
-    //
+    //units
     Route::get('inventory/units', ['as'=> 'inventory.units.index', 'uses' => 'Inventory\unitsController@index']);
 Route::post('inventory/units', ['as'=> 'inventory.units.store', 'uses' => 'Inventory\unitsController@store']);
 Route::get('inventory/units/create', ['as'=> 'inventory.units.create', 'uses' => 'Inventory\unitsController@create']);
@@ -67,7 +67,7 @@ Route::patch('inventory/units/{units}', ['as'=> 'inventory.units.update', 'uses'
 Route::delete('inventory/units/{units}', ['as'=> 'inventory.units.destroy', 'uses' => 'Inventory\unitsController@destroy']);
 Route::get('inventory/units/{units}', ['as'=> 'inventory.units.show', 'uses' => 'Inventory\unitsController@show']);
 Route::get('inventory/units/{units}/edit', ['as'=> 'inventory.units.edit', 'uses' => 'Inventory\unitsController@edit']);
-
+//categories
 Route::get('inventory/categories', ['as'=> 'inventory.categories.index', 'uses' => 'Inventory\categoriesController@index']);
 Route::post('inventory/categories', ['as'=> 'inventory.categories.store', 'uses' => 'Inventory\categoriesController@store']);
 Route::get('inventory/categories/create', ['as'=> 'inventory.categories.create', 'uses' => 'Inventory\categoriesController@create']);
@@ -76,7 +76,20 @@ Route::patch('inventory/categories/{categories}', ['as'=> 'inventory.categories.
 Route::delete('inventory/categories/{categories}', ['as'=> 'inventory.categories.destroy', 'uses' => 'Inventory\categoriesController@destroy']);
 Route::get('inventory/categories/{categories}', ['as'=> 'inventory.categories.show', 'uses' => 'Inventory\categoriesController@show']);
 Route::get('inventory/categories/{categories}/edit', ['as'=> 'inventory.categories.edit', 'uses' => 'Inventory\categoriesController@edit']);
+
+//items
+Route::get('inventory/items', ['as'=> 'inventory.items.index', 'uses' => 'Inventory\itemsController@index']);
+Route::post('inventory/items', ['as'=> 'inventory.items.store', 'uses' => 'Inventory\itemsController@store']);
+Route::get('inventory/items/create', ['as'=> 'inventory.items.create', 'uses' => 'Inventory\itemsController@create']);
+Route::put('inventory/items/{items}', ['as'=> 'inventory.items.update', 'uses' => 'Inventory\itemsController@update']);
+Route::patch('inventory/items/{items}', ['as'=> 'inventory.items.update', 'uses' => 'Inventory\itemsController@update']);
+Route::delete('inventory/items/{items}', ['as'=> 'inventory.items.destroy', 'uses' => 'Inventory\itemsController@destroy']);
+Route::get('inventory/items/{items}', ['as'=> 'inventory.items.show', 'uses' => 'Inventory\itemsController@show']);
+Route::get('inventory/items/{items}/edit', ['as'=> 'inventory.items.edit', 'uses' => 'Inventory\itemsController@edit']);
    });
+
+
+
 
 
 

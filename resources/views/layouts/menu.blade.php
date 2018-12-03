@@ -192,3 +192,9 @@
     <span  class="title">@lang('fully.categories')</span></a>
 </li>
 
+<li class="{!! Request::is('items*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.items.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.items')</span></a>
+</li>
+
