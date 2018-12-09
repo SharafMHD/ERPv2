@@ -12,9 +12,9 @@
                 <td width="8%">
                 {!! Form::open(['route' => ['inventory.units.destroy', $units->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                   @if (auth::user()->GetAuthTable($ucontroller, 'show'))
+                   <!-- @if (auth::user()->GetAuthTable($ucontroller, 'show')) -->
                     <a href="{!! route('inventory.units.show', [$units->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                      @endif
+                      <!-- @endif -->
                                 @if (auth::user()->GetAuthTable($ucontroller, 'edit'))
                     <a href="{!! route('inventory.units.edit', [$units->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                          @endif

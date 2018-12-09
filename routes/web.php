@@ -86,20 +86,7 @@ Route::patch('inventory/items/{items}', ['as'=> 'inventory.items.update', 'uses'
 Route::delete('inventory/items/{items}', ['as'=> 'inventory.items.destroy', 'uses' => 'Inventory\itemsController@destroy']);
 Route::get('inventory/items/{items}', ['as'=> 'inventory.items.show', 'uses' => 'Inventory\itemsController@show']);
 Route::get('inventory/items/{items}/edit', ['as'=> 'inventory.items.edit', 'uses' => 'Inventory\itemsController@edit']);
-   });
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
 
 Route::get('inventory/transfers', ['as'=> 'inventory.transfers.index', 'uses' => 'Inventory\transferController@index']);
 Route::post('inventory/transfers', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
@@ -109,3 +96,53 @@ Route::patch('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.upd
 Route::delete('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.destroy', 'uses' => 'Inventory\transferController@destroy']);
 Route::get('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.show', 'uses' => 'Inventory\transferController@show']);
 Route::get('inventory/transfers/{transfers}/edit', ['as'=> 'inventory.transfers.edit', 'uses' => 'Inventory\transferController@edit']);
+//
+
+Route::get('accounting/accountTransactions', ['as'=> 'accounting.accountTransactions.index', 'uses' => 'Accounting\Account_transactionsController@index']);
+Route::post('accounting/accountTransactions', ['as'=> 'accounting.accountTransactions.store', 'uses' => 'Accounting\Account_transactionsController@store']);
+Route::get('accounting/accountTransactions/create', ['as'=> 'accounting.accountTransactions.create', 'uses' => 'Accounting\Account_transactionsController@create']);
+Route::put('accounting/accountTransactions/{accountTransactions}', ['as'=> 'accounting.accountTransactions.update', 'uses' => 'Accounting\Account_transactionsController@update']);
+Route::patch('accounting/accountTransactions/{accountTransactions}', ['as'=> 'accounting.accountTransactions.update', 'uses' => 'Accounting\Account_transactionsController@update']);
+Route::delete('accounting/accountTransactions/{accountTransactions}', ['as'=> 'accounting.accountTransactions.destroy', 'uses' => 'Accounting\Account_transactionsController@destroy']);
+Route::get('accounting/accountTransactions/{accountTransactions}', ['as'=> 'accounting.accountTransactions.show', 'uses' => 'Accounting\Account_transactionsController@show']);
+Route::get('accounting/accountTransactions/{accountTransactions}/edit', ['as'=> 'accounting.accountTransactions.edit', 'uses' => 'Accounting\Account_transactionsController@edit']);
+// accounting 
+Route::get('accounting/accounts', ['as'=> 'accounting.accounts.index', 'uses' => 'Accounting\accountsController@index']);
+Route::post('accounting/accounts', ['as'=> 'accounting.accounts.store', 'uses' => 'Accounting\accountsController@store']);
+Route::get('accounting/accounts/create', ['as'=> 'accounting.accounts.create', 'uses' => 'Accounting\accountsController@create']);
+Route::put('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.update', 'uses' => 'Accounting\accountsController@update']);
+Route::patch('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.update', 'uses' => 'Accounting\accountsController@update']);
+Route::delete('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.destroy', 'uses' => 'Accounting\accountsController@destroy']);
+Route::get('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.show', 'uses' => 'Accounting\accountsController@show']);
+Route::get('accounting/accounts/{accounts}/edit', ['as'=> 'accounting.accounts.edit', 'uses' => 'Accounting\accountsController@edit']);  
+
+Route::get('accounting/transactions', ['as'=> 'accounting.transactions.index', 'uses' => 'Accounting\transactionsController@index']);
+Route::post('accounting/transactions', ['as'=> 'accounting.transactions.store', 'uses' => 'Accounting\transactionsController@store']);
+Route::get('accounting/transactions/create', ['as'=> 'accounting.transactions.create', 'uses' => 'Accounting\transactionsController@create']);
+Route::put('accounting/transactions/{transactions}', ['as'=> 'accounting.transactions.update', 'uses' => 'Accounting\transactionsController@update']);
+Route::patch('accounting/transactions/{transactions}', ['as'=> 'accounting.transactions.update', 'uses' => 'Accounting\transactionsController@update']);
+Route::delete('accounting/transactions/{transactions}', ['as'=> 'accounting.transactions.destroy', 'uses' => 'Accounting\transactionsController@destroy']);
+Route::get('accounting/transactions/{transactions}', ['as'=> 'accounting.transactions.show', 'uses' => 'Accounting\transactionsController@show']);
+Route::get('accounting/transactions/{transactions}/edit', ['as'=> 'accounting.transactions.edit', 'uses' => 'Accounting\transactionsController@edit']);
+
+///Deposit
+Route::get('accounting/deposits', ['as'=> 'accounting.deposits.index', 'uses' => 'Accounting\depositController@index']);
+Route::post('accounting/deposits', ['as'=> 'accounting.deposits.store', 'uses' => 'Accounting\depositController@store']);
+Route::get('accounting/deposits/create', ['as'=> 'accounting.deposits.create', 'uses' => 'Accounting\depositController@create']);
+Route::put('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.update', 'uses' => 'Accounting\depositController@update']);
+Route::patch('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.update', 'uses' => 'Accounting\depositController@update']);
+Route::delete('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.destroy', 'uses' => 'Accounting\depositController@destroy']);
+Route::get('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.show', 'uses' => 'Accounting\depositController@show']);
+Route::get('accounting/deposits/{deposits}/edit', ['as'=> 'accounting.deposits.edit', 'uses' => 'Accounting\depositController@edit']);
+
+});
+
+
+
+
+
+
+
+
+
+
