@@ -13,7 +13,7 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'roles.store']) !!}
+                {!! Form::open(['route' => 'settings.roles.store']) !!}
 
                     @include('roles.fields')
 

@@ -8,7 +8,7 @@
                 <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.Users')</span>
             </div>
             <h1 class="pull-right">
-                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('users.create') !!}">{{__('fully.AddNew')}}</a>
+                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('settings.users.create') !!}">{{__('fully.AddNew')}}</a>
             </h1>
         </div>
         @include('flash::message')
