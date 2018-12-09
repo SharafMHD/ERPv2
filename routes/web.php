@@ -133,7 +133,7 @@ Route::patch('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.upd
 Route::delete('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.destroy', 'uses' => 'Inventory\transferController@destroy']);
 Route::get('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.show', 'uses' => 'Inventory\transferController@show']);
 Route::get('inventory/transfers/{transfers}/edit', ['as'=> 'inventory.transfers.edit', 'uses' => 'Inventory\transferController@edit']);
-<<<<<<< HEAD
+
 // stock details
 
 Route::post('/inventory/stockDetails/store', 'Inventory\StockDetailsController@store');
@@ -170,10 +170,7 @@ Route::delete('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.
 Route::get('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.show', 'uses' => 'Inventory\movementDetailsController@show']);
 Route::get('inventory/movementDetails/{movementDetails}/edit', ['as'=> 'inventory.movementDetails.edit', 'uses' => 'Inventory\movementDetailsController@edit']);
    });
-=======
- 
-});
->>>>>>> 7fa6b7f40f411bd0d569ab84f8c5a85c8e0619c2
+
 
 
 
