@@ -4,8 +4,8 @@
  <div class="portlet light bordered">
         <div class="portlet-title">
             <div class="caption">
-                <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.transfer')</span>
+                <i class="glyphicon glyphicon-transfer"></i>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.Warehouses transfer')</span>
             </div>
         </div>
         <div>
@@ -13,7 +13,7 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'inventory.transfers.store']) !!}
+                {!! Form::open(['route' => 'inventory.transfers.store', 'id'=> 'frmtransfer']) !!}
 
                     @include('inventory.transfers.fields')
 

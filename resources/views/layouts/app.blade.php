@@ -17,6 +17,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports" name="description" />
     <meta content="" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
@@ -104,7 +105,7 @@
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <li class="dropdown dropdown-user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" src="img/flags/us.png">
+                        {{-- <img alt="" src="img/flags/us.png"> --}}
                         <span class="username">{{ LaravelLocalization::getCurrentLocaleName() }}</span>
                         <b class="caret"></b>
                     </a>
@@ -320,6 +321,7 @@
     <script src="/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
     <script src="/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
     <script src="/assets/global/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+    <script src="/js/custom.js"></script>
 @yield('scripts')
 <!-- Datatables -->
 <script>

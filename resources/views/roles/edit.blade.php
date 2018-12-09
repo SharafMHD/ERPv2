@@ -13,7 +13,7 @@
     </div>
     <div class="portlet-body form">
         <div class="row">
-           {!! Form::model($roles, ['route' => ['roles.update', $roles->id], 'method' => 'patch']) !!}
+           {!! Form::model($roles, ['route' => ['settings.roles.update', $roles->id], 'method' => 'patch']) !!}
 
             @include('roles.fields')
 

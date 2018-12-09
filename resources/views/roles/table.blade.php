@@ -10,11 +10,11 @@
             <td>{!! $roles->role_name !!}</td>
             <td>{!! $roles->created_by !!}</td>
             <td width="8%">
-                {!! Form::open(['route' => ['roles.destroy', $roles->id], 'method' => 'delete']) !!}
+                {!! Form::open(['route' => ['settings.roles.destroy', $roles->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
-                    <a href="{!! route('roles.show', [$roles->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                    <a href="{!! route('roles.edit', [$roles->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                    <a href="{!! route('roles.assign', [$roles->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-add"></i></a>
+                    <a href="{!! route('settings.roles.show', [$roles->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                    <a href="{!! route('settings.roles.edit', [$roles->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="{!! route('settings.roles.assign', [$roles->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-add"></i></a>
  
                     <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('@lang('fully.Delete_Confirm')')"><i class="glyphicon glyphicon-trash"></i></button>
                 </div>

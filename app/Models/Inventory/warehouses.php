@@ -90,11 +90,14 @@ class warehouses extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function movements()
+    public function transferfrom()
     {
-        return $this->hasMany(\App\Models\Inventory\Movement::class);
+        return $this->hasMany(\App\Models\Inventory\transfer::class ,'from_warehouse_id', 'id');
     }
-
+    public function transferto()
+    {
+        return $this->hasMany(\App\Models\Inventory\transfer::class ,'to_warehouse_id', 'id');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
@@ -138,8 +141,8 @@ class warehouses extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function stockTransactions()
+    public function Transactions()
     {
-        return $this->hasMany(\App\Models\Inventory\StockTransaction::class);
+        return $this->hasMany(\App\Models\Inventory\InventoryTransactions::class,  'warehouse_id', 'id');
     }
 }

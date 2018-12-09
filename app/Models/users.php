@@ -120,7 +120,7 @@ class users extends Model
      **/
     public function movements()
     {
-        return $this->hasMany(\App\Models\Movement::class);
+        return $this->hasMany(\App\Models\transfer::class, 'user_id', 'id');
     }
 
     /**

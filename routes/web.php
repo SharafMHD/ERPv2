@@ -39,16 +39,53 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::get('language/set-locale/{language}', array('as' => 'admin.language.set','uses' => 'LanguageController@setLocale', ));
 
     // roles
-        Route::get('/roles/{id}/assign', 'rolesController@assign')->name('roles.assign');
-        Route::post('/roles/assignpost', 'rolesController@assignpost')->name('roles.assignpost');
-        Route::resource('roles', 'rolesController');
-    // users
-        Route::resource('users', 'usersController');
+        Route::get('settings/roles/{id}/assign', ['as'=> 'settings.roles.assign', 'uses' => 'rolesController@assign']);
+        Route::post('settings/roles/assignpost', ['as'=> 'settings.roles.assignpost', 'uses' => 'rolesController@assignpost']);
+        Route::get('settings/roles', ['as'=> 'settings.roles.index', 'uses' => 'rolesController@index']);
+        Route::post('settings/roles', ['as'=> 'settings.roles.store', 'uses' => 'rolesController@store']);
+        Route::get('settings/roles/create', ['as'=> 'settings.roles.create', 'uses' => 'rolesController@create']);
+        Route::put('settings/roles/{roles}', ['as'=> 'settings.roles.update', 'uses' => 'rolesController@update']);
+        Route::patch('settings/roles/{roles}', ['as'=> 'settings.roles.update', 'uses' => 'rolesController@update']);
+        Route::delete('settings/roles/{roles}', ['as'=> 'settings.roles.destroy', 'uses' => 'rolesController@destroy']);
+        Route::get('settings/roles/{roles}', ['as'=> 'settings.roles.show', 'uses' => 'rolesController@show']);
+        Route::get('settings/roles/{roles}/edit', ['as'=> 'settings.roles.edit', 'uses' => 'rolesController@edit']);
+    
+    
+        // users
+        Route::get('settings/users', ['as'=> 'settings.users.index', 'uses' => 'usersController@index']);
+        Route::post('settings/users', ['as'=> 'settings.users.store', 'uses' => 'usersController@store']);
+        Route::get('settings/users/create', ['as'=> 'settings.users.create', 'uses' => 'usersController@create']);
+        Route::put('settings/users/{users}', ['as'=> 'settings.users.update', 'uses' => 'usersController@update']);
+        Route::patch('settings/users/{users}', ['as'=> 'settings.users.update', 'uses' => 'usersController@update']);
+        Route::delete('settings/users/{users}', ['as'=> 'settings.users.destroy', 'uses' => 'usersController@destroy']);
+        Route::get('settings/users/{users}', ['as'=> 'settings.users.show', 'uses' => 'usersController@show']);
+        Route::get('settings/users/{users}/edit', ['as'=> 'settings.users.edit', 'uses' => 'usersController@edit']);
+    
+
+
+
+
+
+
         Route::resource('privileges', 'privilegesController');
         Route::get('/errors/403', 'rolesController@assign')->name('403');
     // 
+//models
+   // Route::resource('settings/models', 'modelsController');
 
-    Route::resource('models', 'modelsController');
+    Route::get('settings/models', ['as'=> 'settings.models.index', 'uses' => 'modelsController@index']);
+    Route::post('settings/models', ['as'=> 'settings.models.store', 'uses' => 'modelsController@store']);
+    Route::get('settings/models/create', ['as'=> 'settings.models.create', 'uses' => 'modelsController@create']);
+    Route::put('settings/models/{models}', ['as'=> 'settings.models.update', 'uses' => 'modelsController@update']);
+    Route::patch('settings/models/{models}', ['as'=> 'settings.models.update', 'uses' => 'modelsController@update']);
+    Route::delete('settings/models/{models}', ['as'=> 'settings.models.destroy', 'uses' => 'modelsController@destroy']);
+    Route::get('settings/models/{models}', ['as'=> 'settings.models.show', 'uses' => 'modelsController@show']);
+    Route::get('settings/models/{models}/edit', ['as'=> 'settings.models.edit', 'uses' => 'modelsController@edit']);
+
+
+
+
+
 //warehouses
     Route::get('inventory/warehouses', ['as'=> 'inventory.warehouses.index', 'uses' => 'Inventory\warehousesController@index']);
     Route::post('inventory/warehouses', ['as'=> 'inventory.warehouses.store', 'uses' => 'Inventory\warehousesController@store']);
@@ -86,7 +123,57 @@ Route::patch('inventory/items/{items}', ['as'=> 'inventory.items.update', 'uses'
 Route::delete('inventory/items/{items}', ['as'=> 'inventory.items.destroy', 'uses' => 'Inventory\itemsController@destroy']);
 Route::get('inventory/items/{items}', ['as'=> 'inventory.items.show', 'uses' => 'Inventory\itemsController@show']);
 Route::get('inventory/items/{items}/edit', ['as'=> 'inventory.items.edit', 'uses' => 'Inventory\itemsController@edit']);
+<<<<<<< HEAD
 //
+=======
+//transfer 
+
+Route::get('inventory/transfers', ['as'=> 'inventory.transfers.index', 'uses' => 'Inventory\transferController@index']);
+Route::post('inventory/transfers', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
+Route::get('inventory/transfers/create', ['as'=> 'inventory.transfers.create', 'uses' => 'Inventory\transferController@create']);
+Route::put('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.update', 'uses' => 'Inventory\transferController@update']);
+Route::patch('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.update', 'uses' => 'Inventory\transferController@update']);
+Route::delete('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.destroy', 'uses' => 'Inventory\transferController@destroy']);
+Route::get('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.show', 'uses' => 'Inventory\transferController@show']);
+Route::get('inventory/transfers/{transfers}/edit', ['as'=> 'inventory.transfers.edit', 'uses' => 'Inventory\transferController@edit']);
+
+// stock details
+
+Route::post('/inventory/stockDetails/store', 'Inventory\StockDetailsController@store');
+Route::get('inventory/stockDetails', ['as'=> 'inventory.stock_details.index', 'uses' => 'Inventory\StockDetailsController@index']);
+Route::post('inventory/stockDetails', ['as'=> 'inventory.stock_details.store', 'uses' => 'Inventory\StockDetailsController@store']);
+Route::get('inventory/stockDetails/create', ['as'=> 'inventory.stock_details.create', 'uses' => 'Inventory\StockDetailsController@create']);
+Route::put('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.update', 'uses' => 'Inventory\StockDetailsController@update']);
+Route::patch('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.update', 'uses' => 'Inventory\StockDetailsController@update']);
+Route::delete('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.destroy', 'uses' => 'Inventory\StockDetailsController@destroy']);
+Route::get('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.show', 'uses' => 'Inventory\StockDetailsController@show']);
+Route::get('inventory/stockDetails/{stockDetails}/edit', ['as'=> 'inventory.stock_details.edit', 'uses' => 'Inventory\StockDetailsController@edit']);
+Route::get('/inventory/stockDetails/print/{id}', 'Inventory\StockDetailsController@print');
+// get item qty from stock 
+Route::get('/inventory/transfers/getitem_qty/{item_id}/{from_warehouse_id}', 'Inventory\transferController@getitem_qty');
+Route::post('/inventory/transfers/Dotransfer', 'Inventory\transferController@Dotransfer');
+Route::get('/inventory/transfers/Print/{id}', 'Inventory\transferController@Print');
+//inventory transaction
+Route::get('inventory/inventoryTransactions', ['as'=> 'inventory.inventory_transactions.index', 'uses' => 'Inventory\InventoryTransactionsController@index']);
+Route::post('inventory/inventoryTransactions', ['as'=> 'inventory.inventory_transactions.store', 'uses' => 'Inventory\InventoryTransactionsController@store']);
+Route::get('inventory/inventoryTransactions/create', ['as'=> 'inventory.inventory_transactions.create', 'uses' => 'Inventory\InventoryTransactionsController@create']);
+Route::put('inventory/inventoryTransactions/{inventoryTransactions}', ['as'=> 'inventory.inventory_transactions.update', 'uses' => 'Inventory\InventoryTransactionsController@update']);
+Route::patch('inventory/inventoryTransactions/{inventoryTransactions}', ['as'=> 'inventory.inventory_transactions.update', 'uses' => 'Inventory\InventoryTransactionsController@update']);
+Route::delete('inventory/inventoryTransactions/{inventoryTransactions}', ['as'=> 'inventory.inventory_transactions.destroy', 'uses' => 'Inventory\InventoryTransactionsController@destroy']);
+Route::get('inventory/inventoryTransactions/{inventoryTransactions}', ['as'=> 'inventory.inventory_transactions.show', 'uses' => 'Inventory\InventoryTransactionsController@show']);
+Route::get('inventory/inventoryTransactions/{inventoryTransactions}/edit', ['as'=> 'inventory.inventory_transactions.edit', 'uses' => 'Inventory\InventoryTransactionsController@edit']);
+
+//inventory movementDetails
+Route::get('inventory/movementDetails', ['as'=> 'inventory.movementDetails.index', 'uses' => 'Inventory\movementDetailsController@index']);
+Route::post('inventory/movementDetails', ['as'=> 'inventory.movementDetails.store', 'uses' => 'Inventory\movementDetailsController@store']);
+Route::get('inventory/movementDetails/create', ['as'=> 'inventory.movementDetails.create', 'uses' => 'Inventory\movementDetailsController@create']);
+Route::put('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.update', 'uses' => 'Inventory\movementDetailsController@update']);
+Route::patch('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.update', 'uses' => 'Inventory\movementDetailsController@update']);
+Route::delete('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.destroy', 'uses' => 'Inventory\movementDetailsController@destroy']);
+Route::get('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.show', 'uses' => 'Inventory\movementDetailsController@show']);
+Route::get('inventory/movementDetails/{movementDetails}/edit', ['as'=> 'inventory.movementDetails.edit', 'uses' => 'Inventory\movementDetailsController@edit']);
+   });
+>>>>>>> 64fb86bf850d4d650f63e9226e7cc7ab470048c8
 
 Route::get('inventory/transfers', ['as'=> 'inventory.transfers.index', 'uses' => 'Inventory\transferController@index']);
 Route::post('inventory/transfers', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
@@ -146,3 +233,13 @@ Route::get('accounting/deposits/{deposits}/edit', ['as'=> 'accounting.deposits.e
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+>>>>>>> 64fb86bf850d4d650f63e9226e7cc7ab470048c8

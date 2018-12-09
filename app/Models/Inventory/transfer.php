@@ -4,7 +4,8 @@ namespace App\Models\Inventory;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use \App\Models\Inventory\warehouses;
+use App\Models\users;
 /**
  * Class transfer
  * @package App\Models\Inventory
@@ -94,32 +95,34 @@ class transfer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function inventoryWarehouse()
+    public function Warehousefrom()
     {
-        return $this->belongsTo(\App\Models\Inventory\InventoryWarehouse::class);
+        return $this->belongsTo(\App\Models\Inventory\warehouses::class , 'from_warehouse_id', 'id');
     }
+    public function Warehouseto()
+    {
+        return $this->belongsTo(\App\Models\Inventory\warehouses::class , 'to_warehouse_id', 'id');
+    }
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function inventoryWarehouse()
-    {
-        return $this->belongsTo(\App\Models\Inventory\InventoryWarehouse::class);
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\Inventory\User::class);
+        return $this->belongsTo(\App\Models\users::class, 'user_id', 'id');
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function inventoryMovementDetails()
+    public function MovementDetails()
     {
-        return $this->hasMany(\App\Models\Inventory\InventoryMovementDetail::class);
+        return $this->hasMany(\App\Models\Inventory\movementDetails::class, 'movement_id','id');
     }
+    
 }

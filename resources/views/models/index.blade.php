@@ -9,7 +9,7 @@
             </div>
              @if (auth::user()->GetAuthTable($ucontroller, $uaction))
             <h1 class="pull-right">
-                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('models.create') !!}">{{__('fully.AddNew')}}</a>
+                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('settings.models.create') !!}">{{__('fully.AddNew')}}</a>
             </h1>
             @endif
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2018 at 12:34 PM
+-- Generation Time: Dec 09, 2018 at 03:17 PM
 -- Server version: 5.7.23-0ubuntu0.18.04.1
 -- PHP Version: 7.2.12-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -720,11 +720,25 @@ CREATE TABLE `inventory__details` (
   `warehouse_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `qty` float NOT NULL,
-  `status` varchar(10) NOT NULL,
+  `expiry_date` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__details`
+--
+
+INSERT INTO `inventory__details` (`id`, `warehouse_id`, `item_id`, `qty`, `expiry_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(47, 1, 1, 66, '2018-12-08', '2018-12-09 12:03:17', '2018-12-09 09:57:19', NULL),
+(51, 1, 2, 30, '2018-12-08', '2018-12-09 11:40:01', '2018-12-09 09:40:01', NULL),
+(54, 1, 2, 1, '2018-12-09', '2018-12-09 09:57:19', '2018-12-09 09:57:19', NULL),
+(55, 2, 1, 33, '2018-12-08', '2018-12-09 10:03:17', '2018-12-09 10:03:17', NULL),
+(56, 1, 1, 11, '2018-12-10', '2018-12-09 10:57:22', '2018-12-09 10:57:22', NULL),
+(57, 1, 2, 11, '2018-12-10', '2018-12-09 10:57:22', '2018-12-09 10:57:22', NULL),
+(58, 1, 1, 5555, '2018-12-06', '2018-12-09 10:58:09', '2018-12-09 10:58:09', NULL),
+(59, 1, 2, 3, '2018-12-06', '2018-12-09 10:58:09', '2018-12-09 10:58:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -750,6 +764,14 @@ CREATE TABLE `inventory__items` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `inventory__items`
+--
+
+INSERT INTO `inventory__items` (`id`, `no`, `name`, `category_id`, `unit_id`, `sales_price`, `purchase_price`, `low_stock_qty`, `color`, `size`, `description`, `item_type`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '54345345345', 'test', 1, 8, 44, 44, 4, '--', '---', '--', 'item', '2018-12-03 10:04:51', '2018-12-03 10:04:51', NULL),
+(2, '5345345345345', 'dsfsdfsdf', 1, 8, 333, 333, 444, '444', '20*50', '----', 'Item', '2018-12-03 10:17:05', '2018-12-03 10:17:05', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -759,7 +781,6 @@ CREATE TABLE `inventory__items` (
 CREATE TABLE `inventory__movements` (
   `id` int(11) NOT NULL,
   `no` varchar(20) NOT NULL,
-  `date` date NOT NULL,
   `from_warehouse_id` int(11) NOT NULL,
   `to_warehouse_id` int(11) NOT NULL,
   `notes` varchar(500) NOT NULL,
@@ -769,6 +790,45 @@ CREATE TABLE `inventory__movements` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__movements`
+--
+
+INSERT INTO `inventory__movements` (`id`, `no`, `from_warehouse_id`, `to_warehouse_id`, `notes`, `status`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(48, 'R-6100272', 1, 2, '--2', 'Completed', 2, '2018-12-06 07:31:06', '2018-12-06 07:31:06', NULL),
+(49, 'R-3959507', 1, 2, '--2', 'Completed', 2, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(50, 'R-1000730', 2, 1, '---2', 'Completed', 2, '2018-12-06 08:27:46', '2018-12-06 08:27:46', NULL),
+(51, 'R-2507654', 1, 2, '--', 'Completed', 2, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(52, 'R-4178258', 1, 2, 'fsdfds', 'Completed', 2, '2018-12-06 08:34:42', '2018-12-06 08:34:42', NULL),
+(53, 'R-1763252', 1, 2, 'tertertert', 'Completed', 2, '2018-12-06 08:35:47', '2018-12-06 08:35:47', NULL),
+(54, 'R-8717488', 2, 2, 'gdfg', 'Completed', 2, '2018-12-06 08:36:38', '2018-12-06 08:36:38', NULL),
+(55, 'R-5595320', 2, 1, 'tertert', 'Completed', 2, '2018-12-06 08:41:29', '2018-12-06 08:41:29', NULL),
+(56, 'R-8762641', 1, 2, 'dfsdfsdf', 'Completed', 2, '2018-12-06 08:42:06', '2018-12-06 08:42:06', NULL),
+(57, 'R-1482983', 2, 1, '888', 'Completed', 2, '2018-12-06 08:44:20', '2018-12-06 08:44:20', NULL),
+(58, 'R-5785052', 2, 1, '888', 'Completed', 2, '2018-12-06 08:44:55', '2018-12-06 08:44:55', NULL),
+(59, 'R-847975', 2, 1, '888', 'Completed', 2, '2018-12-06 08:45:02', '2018-12-06 08:45:02', NULL),
+(60, 'R-4177760', 1, 2, 'fdsfsdfsss', 'Completed', 2, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(61, 'R-8071151', 1, 1, 'fdsfds', 'Completed', 2, '2018-12-06 08:53:12', '2018-12-06 08:53:12', NULL),
+(62, 'R-3318516', 1, 2, 'hfghfgh', 'Completed', 2, '2018-12-06 08:54:00', '2018-12-06 08:54:00', NULL),
+(63, 'R-8020581', 1, 2, 'tertertert', 'Completed', 2, '2018-12-06 08:54:43', '2018-12-06 08:54:43', NULL),
+(64, 'R-1560149', 1, 2, 'jggjg', 'Completed', 2, '2018-12-06 08:56:14', '2018-12-06 08:56:14', NULL),
+(65, 'R-2578462', 1, 2, '--', 'Completed', 2, '2018-12-06 08:59:04', '2018-12-06 08:59:04', NULL),
+(66, 'R-4768460', 1, 2, '--', 'Completed', 2, '2018-12-06 09:00:49', '2018-12-06 09:00:49', NULL),
+(67, 'R-1220527', 1, 2, '--', 'Completed', 2, '2018-12-06 09:02:23', '2018-12-06 09:02:23', NULL),
+(68, 'R-2660747', 1, 1, '--', 'Completed', 2, '2018-12-06 09:07:27', '2018-12-06 09:07:27', NULL),
+(69, 'R-1580529', 2, 1, 'tretr', 'Completed', 2, '2018-12-06 09:08:30', '2018-12-06 09:08:30', NULL),
+(70, 'R-3754624', 1, 2, '--', 'Completed', 2, '2018-12-08 08:15:42', '2018-12-08 08:15:42', NULL),
+(71, 'R-1566567', 1, 2, '--', 'Completed', 2, '2018-12-08 08:23:30', '2018-12-08 08:23:30', NULL),
+(72, 'R-8366752', 1, 2, '--', 'Completed', 2, '2018-12-08 08:24:09', '2018-12-08 08:24:09', NULL),
+(73, 'R-5987813', 2, 1, '--', 'Completed', 2, '2018-12-08 08:25:14', '2018-12-08 08:25:14', NULL),
+(74, 'R-6690075', 2, 1, '--', 'Completed', 2, '2018-12-08 08:27:08', '2018-12-08 08:27:08', NULL),
+(75, 'R-603960', 1, 2, '---', 'Completed', 2, '2018-12-08 08:34:33', '2018-12-08 08:34:33', NULL),
+(76, 'R-6222126', 1, 2, '---2', 'Completed', 2, '2018-12-09 09:42:38', '2018-12-09 09:42:38', NULL),
+(77, 'R-6901166', 1, 2, '---2', 'Completed', 2, '2018-12-09 09:42:46', '2018-12-09 09:42:46', NULL),
+(78, 'R-1497726', 1, 2, '---2', 'Completed', 2, '2018-12-09 09:46:17', '2018-12-09 09:46:17', NULL),
+(79, 'R-9160493', 1, 2, '---2', 'Completed', 2, '2018-12-09 09:46:59', '2018-12-09 09:46:59', NULL),
+(80, 'R-9407665', 1, 2, '---', 'Completed', 2, '2018-12-09 10:03:17', '2018-12-09 10:03:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -786,6 +846,44 @@ CREATE TABLE `inventory__movement_details` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__movement_details`
+--
+
+INSERT INTO `inventory__movement_details` (`id`, `item_id`, `qty`, `notes`, `movement_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(38, 1, 50, '--', 48, '2018-12-06 07:31:07', '2018-12-06 07:31:07', NULL),
+(39, 2, 50, '--2', 48, '2018-12-06 07:31:07', '2018-12-06 07:31:07', NULL),
+(40, 1, 50, '--', 49, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(41, 2, 50, '--2', 49, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(42, 1, 100, '---', 50, '2018-12-06 08:27:47', '2018-12-06 08:27:47', NULL),
+(43, 2, 100, '---2', 50, '2018-12-06 08:27:47', '2018-12-06 08:27:47', NULL),
+(44, 2, 25, '--', 51, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(45, 1, 25, '--', 51, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(46, 1, 25, 'fsdfds', 52, '2018-12-06 08:34:42', '2018-12-06 08:34:42', NULL),
+(47, 1, 0, 'tertertert', 53, '2018-12-06 08:35:47', '2018-12-06 08:35:47', NULL),
+(48, 2, 25, 'gdfg', 54, '2018-12-06 08:36:39', '2018-12-06 08:36:39', NULL),
+(49, 1, 50, 'tertert', 55, '2018-12-06 08:41:29', '2018-12-06 08:41:29', NULL),
+(50, 1, 50, 'tertert', 56, '2018-12-06 08:42:06', '2018-12-06 08:42:06', NULL),
+(51, 1, 50, '888', 59, '2018-12-06 08:45:02', '2018-12-06 08:45:02', NULL),
+(52, 1, 50, 'fdsfsdf', 60, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(53, 2, 25, 'fdsfsdfsss', 60, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(54, 1, 25, 'fdsfds', 61, '2018-12-06 08:53:13', '2018-12-06 08:53:13', NULL),
+(55, 1, 25, 'hfghfgh', 62, '2018-12-06 08:54:01', '2018-12-06 08:54:01', NULL),
+(56, 1, -25, 'tertertert', 63, '2018-12-06 08:54:44', '2018-12-06 08:54:44', NULL),
+(57, 1, 5, 'jggjg', 64, '2018-12-06 08:56:14', '2018-12-06 08:56:14', NULL),
+(58, 1, 10, '--', 65, '2018-12-06 08:59:04', '2018-12-06 08:59:04', NULL),
+(59, 1, 15, '--', 66, '2018-12-06 09:00:49', '2018-12-06 09:00:49', NULL),
+(60, 1, -30, '--', 67, '2018-12-06 09:02:23', '2018-12-06 09:02:23', NULL),
+(61, 1, 20, '--', 68, '2018-12-06 09:07:27', '2018-12-06 09:07:27', NULL),
+(62, 1, 4, 'tretr', 69, '2018-12-06 09:08:31', '2018-12-06 09:08:31', NULL),
+(63, 1, 2, '--', 70, '2018-12-08 08:15:42', '2018-12-08 08:15:42', NULL),
+(64, 1, 1, '--', 71, '2018-12-08 08:23:30', '2018-12-08 08:23:30', NULL),
+(65, 1, 1, '--', 72, '2018-12-08 08:24:09', '2018-12-08 08:24:09', NULL),
+(66, 1, 40, '--', 73, '2018-12-08 08:25:14', '2018-12-08 08:25:14', NULL),
+(67, 1, 5, '--', 74, '2018-12-08 08:27:08', '2018-12-08 08:27:08', NULL),
+(68, 1, 10, '---', 75, '2018-12-08 08:34:33', '2018-12-08 08:34:33', NULL),
+(69, 1, 33, '---', 80, '2018-12-09 10:03:17', '2018-12-09 10:03:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -831,19 +929,93 @@ CREATE TABLE `inventory__order_details` (
 
 CREATE TABLE `inventory__transactions` (
   `id` int(11) NOT NULL,
-  `date` date NOT NULL,
   `no` varchar(20) NOT NULL,
   `warehouse_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
-  `transaction_type` int(10) NOT NULL,
+  `transaction_type` varchar(50) NOT NULL,
   `qty` float NOT NULL,
-  `price` float NOT NULL,
   `description` varchar(500) NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__transactions`
+--
+
+INSERT INTO `inventory__transactions` (`id`, `no`, `warehouse_id`, `item_id`, `transaction_type`, `qty`, `description`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(103, 'R-9396926', 1, 1, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 07:31:07', '2018-12-06 07:31:07', NULL),
+(104, 'R-9396926', 2, 1, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 07:31:07', '2018-12-06 07:31:07', NULL),
+(105, 'R-9396926', 1, 2, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 07:31:07', '2018-12-06 07:31:07', NULL),
+(106, 'R-9396926', 2, 2, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 07:31:07', '2018-12-06 07:31:07', NULL),
+(107, 'R-7153449', 1, 1, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(108, 'R-7153449', 2, 1, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(109, 'R-7153449', 1, 2, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(110, 'R-7153449', 2, 2, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 07:32:47', '2018-12-06 07:32:47', NULL),
+(111, 'R-3773953', 2, 1, 'Export', 100, 'Warehouse transfer', 2, '2018-12-06 08:27:47', '2018-12-06 08:27:47', NULL),
+(112, 'R-3773953', 1, 1, 'Import', 100, 'Warehouse transfer', 2, '2018-12-06 08:27:47', '2018-12-06 08:27:47', NULL),
+(113, 'R-3773953', 2, 2, 'Export', 100, 'Warehouse transfer', 2, '2018-12-06 08:27:47', '2018-12-06 08:27:47', NULL),
+(114, 'R-3773953', 1, 2, 'Import', 100, 'Warehouse transfer', 2, '2018-12-06 08:27:47', '2018-12-06 08:27:47', NULL),
+(115, 'R-7864785', 1, 2, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(116, 'R-7864785', 2, 2, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(117, 'R-7864785', 1, 1, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(118, 'R-7864785', 2, 1, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:30:49', '2018-12-06 08:30:49', NULL),
+(119, 'R-3845665', 1, 1, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:34:42', '2018-12-06 08:34:42', NULL),
+(120, 'R-3845665', 2, 1, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:34:42', '2018-12-06 08:34:42', NULL),
+(121, 'R-823987', 1, 1, 'Export', 0, 'Warehouse transfer', 2, '2018-12-06 08:35:47', '2018-12-06 08:35:47', NULL),
+(122, 'R-823987', 2, 1, 'Import', 0, 'Warehouse transfer', 2, '2018-12-06 08:35:47', '2018-12-06 08:35:47', NULL),
+(123, 'R-5330169', 2, 2, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:36:39', '2018-12-06 08:36:39', NULL),
+(124, 'R-5330169', 2, 2, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:36:39', '2018-12-06 08:36:39', NULL),
+(125, 'R-888331', 2, 1, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 08:41:29', '2018-12-06 08:41:29', NULL),
+(126, 'R-888331', 1, 1, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 08:41:29', '2018-12-06 08:41:29', NULL),
+(127, 'R-6128759', 1, 1, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 08:42:06', '2018-12-06 08:42:06', NULL),
+(128, 'R-6128759', 2, 1, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 08:42:06', '2018-12-06 08:42:06', NULL),
+(129, 'R-409909', 2, 1, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 08:45:02', '2018-12-06 08:45:02', NULL),
+(130, 'R-409909', 1, 1, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 08:45:02', '2018-12-06 08:45:02', NULL),
+(131, 'R-6603148', 1, 1, 'Export', 50, 'Warehouse transfer', 2, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(132, 'R-6603148', 2, 1, 'Import', 50, 'Warehouse transfer', 2, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(133, 'R-6603148', 1, 2, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(134, 'R-6603148', 2, 2, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:52:34', '2018-12-06 08:52:34', NULL),
+(135, 'R-3876242', 1, 1, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:53:13', '2018-12-06 08:53:13', NULL),
+(136, 'R-3876242', 1, 1, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:53:13', '2018-12-06 08:53:13', NULL),
+(137, 'R-9252574', 1, 1, 'Export', 25, 'Warehouse transfer', 2, '2018-12-06 08:54:01', '2018-12-06 08:54:01', NULL),
+(138, 'R-9252574', 2, 1, 'Import', 25, 'Warehouse transfer', 2, '2018-12-06 08:54:01', '2018-12-06 08:54:01', NULL),
+(139, 'R-6125136', 1, 1, 'Export', -25, 'Warehouse transfer', 2, '2018-12-06 08:54:43', '2018-12-06 08:54:43', NULL),
+(140, 'R-6125136', 2, 1, 'Import', -25, 'Warehouse transfer', 2, '2018-12-06 08:54:43', '2018-12-06 08:54:43', NULL),
+(141, 'R-6518824', 1, 1, 'Export', 5, 'Warehouse transfer', 2, '2018-12-06 08:56:14', '2018-12-06 08:56:14', NULL),
+(142, 'R-6518824', 2, 1, 'Import', 5, 'Warehouse transfer', 2, '2018-12-06 08:56:14', '2018-12-06 08:56:14', NULL),
+(143, 'R-9978411', 1, 1, 'Export', 10, 'Warehouse transfer', 2, '2018-12-06 08:59:04', '2018-12-06 08:59:04', NULL),
+(144, 'R-9978411', 2, 1, 'Import', 10, 'Warehouse transfer', 2, '2018-12-06 08:59:04', '2018-12-06 08:59:04', NULL),
+(145, 'R-7950565', 1, 1, 'Export', 15, 'Warehouse transfer', 2, '2018-12-06 09:00:49', '2018-12-06 09:00:49', NULL),
+(146, 'R-7950565', 2, 1, 'Import', 15, 'Warehouse transfer', 2, '2018-12-06 09:00:49', '2018-12-06 09:00:49', NULL),
+(147, 'R-5463061', 1, 1, 'Export', -30, 'Warehouse transfer', 2, '2018-12-06 09:02:23', '2018-12-06 09:02:23', NULL),
+(148, 'R-5463061', 2, 1, 'Import', -30, 'Warehouse transfer', 2, '2018-12-06 09:02:23', '2018-12-06 09:02:23', NULL),
+(149, 'R-3367861', 1, 1, 'Export', 20, 'Warehouse transfer', 2, '2018-12-06 09:07:27', '2018-12-06 09:07:27', NULL),
+(150, 'R-3367861', 1, 1, 'Import', 20, 'Warehouse transfer', 2, '2018-12-06 09:07:27', '2018-12-06 09:07:27', NULL),
+(151, 'R-8806161', 2, 1, 'Export', 4, 'Warehouse transfer', 2, '2018-12-06 09:08:30', '2018-12-06 09:08:30', NULL),
+(152, 'R-8806161', 1, 1, 'Import', 4, 'Warehouse transfer', 2, '2018-12-06 09:08:31', '2018-12-06 09:08:31', NULL),
+(153, 'R-2935420', 1, 1, 'Export', 2, 'Warehouse transfer', 2, '2018-12-08 08:15:42', '2018-12-08 08:15:42', NULL),
+(154, 'R-2935420', 2, 1, 'Import', 2, 'Warehouse transfer', 2, '2018-12-08 08:15:42', '2018-12-08 08:15:42', NULL),
+(155, 'R-2866664', 1, 1, 'Export', 1, 'Warehouse transfer', 2, '2018-12-08 08:23:30', '2018-12-08 08:23:30', NULL),
+(156, 'R-2866664', 2, 1, 'Import', 1, 'Warehouse transfer', 2, '2018-12-08 08:23:30', '2018-12-08 08:23:30', NULL),
+(157, 'R-5883187', 1, 1, 'Export', 1, 'Warehouse transfer', 2, '2018-12-08 08:24:09', '2018-12-08 08:24:09', NULL),
+(158, 'R-5883187', 2, 1, 'Import', 1, 'Warehouse transfer', 2, '2018-12-08 08:24:09', '2018-12-08 08:24:09', NULL),
+(159, 'R-7906476', 2, 1, 'Export', 40, 'Warehouse transfer', 2, '2018-12-08 08:25:14', '2018-12-08 08:25:14', NULL),
+(160, 'R-7906476', 1, 1, 'Import', 40, 'Warehouse transfer', 2, '2018-12-08 08:25:14', '2018-12-08 08:25:14', NULL),
+(161, 'R-9784707', 2, 1, 'Export', 5, 'Warehouse transfer', 2, '2018-12-08 08:27:08', '2018-12-08 08:27:08', NULL),
+(162, 'R-9784707', 1, 1, 'Import', 5, 'Warehouse transfer', 2, '2018-12-08 08:27:08', '2018-12-08 08:27:08', NULL),
+(163, 'R-4958548', 1, 1, 'Export', 10, 'Warehouse transfer', 2, '2018-12-08 08:34:33', '2018-12-08 08:34:33', NULL),
+(164, 'R-4958548', 2, 1, 'Import', 10, 'Warehouse transfer', 2, '2018-12-08 08:34:33', '2018-12-08 08:34:33', NULL),
+(165, 'R-264989', 1, 1, 'Import', 66, 'Warehouse Stock in', 2, '2018-12-09 09:57:19', '2018-12-09 09:57:19', NULL),
+(166, 'R-264989', 1, 2, 'Import', 1, 'Warehouse Stock in', 2, '2018-12-09 09:57:19', '2018-12-09 09:57:19', NULL),
+(167, 'R-7455516', 1, 1, 'Export', 33, 'Warehouse transfer', 2, '2018-12-09 10:03:17', '2018-12-09 10:03:17', NULL),
+(168, 'R-7455516', 2, 1, 'Import', 33, 'Warehouse transfer', 2, '2018-12-09 10:03:17', '2018-12-09 10:03:17', NULL),
+(169, 'R-312881', 1, 1, 'Import', 11, 'Warehouse Stock in', 2, '2018-12-09 10:57:22', '2018-12-09 10:57:22', NULL),
+(170, 'R-312881', 1, 2, 'Import', 11, 'Warehouse Stock in', 2, '2018-12-09 10:57:22', '2018-12-09 10:57:22', NULL),
+(171, 'R-2667691', 1, 1, 'Import', 5555, 'Warehouse Stock in', 2, '2018-12-09 10:58:09', '2018-12-09 10:58:09', NULL),
+(172, 'R-2667691', 1, 2, 'Import', 3, 'Warehouse Stock in', 2, '2018-12-09 10:58:10', '2018-12-09 10:58:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -891,6 +1063,14 @@ CREATE TABLE `inventory__warehouses` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `inventory__warehouses`
+--
+
+INSERT INTO `inventory__warehouses` (`id`, `name`, `keeper`, `location`, `phone`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Main', '--', 'Kartoum bahary ', '01838383', '-', '2018-12-06 13:22:05', NULL, NULL),
+(2, 'Second ', '-', 'oumdurman', '018354545', '-', '2018-12-06 13:22:24', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -2270,22 +2450,22 @@ ALTER TABLE `inventory__categories`
 -- AUTO_INCREMENT for table `inventory__details`
 --
 ALTER TABLE `inventory__details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `inventory__items`
 --
 ALTER TABLE `inventory__items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `inventory__movements`
 --
 ALTER TABLE `inventory__movements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 --
 -- AUTO_INCREMENT for table `inventory__movement_details`
 --
 ALTER TABLE `inventory__movement_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `inventory__orders`
 --
@@ -2300,7 +2480,7 @@ ALTER TABLE `inventory__order_details`
 -- AUTO_INCREMENT for table `inventory__transactions`
 --
 ALTER TABLE `inventory__transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 --
 -- AUTO_INCREMENT for table `inventory__units`
 --
@@ -2310,7 +2490,7 @@ ALTER TABLE `inventory__units`
 -- AUTO_INCREMENT for table `inventory__warehouses`
 --
 ALTER TABLE `inventory__warehouses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `models`
 --

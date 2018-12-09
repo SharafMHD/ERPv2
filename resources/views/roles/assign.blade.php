@@ -6,7 +6,7 @@
             Assign
         </h1>
     </section>
-    {!! Form::open(['route' => 'roles.assignpost']) !!}
+    {!! Form::open(['route' => 'settings.roles.assignpost']) !!}
     <input  id="roleid" name="id" value="{!! $role !!}" type="hidden">
 <div class="row">
 
@@ -54,7 +54,7 @@
 </div>   
 <div class="row">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('roles.index') !!}" class="btn btn-default">Cancel</a>
+    <a href="{!! route('settings.roles.index') !!}" class="btn btn-default">Cancel</a>
 </div>
 {!! Form::close() !!}
 

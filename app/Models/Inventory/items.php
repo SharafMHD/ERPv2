@@ -131,15 +131,15 @@ class items extends Model
      **/
     public function inventoryDetails()
     {
-        return $this->hasMany(\App\Models\Inventory\InventoryDetail::class);
+        return $this->hasMany(\App\Models\Inventory\StockDetails::class);
     }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function inventoryMovementDetails()
+    public function MovementDetails()
     {
-        return $this->hasMany(\App\Models\Inventory\InventoryMovementDetail::class);
+        return $this->hasMany(\App\Models\Inventory\movementDetails::class,'item_id','id');
     }
 
     /**
@@ -153,9 +153,9 @@ class items extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function inventoryTransactions()
+    public function Transactions()
     {
-        return $this->hasMany(\App\Models\Inventory\InventoryTransaction::class);
+        return $this->hasMany(\App\Models\Inventory\InventoryTransactions::class, 'item_id', 'id');
     }
 
     /**

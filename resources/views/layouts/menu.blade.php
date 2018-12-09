@@ -204,3 +204,21 @@
     <span  class="title">@lang('fully.transfers')</span></a>
 </li>
 
+<li class="{!! Request::is('stockDetails*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.stockDetails.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.StockDetails')</span></a>
+</li>
+
+<li class="{!! Request::is('inventoryTransactions*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.inventoryTransactions.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.InventoryTransactions')</span></a>
+</li>
+
+<li class="{!! Request::is('movementDetails*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('inventory.movementDetails.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.movementDetails')</span></a>
+</li>
+
