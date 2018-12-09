@@ -36,7 +36,7 @@ return array(
     'message'             => 'Mesaj',
     'button_send'         => 'Gönder',
     /* contact page end */
-
+    'UOM' =>'UOM',
     /*pagination start*/
     'link_previous' =>'Geri',
     'link_next' =>'İleri',
@@ -48,7 +48,7 @@ return array(
     'Accounts' =>'Accounts',
     'Main Account' =>'Main Account',
     'No' =>'No',
-
+    'Warehouses transfer' =>'Warehouses transfer',
     'Email' =>'Email',
     'User Name' =>'اسم User name',
     'Role' =>'Role',

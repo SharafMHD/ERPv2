@@ -4,16 +4,14 @@ namespace App\Models\Inventory;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use \App\Models\Inventory\warehouses;
-use App\Models\users;
+
 /**
- * Class transfer
+ * Class StockDetails
  * @package App\Models\Inventory
- * @version December 3, 2018, 1:03 pm UTC
+ * @version December 4, 2018, 9:19 am UTC
  *
  * @property \App\Models\Inventory\InventoryWarehouse inventoryWarehouse
- * @property \App\Models\Inventory\InventoryWarehouse inventoryWarehouse
- * @property \App\Models\Inventory\User user
+ * @property \App\Models\Inventory\InventoryItem inventoryItem
  * @property \Illuminate\Database\Eloquent\Collection accountingTransactions
  * @property \Illuminate\Database\Eloquent\Collection hrAttendances
  * @property \Illuminate\Database\Eloquent\Collection hrBonuses
@@ -23,9 +21,8 @@ use App\Models\users;
  * @property \Illuminate\Database\Eloquent\Collection hrPayrolls
  * @property \Illuminate\Database\Eloquent\Collection hrSalaryProfiles
  * @property \Illuminate\Database\Eloquent\Collection hrTrainingMembers
- * @property \Illuminate\Database\Eloquent\Collection inventoryDetails
  * @property \Illuminate\Database\Eloquent\Collection inventoryItems
- * @property \Illuminate\Database\Eloquent\Collection InventoryMovementDetail
+ * @property \Illuminate\Database\Eloquent\Collection inventoryMovementDetails
  * @property \Illuminate\Database\Eloquent\Collection inventoryOrderDetails
  * @property \Illuminate\Database\Eloquent\Collection inventoryOrders
  * @property \Illuminate\Database\Eloquent\Collection projectOrderDetails
@@ -35,19 +32,16 @@ use App\Models\users;
  * @property \Illuminate\Database\Eloquent\Collection purchasePurchaseDetails
  * @property \Illuminate\Database\Eloquent\Collection salesQoutationDetails
  * @property \Illuminate\Database\Eloquent\Collection salesSalesDetails
- * @property string no
- * @property date date
- * @property integer from_warehouse_id
- * @property integer to_warehouse_id
- * @property string notes
+ * @property integer warehouse_id
+ * @property integer item_id
+ * @property float qty
  * @property string status
- * @property integer user_id
  */
-class transfer extends Model
+class StockDetails extends Model
 {
     use SoftDeletes;
 
-    public $table = 'inventory__movements';
+    public $table = 'inventory__details';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -58,13 +52,10 @@ class transfer extends Model
     protected $primaryKey = 'id';
 
     public $fillable = [
-        'no',
-        'date',
-        'from_warehouse_id',
-        'to_warehouse_id',
-        'notes',
-        'status',
-        'user_id'
+        'warehouse_id',
+        'item_id',
+        'qty',
+        'expiry_date'
     ];
 
     /**
@@ -74,13 +65,10 @@ class transfer extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'no' => 'string',
-        'date' => 'date',
-        'from_warehouse_id' => 'integer',
-        'to_warehouse_id' => 'integer',
-        'notes' => 'string',
-        'status' => 'string',
-        'user_id' => 'integer'
+        'warehouse_id' => 'integer',
+        'item_id' => 'integer',
+        'qty' => 'float',
+        'expiry_date'
     ];
 
     /**
@@ -95,34 +83,16 @@ class transfer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function Warehousefrom()
+    public function warehouses()
     {
-        return $this->belongsTo(\App\Models\Inventory\warehouses::class , 'from_warehouse_id', 'id');
+        return $this->belongsTo(\App\Models\Inventory\warehouses::class,'warehouse_id','id');
     }
-    public function Warehouseto()
-    {
-        return $this->belongsTo(\App\Models\Inventory\warehouses::class , 'to_warehouse_id', 'id');
-    }
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function user()
+    public function items()
     {
-        return $this->belongsTo(\App\Models\users::class, 'user_id', 'id');
+        return $this->belongsTo(\App\Models\Inventory\items::class,'item_id','id');
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     **/
-    public function MovementDetails()
-    {
-        return $this->hasMany(\App\Models\Inventory\movementDetails::class, 'movement_id','id');
-    }
-    
 }

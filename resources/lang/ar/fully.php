@@ -49,12 +49,14 @@ return array(
     'Accounts' =>'الحسابات',
     'Main Account' =>'الحساب الاساسي',
     'No' =>'الرقم',
+    'UOM' =>'وحده القياس',
 
     'Email' =>'الايميل',
     'User Name' =>'اسم المستخدم',
     'Role' =>'الصلاحية',
     'Status' =>'الحالة',
     'Sales Price' =>'سعر البيع',
+    'Warehouses transfer' =>'تحويل محزون',
     
 //Actions
 'Create' =>'انشاء',
