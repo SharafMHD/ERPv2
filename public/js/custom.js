@@ -9,6 +9,7 @@ var Order = [];
 var subtotal = 0;
 var total = 0;
 var user_id = 0;
+var Avialableqty=0;
 
 //==================== Navigation ====================
 //<li><a href="#" onclick="goto('/Students/Index')"><i class="fa fa-circle-o"></i>قبول الطلاب </a></li>
@@ -479,7 +480,7 @@ function getitem() {
         }
     });
 }
-//Get Item Avilable Qty
+//Get Item Avilable Qty Expires
 function getitem_avialble_qty() {
     if ($('#item_id').val() == 0 || $('#from_warehouse_id').val() == 0) {
         swal({
@@ -499,6 +500,39 @@ function getitem_avialble_qty() {
             type: "GET",
             url: "/en/inventory/transfers/getitem_qty/" + item_id + '/' + from_warehouse_id,
             success: function (result) {
+                $('#expiry_date').find('option').remove().end();
+
+                var defaultOpt = "<option selected='selected' value='-1'>Please Select</option>";
+                $('#expiry_date').append(defaultOpt);
+
+                result.data.forEach(element => {
+                    var opt = new Option(element.expiry_date, element.id);
+                    $('#expiry_date').append(opt);
+                });
+            }
+        });
+    }
+
+}
+//Get Item Avilable Qty
+function Getqty() {
+    // console.log("fdsfsdf");
+    if ($('#item_id').val() == 0 || $('#from_warehouse_id').val() == 0) {
+        swal({
+            title: "Sorry!!",
+            text: "Please Select warehouse from and item",
+            icon: "warning",
+            button: "okay !",
+            type: "warning"
+        });
+    } else {
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+        $.ajax({
+            type: "GET",
+            url: "/en/inventory/transfers/getqty/" + $('#expiry_date').val() ,
+            success: function (result) {
                 if (result.length == 0) {
                     swal({
                         title: "Sorry!!",
@@ -510,11 +544,12 @@ function getitem_avialble_qty() {
                 } else {
                     swal({
                         // title: "Well Done!",
-                        text: "Stock Quantity is :" + result[0].qty,
+                        text: "Stock Quantity is :" + result.qty,
 
                         // type: "success"
                     });
-                    $('#qty').val(result[0].qty);
+                    $('#qty').val(result.qty);
+                    Avialableqty = result.qty;
                 }
             }
         });
@@ -531,6 +566,14 @@ function AddNewItemStockMovment() {
             button: "okay !",
             type: "warning"
         });
+    }else if ( $('#qty').val() > Avialableqty) {
+        swal({
+            title: "Sorry!!",
+            text: "The transfer Qty is greater than available qty in stock ",
+            icon: "warning",
+            button: "okay !",
+            type: "warning"
+        });
     } else {
         const q = inventory__movement_details.find(x => x.item_id === $('#item_id').val());
 
@@ -539,7 +582,9 @@ function AddNewItemStockMovment() {
                 item_id: $('#item_id').val(),
                 item_name: $("#item_id option:selected").text(),
                 qty: $('#qty').val(),
-                notes: $('#notes').val()
+                notes: $('#notes').val(),
+                expiry_date: $("#expiry_date option:selected").text() ,
+                rowid:$("#expiry_date").val()
             };
 
             inventory__movement_details.push(NewItem);
@@ -547,8 +592,9 @@ function AddNewItemStockMovment() {
             html += '<tr>';
             html += '<td>' + NewItem.item_name + '</td>';
             html += '<td>' + NewItem.qty + '</td>';
+            html += '<td>' + NewItem.expiry_date + '</td>';
             html += '<td>' + NewItem.notes + '</td>';
-            html += '<td>' + '<a class="btn btn-xs btn-danger" onclick="DeleteRow(' + inventory__movement_details.indexOf(NewItem) + ',' + "'tbl_Details'" + ','+'inventory__movement_details'+');">' + '<i class="fa fa-times"></i>' + ' Delete' + '</a>' + '</td>';
+            html += '<td>' + '<a class="btn btn-xs btn-danger" onclick="DeleteRow(' + inventory__movement_details.indexOf(NewItem) + ',' + "'tbl_Details'" + ',' + 'inventory__movement_details' + ');">' + '<i class="fa fa-times"></i>' + ' Delete' + '</a>' + '</td>';
             html += '</tr>';
             // $("#tbl_invoiceDetails tbody").empty();
             $("#tbl_Details tbody").append(html);
@@ -566,7 +612,7 @@ function AddNewItemStockMovment() {
 }
 // }
 // To Delete from Html table
-function DeleteRow(item, Tbl_Name,ArrayName) {
+function DeleteRow(item, Tbl_Name, ArrayName) {
     var row = $(this).parent().index();
     document.getElementById(Tbl_Name).deleteRow(row);
 
@@ -644,7 +690,6 @@ function save_billdetails(bill_id, order_id) {
 //Save transfer Details 
 function transfer() {
     // bind data of inventory__details
-
     var inventory__details = {
         from_warehouse_id: $("#from_warehouse_id").val(),
         to_warehouse_id: $("#to_warehouse_id").val(),
@@ -679,10 +724,10 @@ function transfer() {
                 resetForm('frmtransfer');
                 $('#from_warehouse_id').val('0').trigger('change');
                 $('#to_warehouse_id').val('0').trigger('change');
-              //  $('#item_id').val('0').trigger('change');
-              $('#btnsave').prop("disabled", true);
-              $('#btnprint').removeAttr("disabled");
-              $('#btnprint').prop("href", "/en/inventory/transfers/Print/" + result.id);
+                // $('#expiry_date').val('0').trigger('change');
+                $('#btnsave').prop("disabled", true);
+                $('#btnprint').removeAttr("disabled");
+                $('#btnprint').prop("href", "/en/inventory/transfers/Print/" + result.id);
                 $("#tbl_Details tbody").empty();
                 inventory__movement_details = [];
             },

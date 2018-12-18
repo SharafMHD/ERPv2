@@ -30,8 +30,8 @@ class unitsController extends AppBaseController
     public function index(Request $request)
     {
         $this->unitsRepository->pushCriteria(new RequestCriteria($request));
-        $units = $this->unitsRepository->paginate(10);
-
+        // $units = $this->unitsRepository->paginate(10);
+   $units = \App\Models\Inventory\units::all();
         return view('inventory.units.index')
             ->with('units', $units);
     }

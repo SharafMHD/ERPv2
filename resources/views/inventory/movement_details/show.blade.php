@@ -13,8 +13,8 @@
             </div>
             <div class="portlet-body form">
                 <div class="row" style="padding-left: 20px">
-                   @include('inventory.movementDetails.show_fields')
-                   <a href="{!! route('inventory.movementDetails.index') !!}" class="btn btn-default">@lang('fully.Back')</a>
+                   @include('inventory.movement_details.show_fields')
+                   <a href="{!! route('inventory.movement_details.index') !!}" class="btn btn-default">@lang('fully.Back')</a>
                 </div>
             </div>
         </div>

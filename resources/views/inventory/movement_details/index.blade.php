@@ -9,7 +9,7 @@
             </div>
              @if (auth::user()->GetAuthTable($ucontroller,'create'))
             <h1 class="pull-right">
-                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('inventory.movementDetails.create') !!}">{{__('fully.AddNew')}}</a>
+                <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('inventory.movement_details.create') !!}">{{__('fully.AddNew')}}</a>
             </h1>
             @endif
         </div>
@@ -17,7 +17,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                @include('inventory.movementDetails.table')
+                @include('inventory.movement_details.table')
             </div>
         </div>
  </div>

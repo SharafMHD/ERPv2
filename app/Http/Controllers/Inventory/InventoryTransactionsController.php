@@ -73,15 +73,17 @@ class InventoryTransactionsController extends AppBaseController
      */
     public function show($id)
     {
-        $inventoryTransactions = $this->inventoryTransactionsRepository->findWithoutFail($id);
-
-        if (empty($inventoryTransactions)) {
-            Flash::error('Inventory Transactions not found');
-
-            return redirect(route('inventory.inventoryTransactions.index'));
+        $inventoryTransactions =  \App\Models\Inventory\InventoryTransactions::with('warehouse')->with('items')->with('user')->where('item_id', $id)->get();
+        $avilableqty = \App\Models\Inventory\StockDetails::where('item_id' , $id)->with('items')->get();
+  // dd($avilableqty[0]->items->units->name);
+  //dd($avilableqty->sum('qty'));
+        if ($inventoryTransactions->isEmpty()) {
+            // dd('dfsfd');
+            Flash::error('Transaction  not found');
+            return redirect(route('inventory.inventory_transactions.index'));
         }
 
-        return view('inventory.inventory_transactions.show')->with('inventoryTransactions', $inventoryTransactions);
+        return view('inventory.inventory_transactions.show')->with('inventoryTransactions', $inventoryTransactions)->with('avilableqty' , $avilableqty->sum('qty'))->with('unit' , $avilableqty[0]->items->units->name);
     }
 
     /**

@@ -48,9 +48,11 @@ return array(
     'Accounts' =>'Accounts',
     'Main Account' =>'Main Account',
     'No' =>'No',
+    'Print' =>'Print',
     'Warehouses transfer' =>'Warehouses transfer',
     'Email' =>'Email',
-    'User Name' =>'اسم User name',
+    'User Name' =>'User name',
+    'Transaction Type' =>'Transaction Type',
     'Role' =>'Role',
     'Status' =>'Status',
 //Actions

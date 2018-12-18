@@ -29,7 +29,10 @@
             <td>{!! $items->item_type !!}</td>
                 <td width="8%">
                 {!! Form::open(['route' => ['inventory.items.destroy', $items->id], 'method' => 'delete']) !!}
-                <div class='btn-group'>
+                <div class='btn-group'> 
+                        {{-- @if (auth::user()->GetAuthTable($ucontroller, 'timeline')) --}}
+                        <a href="{!! route('inventory.inventory_transactions.show', [$items->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-time"></i></a>
+                          {{-- @endif --}}
                    @if (auth::user()->GetAuthTable($ucontroller, 'show'))
                     <a href="{!! route('inventory.items.show', [$items->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                       @endif

@@ -49,10 +49,12 @@ return array(
     'Accounts' =>'الحسابات',
     'Main Account' =>'الحساب الاساسي',
     'No' =>'الرقم',
+    'Print' =>'طباعه',
     'UOM' =>'وحده القياس',
 
     'Email' =>'الايميل',
     'User Name' =>'اسم المستخدم',
+    'Transaction Type' =>'نوع العمليه',
     'Role' =>'الصلاحية',
     'Status' =>'الحالة',
     'Sales Price' =>'سعر البيع',

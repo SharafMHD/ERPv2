@@ -123,13 +123,10 @@ Route::patch('inventory/items/{items}', ['as'=> 'inventory.items.update', 'uses'
 Route::delete('inventory/items/{items}', ['as'=> 'inventory.items.destroy', 'uses' => 'Inventory\itemsController@destroy']);
 Route::get('inventory/items/{items}', ['as'=> 'inventory.items.show', 'uses' => 'Inventory\itemsController@show']);
 Route::get('inventory/items/{items}/edit', ['as'=> 'inventory.items.edit', 'uses' => 'Inventory\itemsController@edit']);
-<<<<<<< HEAD
-//
-=======
 //transfer 
 
 Route::get('inventory/transfers', ['as'=> 'inventory.transfers.index', 'uses' => 'Inventory\transferController@index']);
-Route::post('inventory/transfers', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
+Route::post('inventory//inventory/stockDetails/print/', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
 Route::get('inventory/transfers/create', ['as'=> 'inventory.transfers.create', 'uses' => 'Inventory\transferController@create']);
 Route::put('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.update', 'uses' => 'Inventory\transferController@update']);
 Route::patch('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.update', 'uses' => 'Inventory\transferController@update']);
@@ -138,7 +135,8 @@ Route::get('inventory/transfers/{transfers}', ['as'=> 'inventory.transfers.show'
 Route::get('inventory/transfers/{transfers}/edit', ['as'=> 'inventory.transfers.edit', 'uses' => 'Inventory\transferController@edit']);
 
 // stock details
-
+Route::post('inventory/stockDetails/dostockout', ['as'=> 'inventory.stock_details.stockout', 'uses' => 'Inventory\StockDetailsController@dostockout']);
+Route::get('inventory/stockDetails/stockout', ['as'=> 'inventory.stock_details.stockout', 'uses' => 'Inventory\StockDetailsController@stockout']);
 Route::post('/inventory/stockDetails/store', 'Inventory\StockDetailsController@store');
 Route::get('inventory/stockDetails', ['as'=> 'inventory.stock_details.index', 'uses' => 'Inventory\StockDetailsController@index']);
 Route::post('inventory/stockDetails', ['as'=> 'inventory.stock_details.store', 'uses' => 'Inventory\StockDetailsController@store']);
@@ -148,9 +146,10 @@ Route::patch('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_d
 Route::delete('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.destroy', 'uses' => 'Inventory\StockDetailsController@destroy']);
 Route::get('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.show', 'uses' => 'Inventory\StockDetailsController@show']);
 Route::get('inventory/stockDetails/{stockDetails}/edit', ['as'=> 'inventory.stock_details.edit', 'uses' => 'Inventory\StockDetailsController@edit']);
-Route::get('/inventory/stockDetails/print/{id}', 'Inventory\StockDetailsController@print');
+Route::get('/inventory/stockDetails/print/{id}/{title}', 'Inventory\StockDetailsController@print');
 // get item qty from stock 
-Route::get('/inventory/transfers/getitem_qty/{item_id}/{from_warehouse_id}', 'Inventory\transferController@getitem_qty');
+Route::get('/inventory/transfers/getitem_qty/{item_id}/{from_warehouse_id}', 'Inventory\transferController@getitem_qty'); 
+Route::get('/inventory/transfers/getqty/{item_id}', 'Inventory\transferController@getqty');
 Route::post('/inventory/transfers/Dotransfer', 'Inventory\transferController@Dotransfer');
 Route::get('/inventory/transfers/Print/{id}', 'Inventory\transferController@Print');
 //inventory transaction
@@ -164,16 +163,15 @@ Route::get('inventory/inventoryTransactions/{inventoryTransactions}', ['as'=> 'i
 Route::get('inventory/inventoryTransactions/{inventoryTransactions}/edit', ['as'=> 'inventory.inventory_transactions.edit', 'uses' => 'Inventory\InventoryTransactionsController@edit']);
 
 //inventory movementDetails
-Route::get('inventory/movementDetails', ['as'=> 'inventory.movementDetails.index', 'uses' => 'Inventory\movementDetailsController@index']);
-Route::post('inventory/movementDetails', ['as'=> 'inventory.movementDetails.store', 'uses' => 'Inventory\movementDetailsController@store']);
-Route::get('inventory/movementDetails/create', ['as'=> 'inventory.movementDetails.create', 'uses' => 'Inventory\movementDetailsController@create']);
-Route::put('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.update', 'uses' => 'Inventory\movementDetailsController@update']);
-Route::patch('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.update', 'uses' => 'Inventory\movementDetailsController@update']);
-Route::delete('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.destroy', 'uses' => 'Inventory\movementDetailsController@destroy']);
-Route::get('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movementDetails.show', 'uses' => 'Inventory\movementDetailsController@show']);
-Route::get('inventory/movementDetails/{movementDetails}/edit', ['as'=> 'inventory.movementDetails.edit', 'uses' => 'Inventory\movementDetailsController@edit']);
-   });
->>>>>>> 64fb86bf850d4d650f63e9226e7cc7ab470048c8
+Route::get('inventory/movementDetails', ['as'=> 'inventory.movement_details.index', 'uses' => 'Inventory\movementDetailsController@index']);
+Route::post('inventory/movementDetails', ['as'=> 'inventory.movement_details.store', 'uses' => 'Inventory\movementDetailsController@store']);
+Route::get('inventory/movementDetails/create', ['as'=> 'inventory.movement_details.create', 'uses' => 'Inventory\movementDetailsController@create']);
+Route::put('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movement_details.update', 'uses' => 'Inventory\movementDetailsController@update']);
+Route::patch('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movement_details.update', 'uses' => 'Inventory\movementDetailsController@update']);
+Route::delete('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movement_details.destroy', 'uses' => 'Inventory\movementDetailsController@destroy']);
+Route::get('inventory/movementDetails/{movementDetails}', ['as'=> 'inventory.movement_details.show', 'uses' => 'Inventory\movementDetailsController@show']);
+Route::get('inventory/movementDetails/{movementDetails}/edit', ['as'=> 'inventory.movement_details.edit', 'uses' => 'Inventory\movementDetailsController@edit']);
+
 
 Route::get('inventory/transfers', ['as'=> 'inventory.transfers.index', 'uses' => 'Inventory\transferController@index']);
 Route::post('inventory/transfers', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
@@ -223,23 +221,3 @@ Route::get('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.show',
 Route::get('accounting/deposits/{deposits}/edit', ['as'=> 'accounting.deposits.edit', 'uses' => 'Accounting\depositController@edit']);
 
 });
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
->>>>>>> 64fb86bf850d4d650f63e9226e7cc7ab470048c8

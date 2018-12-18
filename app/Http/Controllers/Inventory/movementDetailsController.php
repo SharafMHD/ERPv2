@@ -61,7 +61,7 @@ class movementDetailsController extends AppBaseController
 
         Flash::success('Movement Details saved successfully.');
 
-        return redirect(route('inventory.movementDetails.index'));
+        return redirect(route('inventory.movement_details.index'));
     }
 
     /**
@@ -78,7 +78,7 @@ class movementDetailsController extends AppBaseController
         if (empty($movementDetails)) {
             Flash::error('Movement Details not found');
 
-            return redirect(route('inventory.movementDetails.index'));
+            return redirect(route('inventory.movement_details.index'));
         }
 
         return view('inventory.movement_details.show')->with('movementDetails', $movementDetails);
@@ -98,7 +98,7 @@ class movementDetailsController extends AppBaseController
         if (empty($movementDetails)) {
             Flash::error('Movement Details not found');
 
-            return redirect(route('inventory.movementDetails.index'));
+            return redirect(route('inventory.movement_details.index'));
         }
 
         return view('inventory.movement_details.edit')->with('movementDetails', $movementDetails);
@@ -119,14 +119,14 @@ class movementDetailsController extends AppBaseController
         if (empty($movementDetails)) {
             Flash::error('Movement Details not found');
 
-            return redirect(route('inventory.movementDetails.index'));
+            return redirect(route('inventory.movement_details.index'));
         }
 
         $movementDetails = $this->movementDetailsRepository->update($request->all(), $id);
 
         Flash::success('Movement Details updated successfully.');
 
-        return redirect(route('inventory.movementDetails.index'));
+        return redirect(route('inventory.movement_details.index'));
     }
 
     /**
@@ -143,13 +143,13 @@ class movementDetailsController extends AppBaseController
         if (empty($movementDetails)) {
             Flash::error('Movement Details not found');
 
-            return redirect(route('inventory.movementDetails.index'));
+            return redirect(route('inventory.movement_details.index'));
         }
 
         $this->movementDetailsRepository->delete($id);
 
         Flash::success('Movement Details deleted successfully.');
 
-        return redirect(route('inventory.movementDetails.index'));
+        return redirect(route('inventory.movement_details.index'));
     }
 }

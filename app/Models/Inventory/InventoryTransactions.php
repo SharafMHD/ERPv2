@@ -64,6 +64,7 @@ class InventoryTransactions extends Model
         'item_id',
         'transaction_type',
         'qty',
+        'expiry_date'=>'date',
         'description',
         'user_id'
     ];
@@ -80,6 +81,7 @@ class InventoryTransactions extends Model
         'item_id' => 'integer',
         'transaction_type' => 'string',
         'qty' => 'float',
+        'expiry_date'=>'date',
         'description' => 'string',
         'user_id' => 'integer'
     ];

@@ -27,6 +27,7 @@
 <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 @endif
 
+
 @if(LaravelLocalization::getCurrentLocale() =='ar')         
 <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css" rel="stylesheet" type="text/css" />
 @else
@@ -69,6 +70,7 @@
 @else
 <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
 @endif
+
     
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>

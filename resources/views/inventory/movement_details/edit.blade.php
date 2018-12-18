@@ -13,9 +13,9 @@
     </div>
     <div class="portlet-body form">
         <div class="row">
-           {!! Form::model($movementDetails, ['route' => ['inventory.movementDetails.update', $movementDetails->id], 'method' => 'patch']) !!}
+           {!! Form::model($movementDetails, ['route' => ['inventory.movement_details.update', $movementDetails->id], 'method' => 'patch']) !!}
 
-            @include('inventory.movementDetails.fields')
+            @include('inventory.movement_details.fields')
 
            {!! Form::close() !!}
         </div>

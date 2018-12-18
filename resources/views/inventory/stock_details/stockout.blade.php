@@ -5,7 +5,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.movementDetails')</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.Stock Out')</span>
             </div>
         </div>
         <div>
@@ -13,12 +13,13 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'inventory.movement_details.store']) !!}
+                {!! Form::open(['route' => 'inventory.stock_details.stockout', 'id'=> 'frmstockout']) !!}
 
-                    @include('inventory.movement_details.fields')
+                    @include('inventory.stock_details.stockout_fields')
 
                  {!! Form::close() !!}
             </div>
         </div>
   </div>
+  <script src="/js/stockout.js"></script>
 @endsection
