@@ -1,0 +1,15 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+		*{font-size:10pt;}
+        
+    body, ul, li, p, h1, h2, h3, h4, h5 {
+        margin: 0; padding: 0; list-style: none;
+        font-family: 'Droid Arabic Kufi', serif;
+        font-size:9pt;
+    }
+    body {
+        direction: rtl;
+      
+		background-repeat:repeat-x;
+		font-size:9pt;
+        font-family: 'Droid Arabic Kufi', serif;
+    }

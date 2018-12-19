@@ -32,10 +32,9 @@
             </td>
 
         </tr>
-        <tr>
-            <td></td>
+        <tr id="{!! $stockDetails[0]->id !!}" class="collapse out">
             <td colspan="8">
-                <div id="{!! $stockDetails[0]->id !!}" class="collapse out">
+                <div >
                     {{-- table child begin --}}
                     <table class="table table-striped table-bordered table-hover dt-responsive DataTable" id="stockDetails-table">
                         <thead>

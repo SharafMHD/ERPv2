@@ -51,7 +51,8 @@ return array(
     'No' =>'الرقم',
     'Print' =>'طباعه',
     'UOM' =>'وحده القياس',
-
+    'Import' =>'وارد',
+    'Export' =>'صادر',
     'Email' =>'الايميل',
     'User Name' =>'اسم المستخدم',
     'Transaction Type' =>'نوع العمليه',

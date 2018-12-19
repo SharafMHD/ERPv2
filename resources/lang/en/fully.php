@@ -21,6 +21,8 @@ return array(
     'Save'          => 'Save',
     'Cancel'          => 'Cancel',
     'logout'          => 'logout',
+    'Import' =>'Import',
+    'Export' =>'Export',
     'Description'          => 'description',
     'button_save'         => 'Kaydet',
     'enter_your_email'    => 'E-posta Adresinizi Girin',

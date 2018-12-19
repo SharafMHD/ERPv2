@@ -67,6 +67,7 @@
 @endif
 @if(LaravelLocalization::getCurrentLocale() =='ar')         
 <link href="/assets/layouts/layout/css/custom-rtl.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/fonts/font.css" rel="stylesheet" type="text/css" />
 @else
 <link href="/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
 @endif
