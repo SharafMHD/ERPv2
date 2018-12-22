@@ -220,4 +220,29 @@ Route::delete('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.des
 Route::get('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.show', 'uses' => 'Accounting\depositController@show']);
 Route::get('accounting/deposits/{deposits}/edit', ['as'=> 'accounting.deposits.edit', 'uses' => 'Accounting\depositController@edit']);
 
+//sales 
+Route::get('/sales/quotations/getqty/{item_id}', 'Sales\QuotationsController@getqty');
+Route::get('sales/quotations', ['as'=> 'sales.quotations.index', 'uses' => 'Sales\QuotationsController@index']);
+Route::post('sales/quotations', ['as'=> 'sales.quotations.store', 'uses' => 'Sales\QuotationsController@store']);
+Route::get('sales/quotations/create', ['as'=> 'sales.quotations.create', 'uses' => 'Sales\QuotationsController@create']);
+Route::put('sales/quotations/{quotations}', ['as'=> 'sales.quotations.update', 'uses' => 'Sales\QuotationsController@update']);
+Route::patch('sales/quotations/{quotations}', ['as'=> 'sales.quotations.update', 'uses' => 'Sales\QuotationsController@update']);
+Route::delete('sales/quotations/{quotations}', ['as'=> 'sales.quotations.destroy', 'uses' => 'Sales\QuotationsController@destroy']);
+Route::get('sales/quotations/{quotations}', ['as'=> 'sales.quotations.show', 'uses' => 'Sales\QuotationsController@show']);
+Route::get('sales/quotations/{quotations}/edit', ['as'=> 'sales.quotations.edit', 'uses' => 'Sales\QuotationsController@edit']);
+//customers
+Route::get('sales/customers', ['as'=> 'sales.customers.index', 'uses' => 'Sales\CustomersController@index']);
+Route::post('sales/customers', ['as'=> 'sales.customers.store', 'uses' => 'Sales\CustomersController@store']);
+Route::get('sales/customers/create', ['as'=> 'sales.customers.create', 'uses' => 'Sales\CustomersController@create']);
+Route::put('sales/customers/{customers}', ['as'=> 'sales.customers.update', 'uses' => 'Sales\CustomersController@update']);
+Route::patch('sales/customers/{customers}', ['as'=> 'sales.customers.update', 'uses' => 'Sales\CustomersController@update']);
+Route::delete('sales/customers/{customers}', ['as'=> 'sales.customers.destroy', 'uses' => 'Sales\CustomersController@destroy']);
+Route::get('sales/customers/{customers}', ['as'=> 'sales.customers.show', 'uses' => 'Sales\CustomersController@show']);
+Route::get('sales/customers/{customers}/edit', ['as'=> 'sales.customers.edit', 'uses' => 'Sales\CustomersController@edit']);
 });
+
+
+
+
+
+

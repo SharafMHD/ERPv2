@@ -222,3 +222,15 @@
     <span  class="title">@lang('fully.movementDetails')</span></a>
 </li>
 
+<li class="{!! Request::is('quotations*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('sales.quotations.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.Quotations')</span></a>
+</li>
+
+<li class="{!! Request::is('customers*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('sales.customers.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.Customers')</span></a>
+</li>
+
