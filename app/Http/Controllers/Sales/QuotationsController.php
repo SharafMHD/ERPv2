@@ -53,7 +53,21 @@ class QuotationsController extends AppBaseController
         return Response::json($item);
 
     }
-
+    /**
+     * Get items
+     */
+    public function getItems(Request $request)
+    {
+          $items = items::select("name","id")
+                    ->get();;
+      //  dd($items);
+        // if (empty($item)) {
+        //     Flash::error('item not found');
+        //
+        //     return redirect(route('inventory.items.index'));
+        // }
+        return Response::json($items);
+    }
     /**
      * Show the form for creating a new Quotations.
      *
@@ -62,8 +76,8 @@ class QuotationsController extends AppBaseController
     public function create()
     {
         $customers = Customers::pluck('name', 'id');
-        $items = items::pluck('name', 'id');
-        return view('sales.quotations.create') ->with('customers', $customers)->with('items', $items)->with('services', $items->where('item_type', 'Service'));
+
+        return view('sales.quotations.create') ->with('customers', $customers);
     }
 
     /**

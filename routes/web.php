@@ -49,8 +49,8 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::delete('settings/roles/{roles}', ['as'=> 'settings.roles.destroy', 'uses' => 'rolesController@destroy']);
         Route::get('settings/roles/{roles}', ['as'=> 'settings.roles.show', 'uses' => 'rolesController@show']);
         Route::get('settings/roles/{roles}/edit', ['as'=> 'settings.roles.edit', 'uses' => 'rolesController@edit']);
-    
-    
+
+
         // users
         Route::get('settings/users', ['as'=> 'settings.users.index', 'uses' => 'usersController@index']);
         Route::post('settings/users', ['as'=> 'settings.users.store', 'uses' => 'usersController@store']);
@@ -60,7 +60,7 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
         Route::delete('settings/users/{users}', ['as'=> 'settings.users.destroy', 'uses' => 'usersController@destroy']);
         Route::get('settings/users/{users}', ['as'=> 'settings.users.show', 'uses' => 'usersController@show']);
         Route::get('settings/users/{users}/edit', ['as'=> 'settings.users.edit', 'uses' => 'usersController@edit']);
-    
+
 
 
 
@@ -69,7 +69,7 @@ Route::group(array('prefix' => LaravelLocalization::getCurrentLocale()), functio
 
         Route::resource('privileges', 'privilegesController');
         Route::get('/errors/403', 'rolesController@assign')->name('403');
-    // 
+    //
 //models
    // Route::resource('settings/models', 'modelsController');
 
@@ -123,7 +123,7 @@ Route::patch('inventory/items/{items}', ['as'=> 'inventory.items.update', 'uses'
 Route::delete('inventory/items/{items}', ['as'=> 'inventory.items.destroy', 'uses' => 'Inventory\itemsController@destroy']);
 Route::get('inventory/items/{items}', ['as'=> 'inventory.items.show', 'uses' => 'Inventory\itemsController@show']);
 Route::get('inventory/items/{items}/edit', ['as'=> 'inventory.items.edit', 'uses' => 'Inventory\itemsController@edit']);
-//transfer 
+//transfer
 
 Route::get('inventory/transfers', ['as'=> 'inventory.transfers.index', 'uses' => 'Inventory\transferController@index']);
 Route::post('inventory//inventory/stockDetails/print/', ['as'=> 'inventory.transfers.store', 'uses' => 'Inventory\transferController@store']);
@@ -147,8 +147,8 @@ Route::delete('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_
 Route::get('inventory/stockDetails/{stockDetails}', ['as'=> 'inventory.stock_details.show', 'uses' => 'Inventory\StockDetailsController@show']);
 Route::get('inventory/stockDetails/{stockDetails}/edit', ['as'=> 'inventory.stock_details.edit', 'uses' => 'Inventory\StockDetailsController@edit']);
 Route::get('/inventory/stockDetails/print/{id}/{title}', 'Inventory\StockDetailsController@print');
-// get item qty from stock 
-Route::get('/inventory/transfers/getitem_qty/{item_id}/{from_warehouse_id}', 'Inventory\transferController@getitem_qty'); 
+// get item qty from stock
+Route::get('/inventory/transfers/getitem_qty/{item_id}/{from_warehouse_id}', 'Inventory\transferController@getitem_qty');
 Route::get('/inventory/transfers/getqty/{item_id}', 'Inventory\transferController@getqty');
 Route::post('/inventory/transfers/Dotransfer', 'Inventory\transferController@Dotransfer');
 Route::get('/inventory/transfers/Print/{id}', 'Inventory\transferController@Print');
@@ -191,7 +191,7 @@ Route::patch('accounting/accountTransactions/{accountTransactions}', ['as'=> 'ac
 Route::delete('accounting/accountTransactions/{accountTransactions}', ['as'=> 'accounting.accountTransactions.destroy', 'uses' => 'Accounting\Account_transactionsController@destroy']);
 Route::get('accounting/accountTransactions/{accountTransactions}', ['as'=> 'accounting.accountTransactions.show', 'uses' => 'Accounting\Account_transactionsController@show']);
 Route::get('accounting/accountTransactions/{accountTransactions}/edit', ['as'=> 'accounting.accountTransactions.edit', 'uses' => 'Accounting\Account_transactionsController@edit']);
-// accounting 
+// accounting
 Route::get('accounting/accounts', ['as'=> 'accounting.accounts.index', 'uses' => 'Accounting\accountsController@index']);
 Route::post('accounting/accounts', ['as'=> 'accounting.accounts.store', 'uses' => 'Accounting\accountsController@store']);
 Route::get('accounting/accounts/create', ['as'=> 'accounting.accounts.create', 'uses' => 'Accounting\accountsController@create']);
@@ -199,7 +199,7 @@ Route::put('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.update
 Route::patch('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.update', 'uses' => 'Accounting\accountsController@update']);
 Route::delete('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.destroy', 'uses' => 'Accounting\accountsController@destroy']);
 Route::get('accounting/accounts/{accounts}', ['as'=> 'accounting.accounts.show', 'uses' => 'Accounting\accountsController@show']);
-Route::get('accounting/accounts/{accounts}/edit', ['as'=> 'accounting.accounts.edit', 'uses' => 'Accounting\accountsController@edit']);  
+Route::get('accounting/accounts/{accounts}/edit', ['as'=> 'accounting.accounts.edit', 'uses' => 'Accounting\accountsController@edit']);
 
 Route::get('accounting/transactions', ['as'=> 'accounting.transactions.index', 'uses' => 'Accounting\transactionsController@index']);
 Route::post('accounting/transactions', ['as'=> 'accounting.transactions.store', 'uses' => 'Accounting\transactionsController@store']);
@@ -220,7 +220,8 @@ Route::delete('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.des
 Route::get('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.show', 'uses' => 'Accounting\depositController@show']);
 Route::get('accounting/deposits/{deposits}/edit', ['as'=> 'accounting.deposits.edit', 'uses' => 'Accounting\depositController@edit']);
 
-//sales 
+//sales
+Route::get('/sales/quotations/getItems/', 'Sales\QuotationsController@getItems');
 Route::get('/sales/quotations/getqty/{item_id}', 'Sales\QuotationsController@getqty');
 Route::get('sales/quotations', ['as'=> 'sales.quotations.index', 'uses' => 'Sales\QuotationsController@index']);
 Route::post('sales/quotations', ['as'=> 'sales.quotations.store', 'uses' => 'Sales\QuotationsController@store']);
@@ -240,9 +241,3 @@ Route::delete('sales/customers/{customers}', ['as'=> 'sales.customers.destroy', 
 Route::get('sales/customers/{customers}', ['as'=> 'sales.customers.show', 'uses' => 'Sales\CustomersController@show']);
 Route::get('sales/customers/{customers}/edit', ['as'=> 'sales.customers.edit', 'uses' => 'Sales\CustomersController@edit']);
 });
-
-
-
-
-
-

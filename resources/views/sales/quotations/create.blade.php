@@ -21,5 +21,4 @@
             </div>
         </div>
   </div>
-  <script type="module" src="/js/quo-additem.js"></script>
 @endsection
