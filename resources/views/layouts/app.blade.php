@@ -295,7 +295,7 @@
     <script src="/assets/global/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
     <script src="/js/custom.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
-    <script src="/js/controllers/mainCtrl.js"></script> <!-- load our controller -->
+    <script src="/js/controllers/QuotaCtrl.js"></script> <!-- load our controller -->
     <script src="/js/services/qouatationService.js"></script> <!-- load our service -->
     <script src="/js/app.js"></script> <!-- load our application -->
     <!-- Datatables -->

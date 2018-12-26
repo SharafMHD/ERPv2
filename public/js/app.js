@@ -2,4 +2,4 @@ var QouatationApp = angular.module('QouatationApp', ['mainCtrl', 'qouatationServ
 function($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
-    });  
+    });

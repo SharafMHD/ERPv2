@@ -58,14 +58,17 @@ class QuotationsController extends AppBaseController
      */
     public function getItems(Request $request)
     {
-          $items = items::select("name","id")
-                    ->get();;
-      //  dd($items);
-        // if (empty($item)) {
-        //     Flash::error('item not found');
-        //
-        //     return redirect(route('inventory.items.index'));
-        // }
+          $items = items::select("name","id")->where('item_type','Item')->get();;
+
+        return Response::json($items);
+    }
+    /**
+     * Get services
+     */
+    public function getservices(Request $request)
+    {
+          $items = items::select("name","id")->where('item_type','Services')->get();;
+
         return Response::json($items);
     }
     /**
