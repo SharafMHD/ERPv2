@@ -54,11 +54,34 @@ class QuotationsController extends AppBaseController
 
     }
     /**
+     * Get item price
+     */
+    public function getprice($id)
+    {
+      // $movment = \App\Models\Inventory\InventoryTransactions::with('warehouse')->with('items')->with('user')->where('no', $id)->get();
+
+      $item = items::where('id',$id)->firstOrFail();
+        if (empty($item)) {
+          return response()->json([
+              'error' => 'Item not found'
+
+          ]);
+        }
+        return Response::json(
+          [
+              'item' => $item ,
+              'unit' => $item->units->name
+
+          ]
+        );
+
+    }
+    /**
      * Get items
      */
     public function getItems(Request $request)
     {
-          $items = items::select("name","id")->where('item_type','Item')->get();;
+          $items = items::select("name","id")->where('item_type','Item')->get();
 
         return Response::json($items);
     }

@@ -221,6 +221,7 @@ Route::get('accounting/deposits/{deposits}', ['as'=> 'accounting.deposits.show',
 Route::get('accounting/deposits/{deposits}/edit', ['as'=> 'accounting.deposits.edit', 'uses' => 'Accounting\depositController@edit']);
 
 //sales
+Route::get('/sales/quotations/getprice/{item_id}', 'Sales\QuotationsController@getprice');
 Route::get('/sales/quotations/getservices/', 'Sales\QuotationsController@getservices');
 Route::get('/sales/quotations/getItems/', 'Sales\QuotationsController@getItems');
 Route::get('/sales/quotations/getqty/{item_id}', 'Sales\QuotationsController@getqty');
