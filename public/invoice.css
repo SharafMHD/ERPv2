@@ -17,7 +17,7 @@
 
 .invoice .company-details {
     text-align: right;
-    
+
 }
 
 .invoice .company-details .name {
@@ -97,10 +97,18 @@
     font-size: 1.2em
 }
 
+.invoice table .sn {
+    color: #fff;
+    width: 3%;
+    font-size: 1.6em;
+    background: #3989c6
+}
+
 .invoice table .no {
     color: #fff;
     font-size: 1.6em;
-    background: #3989c6
+    background: #007da0
+
 }
 
 .invoice table .unit {
@@ -108,14 +116,16 @@
 }
 
 .invoice table .total {
-    background: #3989c6;
+    background: #d7005f;
     color: #fff
 }
 
 .invoice table tbody tr:last-child td {
     border: none
 }
-
+.tfoo{
+padding-left: 10px
+}
 .invoice table tfoot td {
     background: 0 0;
     border-bottom: none;
@@ -141,6 +151,7 @@
 }
 
 .invoice footer {
+
     width: 100%;
     text-align: center;
     color: #777;

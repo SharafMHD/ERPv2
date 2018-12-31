@@ -59,8 +59,6 @@ class QuotationsController extends AppBaseController
      */
     public function getprice($id)
     {
-        // $movment = \App\Models\Inventory\InventoryTransactions::with('warehouse')->with('items')->with('user')->where('no', $id)->get();
-
         $item = items::where('id', $id)->firstOrFail();
         if (empty($item)) {
             return response()->json([
@@ -107,6 +105,21 @@ class QuotationsController extends AppBaseController
         return view('sales.quotations.create') ->with('customers', $customers);
     }
 
+    /*
+    Print
+    */
+    public function print($id)
+    {
+        $Qouatation = \App\Models\Sales\Quotations::with('QoutationDetails')->with('customer')->with('user')->where('id', $id)->firstOrFail();
+
+        //  dd($Qouatation->customer->name);
+        if (empty($Qouatation)) {
+            Flash::error('Transaction  not found');
+            return redirect(route('sales.quotations.index'));
+        }
+
+        return view('sales.quotations.print')->with('Qouatation', $Qouatation);
+    }
     /**
      * Store a newly created Quotations in storage.
      *

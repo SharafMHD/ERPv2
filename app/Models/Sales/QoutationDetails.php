@@ -44,7 +44,7 @@ class QoutationDetails extends Model
     use SoftDeletes;
 
     public $table = 'sales__qoutation_details';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -83,22 +83,21 @@ class QoutationDetails extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function inventoryItem()
+    public function items()
     {
-        return $this->belongsTo(\App\Models\Sales\InventoryItem::class);
+        return $this->belongsTo(\App\Models\Inventory\items::class, 'item_id', 'id');
     }
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function salesQoutation()
+    public function Quotations()
     {
-        return $this->belongsTo(\App\Models\Sales\SalesQoutation::class);
+        return $this->belongsTo(\App\Models\Sales\SalesQoutation::class, 'qoutation_id', 'id');
     }
 }

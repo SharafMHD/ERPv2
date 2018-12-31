@@ -50,7 +50,7 @@ class Quotations extends Model
     use SoftDeletes;
 
     public $table = 'sales__qoutations';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -62,9 +62,7 @@ class Quotations extends Model
     public $fillable = [
         'date',
         'no',
-        'customer_name',
-        'customer_phone',
-        'customer_address',
+        'customer_id',
         'valide_date',
         'notes',
         'amount',
@@ -83,9 +81,7 @@ class Quotations extends Model
         'id' => 'integer',
         'date' => 'date',
         'no' => 'string',
-        'customer_name' => 'string',
-        'customer_phone' => 'string',
-        'customer_address' => 'string',
+  'customer_id',
         'valide_date' => 'date',
         'notes' => 'string',
         'amount' => 'float',
@@ -101,7 +97,7 @@ class Quotations extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
@@ -109,14 +105,18 @@ class Quotations extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\Sales\User::class);
+        return $this->belongsTo(\App\Models\users::class);
     }
-
+    
+    public function customer()
+    {
+        return $this->belongsTo(\App\Models\Sales\Customers::class, 'customer_id', 'id');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function salesQoutationDetails()
+    public function QoutationDetails()
     {
-        return $this->hasMany(\App\Models\Sales\SalesQoutationDetail::class);
+        return $this->hasMany(\App\Models\Sales\QoutationDetails::class, 'qoutation_id', 'id');
     }
 }

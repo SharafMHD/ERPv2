@@ -281,7 +281,7 @@ angular.module('mainCtrl', [])
                      $('#expiry_date').val('0').trigger('change');
                     $('#btnsave').prop("disabled", true);
                     $('#btnprint').removeAttr("disabled");
-                 $('#btnprint').prop("href", "/en/inventory/stockDetails/print/" + data.id +"/Stock In");
+                 $('#btnprint').prop("href", "/en/sales/quotations/print/" + data.id );
                       $("#tbl_Details tbody").empty();
                         $('#no').val('Q-' + Math.floor((Math.random() * 10000000)));
                       $scope.QouatationDetails= [];

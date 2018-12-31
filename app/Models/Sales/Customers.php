@@ -21,7 +21,7 @@ class Customers extends Model
     use SoftDeletes;
 
     public $table = 'sales__customers';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -60,6 +60,8 @@ class Customers extends Model
         'phone' => 'required',
         'email' => 'required'
     ];
-
-    
+    public function Qoutations()
+    {
+        return $this->hasMany(\App\Models\Sales\Quotations::class);
+    }
 }

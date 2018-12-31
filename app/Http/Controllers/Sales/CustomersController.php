@@ -35,7 +35,6 @@ class CustomersController extends AppBaseController
         return view('sales.customers.index')
             ->with('customers', $customers);
     }
-
     /**
      * Show the form for creating a new Customers.
      *
