@@ -39,7 +39,6 @@ class StockDetailsController extends AppBaseController
         //  dd($stockDetails);
         return view('inventory.stock_details.index')
             ->with('stockDetails', $stockDetails);
-
     }
 
     /**
@@ -54,10 +53,11 @@ class StockDetailsController extends AppBaseController
         return view('inventory.stock_details.create')->with('warehouses', $warehouses)->with('items', $items);
     }
 
-/*
+    /*
 
- */
-    function print($id, $title) {
+     */
+    public function print($id, $title)
+    {
         $movment = \App\Models\Inventory\InventoryTransactions::with('warehouse')->with('items')->with('user')->where('no', $id)->get();
         // dd($movment[0]->warehouse->name);
         if ($movment->isEmpty()) {
@@ -97,10 +97,8 @@ class StockDetailsController extends AppBaseController
             $InventoryTransactions->description = "Warehouse Stock in";
             $InventoryTransactions->user_id = Auth::id();
             $InventoryTransactions->save();
-
         }
         return response()->json(['id' => $InventoryTransactions->no]);
-
     }
     /**
      *
@@ -119,7 +117,6 @@ class StockDetailsController extends AppBaseController
                 $stockDetails = $this->stockDetailsRepository->findWithoutFail($data['inventory_id']);
                 $stockDetails->qty = $stockDetails->qty - $data['qty'];
                 $stockDetails->save();
-                $stockDetails->save();
                 // insert transaction
                 $InventoryTransactions = new InventoryTransactions;
                 $InventoryTransactions->no = $request->no;
@@ -131,10 +128,8 @@ class StockDetailsController extends AppBaseController
                 $InventoryTransactions->description = "Warehouse Stock Out" . '/ ' . $data['notes'];
                 $InventoryTransactions->user_id = Auth::id();
                 $InventoryTransactions->save();
-
             }
             return response()->json(['id' => $InventoryTransactions->no]);
-
         }
     }
     /**

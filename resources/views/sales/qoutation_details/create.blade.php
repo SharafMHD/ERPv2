@@ -5,7 +5,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="icon-equalizer font-red-sunglo"></i>
-                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.Create Quotation')</span>
+                <span class="caption-subject font-red-sunglo bold uppercase">@lang('fully.QoutationDetails')</span>
             </div>
         </div>
         <div>
@@ -13,9 +13,9 @@
         </div>
         <div class="portlet-body form">
             <div class="row">
-                {!! Form::open(['route' => 'sales.quotations.store' , 'id'=> 'frmsqout']) !!}
+                {!! Form::open(['route' => 'sales.qoutationDetails.store']) !!}
 
-                    @include('sales.quotations.fields')
+                    @include('sales.qoutationDetails.fields')
 
                  {!! Form::close() !!}
             </div>

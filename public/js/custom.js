@@ -48,7 +48,7 @@ function Edit(Controller, Form_id, multi_selected, tbl_Name, RecordID) {
         post_ajax(url, Form_id, tbl_Name, Controller, 'Edit', RecordID);
     }
 }
-////function for deleting 's record  
+////function for deleting 's record
 function Delete(Controller, id, tbl_Name) {
     var url = '/' + Controller + '/Delete/' + id;
     swal({
@@ -193,7 +193,7 @@ function loadData(Controller, tblname) {
             }
 
             $("#" + tblname + " tbody").empty();
-            //append htnl 
+            //append htnl
             $("#" + tblname + " tbody").append(html);
 
             $("#" + tblname).DataTable({
@@ -283,7 +283,7 @@ function resetForm(formid) {
 
     $("#" + formid).trigger("reset");
 };
-// This to populate ajaxresponse to form dynamicly 
+// This to populate ajaxresponse to form dynamicly
 function process_response(frmormid, data) {
     var frm = document.getElementById(frmormid);
     var i;
@@ -294,7 +294,7 @@ function process_response(frmormid, data) {
         }
     }
 }
-// This to populate ajaxresponse to form dynamicly 
+// This to populate ajaxresponse to form dynamicly
 //------------------------------------------------------------
 //================= Alert Msges  ===========================
 function error_msg() {
@@ -416,7 +416,7 @@ function GetRecpient() {
                 $('#recipient').val(result.name);
                 $('#recipient_phone').val(result.phone);
                 $('#Recipient_address').val(result.address);
-                // disable fildes 
+                // disable fildes
                 $('#recipient').prop("disabled", true);
                 $('#recipient_phone').prop("disabled", true);
                 $('#Recipient_address').prop("disabled", true);
@@ -427,14 +427,14 @@ function GetRecpient() {
         $('#recipient').val('');
         $('#recipient_phone').val('');
         $('#Recipient_address').val('');
-        // disable fildes 
+        // disable fildes
         $('#recipient').prop("disabled", false);
         $('#recipient_phone').prop("disabled", false);
         $('#Recipient_address').prop("disabled", false);
 
     }
 }
-/// Add invoice Details 
+/// Add invoice Details
 function AddNewItem(data) {
     var NewItem = {
         unit_id: data.unit_id,
@@ -556,7 +556,7 @@ function Getqty() {
     }
 
 }
-/// Add transfer Details 
+/// Add transfer Details
 function AddNewItemStockMovment() {
     if ($('#item_id').val() == 0 || $('#qty').val() == "") {
         swal({
@@ -619,9 +619,9 @@ function DeleteRow(item, Tbl_Name, ArrayName) {
     ArrayName.splice(item, 1);
     console.log(ArrayName);
 }
-///save bill 
+///save bill
 function save_bill() {
-    // fill order info 
+    // fill order info
     var Neworder = {
         order_code: 'Rpid-O-' + Math.floor((Math.random() * 10000000)),
         order_date: $("#billdate").val(),
@@ -663,7 +663,7 @@ function save_bill() {
     });
 }
 
-//Save bil Details 
+//Save bil Details
 function save_billdetails(bill_id, order_id) {
     $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
@@ -687,7 +687,7 @@ function save_billdetails(bill_id, order_id) {
     alert(data);
 }
 
-//Save transfer Details 
+//Save transfer Details
 function transfer() {
     // bind data of inventory__details
     var inventory__details = {
@@ -742,4 +742,10 @@ function transfer() {
             type: "warning"
         });
     }
+}
+
+// to Apply discount percantage
+function applydiscount() {
+  var percantage = parseFloat($('#amount').text()) * parseFloat($('#discount').val()) / 100 ;
+         $('#net_amount').text(parseFloat($('#amount').text()) - percantage);
 }

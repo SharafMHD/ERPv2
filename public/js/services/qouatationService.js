@@ -24,19 +24,16 @@ angular.module('qouatationService', [])
                 return $http.get('/en/sales/quotations/getservices');
             },
             // save a Qouatation
-            save: function(QData , QDetailsData) {
+            save: function(QData, QDetailsData) {
+
                 return $http({
                     method: 'POST',
                     url: '/en/sales/quotations/',
-                    headers: {
-                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') ,
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                    data: {
+                        QData: QData,
+                        QDetailsData: QDetailsData
                     },
-                    data: $.param(commentData)
                 });
             },
-
-    
         }
-
     });

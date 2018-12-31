@@ -8,9 +8,11 @@ use App\Repositories\Sales\QuotationsRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\Sales\Customers;
+use App\Models\Sales\QoutationDetails;
 use App\Models\Inventory\items;
 use App\Models\Inventory\StockDetails;
 
@@ -43,7 +45,7 @@ class QuotationsController extends AppBaseController
      */
     public function getqty($id)
     {
-        $item = StockDetails::where('item_id',$id)->get();
+        $item = StockDetails::where('item_id', $id)->get();
 
         if (empty($item)) {
             Flash::error('item not found');
@@ -51,18 +53,17 @@ class QuotationsController extends AppBaseController
             return redirect(route('inventory.transfers.index'));
         }
         return Response::json($item);
-
     }
     /**
      * Get item price
      */
     public function getprice($id)
     {
-      // $movment = \App\Models\Inventory\InventoryTransactions::with('warehouse')->with('items')->with('user')->where('no', $id)->get();
+        // $movment = \App\Models\Inventory\InventoryTransactions::with('warehouse')->with('items')->with('user')->where('no', $id)->get();
 
-      $item = items::where('id',$id)->firstOrFail();
+        $item = items::where('id', $id)->firstOrFail();
         if (empty($item)) {
-          return response()->json([
+            return response()->json([
               'error' => 'Item not found'
 
           ]);
@@ -74,14 +75,13 @@ class QuotationsController extends AppBaseController
 
           ]
         );
-
     }
     /**
      * Get items
      */
     public function getItems(Request $request)
     {
-          $items = items::select("name","id")->where('item_type','Item')->get();
+        $items = items::select("name", "id")->where('item_type', 'Item')->get();
 
         return Response::json($items);
     }
@@ -90,7 +90,8 @@ class QuotationsController extends AppBaseController
      */
     public function getservices(Request $request)
     {
-          $items = items::select("name","id")->where('item_type','Services')->get();;
+        $items = items::select("name", "id")->where('item_type', 'Services')->get();
+        ;
 
         return Response::json($items);
     }
@@ -113,15 +114,31 @@ class QuotationsController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateQuotationsRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
-
-        $quotations = $this->quotationsRepository->create($input);
-
-        Flash::success('Quotations saved successfully.');
-
-        return redirect(route('sales.quotations.index'));
+        // Save Qouatation
+        $Qouatation = new \App\Models\Sales\Quotations;
+        $Qouatation->no = $request->QData['no'];
+        $Qouatation->date = $request->QData['date'];
+        $Qouatation->valide_date = $request->QData['valide_date'];
+        $Qouatation->amount = $request->QData['amount'];
+        $Qouatation->discount = $request->QData['discount'];
+        $Qouatation->net_amount = $request->QData['net_amount'];
+        $Qouatation->customer_id = $request->QData['customer_id'];
+        $Qouatation->user_id = Auth::id();
+        $Qouatation->save();
+        foreach ($request->QDetailsData as $data) {
+            $Detailsdata = array(
+                  array('item_id'=> $data['item_id'],
+                  'qty'=> $data['qty'],
+                  'price'=> $data['price'],
+                  'total'=> $data['total'],
+                  'description'=> $data['description'],
+                  'qoutation_id'=> $Qouatation->id ),
+                );
+            QoutationDetails::insert($Detailsdata);
+        }
+        return response()->json(['id' => $Qouatation->id]);
     }
 
     /**

@@ -1,3 +1,4 @@
+<div ng-app="QouatationApp" ng-controller="mainController" ng-init="loaditems(); loadservices();">
 <div class="tabbable-custom ">
     <ul class="nav nav-tabs ">
         <li class="active">
@@ -48,7 +49,7 @@
                     </ul>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
-                    <div class="tab-content" ng-app="QouatationApp" ng-controller="mainController" ng-init="loaditems(); loadservices();">
+                    <div class="tab-content" >
                         <div class="tab-pane active in" id="tab_6_1">
                             <h4 class="form-section">@lang('fully.Add Items')</h4>
                             <div class="row" >
@@ -102,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <hr />
+                <!-- <hr /> -->
 <div class="form-group col-lg-12">
     <h4 class="form-section">@lang('fully.Details')</h4>
     <!-- tems Table Field -->
@@ -129,38 +130,38 @@
         </table>
         <div class="text-right">
                 <tr>
-                        <td colspan="4">
-<span class="label label-primary"> @lang('fully.Grand Total:') </span> <span id="amount" ng-model="amount" class="label label-info">0</span>
-                        </td>
-                        <br/><br/>
-                    </tr>
-                    <tr>
-                            <td colspan="4">
-    <span class="label label-danger"> @lang('fully.Discount %:') </span> <input type="text" id="discount" ng-model="discount"  class="input-xsmall" placeholder="Discount">
-                            </td>
-                            <br/><br/>
-                        </tr>
-                    <tr>
-                            <td colspan="4">
-<span class="label label-warning"> @lang('fully.Total:') </span> <span ng-model="net_amount" id="net_amount" class="label label-info">0</span>
-                            </td>
-                        </tr>
+<td colspan="4">
+    <span class="label label-primary"> @lang('fully.Grand Total:') </span> <span id="amount" class="label label-info">0</span>
+</td>
+<br /><br />
+</tr>
+<tr>
+    <td colspan="4">
+        <span class="label label-danger"> @lang('fully.Discount %:') </span> <input type="text" id="discount" value="0" onblur="applydiscount()" class="input-xsmall" placeholder="Discount">
+    </td>
+    <br /><br />
 
-                </div>
-    </div>
-</div>
-            </div>
-        </div>
-    </div>
-</div>
+</tr>
+<tr>
+    <td colspan="4">
+        <span class="label label-success"> @lang('fully.Total Due Amounts:') </span> <span id="net_amount" class="label label-info">0</span>
+    </td>
+</tr>
 
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     <div class="form-actions">
         <div class="row  col-md-offset-0">
-            <button type="submit" class="btn blue"><i class="fa fa-save"></i> @lang('fully.Save')</button>
+          <a id="btnprint" disabled class="btn green-jungle"><i class="fa fa-print"></i> @lang('fully.Print')</a>
+            <button  ng-click="submitQouatation()" type="button"   class="btn blue"><i class="fa fa-save"></i> @lang('fully.Save')</button>
             <a href="{!! route('sales.quotations.index') !!}" class="btn red"><i class="fa fa-times">
                     @lang('fully.Cancel')</i></a>
         </div>
     </div>
+</div>
 </div>

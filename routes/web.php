@@ -243,3 +243,23 @@ Route::delete('sales/customers/{customers}', ['as'=> 'sales.customers.destroy', 
 Route::get('sales/customers/{customers}', ['as'=> 'sales.customers.show', 'uses' => 'Sales\CustomersController@show']);
 Route::get('sales/customers/{customers}/edit', ['as'=> 'sales.customers.edit', 'uses' => 'Sales\CustomersController@edit']);
 });
+
+
+Route::get('sales/salesQoutationDetails', ['as'=> 'sales.salesQoutationDetails.index', 'uses' => 'Sales\sales__qoutation_detailsController@index']);
+Route::post('sales/salesQoutationDetails', ['as'=> 'sales.salesQoutationDetails.store', 'uses' => 'Sales\sales__qoutation_detailsController@store']);
+Route::get('sales/salesQoutationDetails/create', ['as'=> 'sales.salesQoutationDetails.create', 'uses' => 'Sales\sales__qoutation_detailsController@create']);
+Route::put('sales/salesQoutationDetails/{salesQoutationDetails}', ['as'=> 'sales.salesQoutationDetails.update', 'uses' => 'Sales\sales__qoutation_detailsController@update']);
+Route::patch('sales/salesQoutationDetails/{salesQoutationDetails}', ['as'=> 'sales.salesQoutationDetails.update', 'uses' => 'Sales\sales__qoutation_detailsController@update']);
+Route::delete('sales/salesQoutationDetails/{salesQoutationDetails}', ['as'=> 'sales.salesQoutationDetails.destroy', 'uses' => 'Sales\sales__qoutation_detailsController@destroy']);
+Route::get('sales/salesQoutationDetails/{salesQoutationDetails}', ['as'=> 'sales.salesQoutationDetails.show', 'uses' => 'Sales\sales__qoutation_detailsController@show']);
+Route::get('sales/salesQoutationDetails/{salesQoutationDetails}/edit', ['as'=> 'sales.salesQoutationDetails.edit', 'uses' => 'Sales\sales__qoutation_detailsController@edit']);
+
+
+Route::get('sales/qoutationDetails', ['as'=> 'sales.qoutationDetails.index', 'uses' => 'Sales\QoutationDetailsController@index']);
+Route::post('sales/qoutationDetails', ['as'=> 'sales.qoutationDetails.store', 'uses' => 'Sales\QoutationDetailsController@store']);
+Route::get('sales/qoutationDetails/create', ['as'=> 'sales.qoutationDetails.create', 'uses' => 'Sales\QoutationDetailsController@create']);
+Route::put('sales/qoutationDetails/{qoutationDetails}', ['as'=> 'sales.qoutationDetails.update', 'uses' => 'Sales\QoutationDetailsController@update']);
+Route::patch('sales/qoutationDetails/{qoutationDetails}', ['as'=> 'sales.qoutationDetails.update', 'uses' => 'Sales\QoutationDetailsController@update']);
+Route::delete('sales/qoutationDetails/{qoutationDetails}', ['as'=> 'sales.qoutationDetails.destroy', 'uses' => 'Sales\QoutationDetailsController@destroy']);
+Route::get('sales/qoutationDetails/{qoutationDetails}', ['as'=> 'sales.qoutationDetails.show', 'uses' => 'Sales\QoutationDetailsController@show']);
+Route::get('sales/qoutationDetails/{qoutationDetails}/edit', ['as'=> 'sales.qoutationDetails.edit', 'uses' => 'Sales\QoutationDetailsController@edit']);

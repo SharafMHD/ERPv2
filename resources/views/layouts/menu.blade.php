@@ -234,3 +234,15 @@
     <span  class="title">@lang('fully.Customers')</span></a>
 </li>
 
+<li class="{!! Request::is('salesQoutationDetails*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('sales.salesQoutationDetails.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.sales__qoutation_details')</span></a>
+</li>
+
+<li class="{!! Request::is('qoutationDetails*') ? 'active' : '' !!}">
+    <a class="nav-link nav-toggle" href="{!! route('sales.qoutationDetails.index') !!}">
+    <i class="fa fa-edit"></i>
+    <span  class="title">@lang('fully.QoutationDetails')</span></a>
+</li>
+

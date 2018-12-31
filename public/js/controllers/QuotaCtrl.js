@@ -4,8 +4,8 @@ angular.module('mainCtrl', [])
     .controller('mainController', function($scope, $http, Qouatation, $compile) {
         // arrays
         $scope.QouatationDetails = [];
-                $scope.no = 'Q-' + Math.floor((Math.random() * 10000000));
-                $('#no').val($scope.no);
+        $scope.no = 'Q-' + Math.floor((Math.random() * 10000000));
+        $('#no').val($scope.no);
         // load items
         $scope.loaditems = function() {
             // use the function we created in our service
@@ -37,6 +37,7 @@ angular.module('mainCtrl', [])
         };
         /// get expires date
         $scope.getexpires = function(item_id) {
+            if (!item_id  !== 0 ) {
             $scope.loading = true;
             Qouatation.getqty(item_id)
                 .success(function(data) {
@@ -49,23 +50,24 @@ angular.module('mainCtrl', [])
                     });
                     $scope.loading = false;
                 });
-        };
+        }
+      };
         /// get Avilable qty date
         $scope.getAvilableqty = function(expiry_date) {
+                    if (expiry_date  !== 0) {
             $scope.loading = true;
             Qouatation.getAvilableqty(expiry_date)
                 .success(function(data) {
-                    // swal({
-                    //     text: "Stock Quantity is :" + data.qty,
-                    // });
+
                     $('#qty').val(data.qty);
                     $("#qty").attr('max', data.qty);
                     $scope.loading = false;
                 });
+              }
         };
         /// get Item price
         $scope.getprice = function(item_id) {
-
+      if (item_id  !== 0 ) {
             if ($('#qty').val() > $("#qty").attr('max')) {
                 swal({
                     title: "Sorry!!",
@@ -84,7 +86,8 @@ angular.module('mainCtrl', [])
                         $scope.loading = false;
                     });
             }
-        };
+        }
+      };
         // add an item
         $scope.additem = function(data) {
             //check if item or service
@@ -113,8 +116,12 @@ angular.module('mainCtrl', [])
                             expiry_date: "-",
                             description: "Services"
                         };
-                          $('#amount').innertext(parseFloat(newitem.total))
-                            $('#net_amount').val(this.value + parseFloat(newitem.total))
+                        // $scope.amount = parseFloat(newitem.total);
+                        $('#amount').text(parseFloat($('#amount').text()) + parseFloat(newitem.total));
+                        $('#net_amount').text(parseFloat($('#net_amount').text()) + parseFloat(newitem.total));
+                        // $('#amount').text(parseFloat(newitem.total));
+                        // $('#amount').val(parseFloat(newitem.total))
+                        // $('#net_amount').val(this.value + parseFloat(newitem.total))
                         //push items
                         $scope.QouatationDetails.push(newitem);
                         // append html table
@@ -130,7 +137,7 @@ angular.module('mainCtrl', [])
                         html += '<td>' + newitem.total + '</td>';
                         html += '<td>' + newitem.expiry_date + '</td>';
                         html += '<td>' + newitem.description + '</td>';
-                        html += '<td>' + '<a class="btn btn-xs delete-record" ng-click="removeRow(' + $scope.QouatationDetails.indexOf(newitem) + ')"><i class="glyphicon glyphicon-trash"></i></a>' + '</td>';
+                        html += '<td>' + '<a class="btn btn-xs delete-record" ng-click="removeRow(' + $scope.QouatationDetails.indexOf(newitem) + ', ' + newitem.total + ')"><i class="glyphicon glyphicon-trash"></i></a>' + '</td>';
                         html += '</tr>';
 
                         var temp = $compile(html)($scope);
@@ -171,8 +178,8 @@ angular.module('mainCtrl', [])
                         };
                         //push items
                         $scope.QouatationDetails.push(newitem);
-                        $('#amount').val(this.value + parseFloat(newitem.total))
-                          $('#net_amount').val(this.value + parseFloat(newitem.total))
+                        $('#amount').text(parseFloat($('#amount').text()) + parseFloat(newitem.total));
+                        $('#net_amount').text(parseFloat($('#net_amount').text()) + parseFloat(newitem.total));
                         // append html table
                         var html = '';
                         html += '<tr>';
@@ -186,7 +193,7 @@ angular.module('mainCtrl', [])
                         html += '<td>' + newitem.total + '</td>';
                         html += '<td>' + newitem.expiry_date + '</td>';
                         html += '<td>' + newitem.description + '</td>';
-                        html += '<td>' + '<a class="btn btn-xs delete-record" ng-click="removeRow(' + $scope.QouatationDetails.indexOf(newitem) + ')"><i class="glyphicon glyphicon-trash"></i></a>' + '</td>';
+                        html += '<td>' + '<a class="btn btn-xs delete-record" ng-click="removeRow(' + $scope.QouatationDetails.indexOf(newitem) + ' , ' + newitem.total + ')"><i class="glyphicon glyphicon-trash"></i></a>' + '</td>';
                         html += '</tr>';
 
                         var temp = $compile(html)($scope);
@@ -205,9 +212,8 @@ angular.module('mainCtrl', [])
             }
 
         };
-        // To Delete from Html table
-        $scope.removeRow = function(index) {
-
+        // // To Delete from Html table
+        $scope.removeRow = function(index, Total) {
             swal({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
@@ -219,6 +225,11 @@ angular.module('mainCtrl', [])
                 cancelButtonText: "No, cancel plx!"
             }).then(function(result) {
                     if (result) {
+                        //recalc TotalDueAmounts
+
+                        $('#amount').text(parseFloat($('#amount').text()) - Total);
+                        $('#net_amount').text(parseFloat($('#net_amount').text()) - Total);
+
                         var row = $(this).parent().index();
                         document.getElementById('tbl_Details').deleteRow(row);
                         $scope.QouatationDetails.splice(index, 1);
@@ -236,29 +247,61 @@ angular.module('mainCtrl', [])
         // save Qouatation
         $scope.submitQouatation = function() {
             $scope.loading = true;
-            // Define Data
-                // $scope.QData = {
-                //   date	: $('#date').val(),
-                //   no: 'R-' + Math.floor((Math.random() * 10000000)),
-                //     valide_date	: $('#date').val(),
-                //       amount	: $('#date').val(),
-                //         discount	: $('#date').val(),
-                //         net_amount:net_amount,
-                // };
-            Qouatation.save($scope.commentData)
-                .success(function(data) {
 
-                    // if successful, we'll need to refresh the comment list
-                    Comment.get()
-                        .success(function(getData) {
-                            $scope.comments = getData;
-                            $scope.loading = false;
-                        });
+            if ($('#date').val() == "" || $('#customer_id').val() == 0 || $('#valide_date').val() == "") {
+              swal({
+                  title: "Sorry!!",
+                  text: "Please select , Date , valide date and Customer and try again",
+                  icon: "warning",
+                  button: "okay !",
+                  type: "warning"
+              });
+              $scope.loading = false;
+              return;
+            }
+            if ($scope.QouatationDetails.length ) {
+              // Define Data
+              $scope.QData = {
+                  date: $('#date').val(),
+                  no: $scope.no,
+                  valide_date: $('#valide_date').val(),
+                  amount: $('#amount').text(),
+                  discount: $('#discount').val(),
+                  net_amount: $('#net_amount').text(),
+                  customer_id: $('#customer_id').val()
+              };
+              Qouatation.save($scope.QData, $scope.QouatationDetails)
+                  .success(function(data) {
+                      // if successful, we'll need to refresh
+                      save_msg("The Transaction has been successfully Completed With Ref: " + $('#no').val());
+                      resetForm('frmsqout');
+                      $('#customer_id').val('0').trigger('change');
+                      $('#item_id').val('0').trigger('change');
+                    $('#service_id').val('0').trigger('change');
+                     $('#expiry_date').val('0').trigger('change');
+                    $('#btnsave').prop("disabled", true);
+                    $('#btnprint').removeAttr("disabled");
+                 $('#btnprint').prop("href", "/en/inventory/stockDetails/print/" + data.id +"/Stock In");
+                      $("#tbl_Details tbody").empty();
+                        $('#no').val('Q-' + Math.floor((Math.random() * 10000000)));
+                      $scope.QouatationDetails= [];
+                      $scope.loading = false;
+                  })
+                  .error(function(data) {
+                      console.log(data);
+                  });
+            } else {
+              swal({
+                  title: "Sorry!!",
+                  text: "Please List items and try again",
+                  icon: "warning",
+                  button: "okay !",
+                  type: "warning"
+              });
+                $scope.loading = false;
+              return ;
+            }
 
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
         };
 
     });
