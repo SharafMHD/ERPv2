@@ -1,4 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <link href="/invoice.css" rel="stylesheet" type="text/css" />
      @extends('layouts.app')
 
@@ -22,12 +22,13 @@
                             <div style="min-width: 600px">
                                 <header>
                                     <div class="row">
-                                        <div class="col">
-                                            <a target="_blank" href="https://lobianijs.com">
-                                                <img src="http://www.bluetech-sd.com/assets/images/capture-242x128.png" data-holder-rendered="true" />
-                                                </a>
+                                        <div class="col ">
+
                                         </div>
                                         <div class="col company-details">
+                                          <a class="logo-details" target="_blank" href="https://lobianijs.com">
+                                              <img src="http://www.bluetech-sd.com/assets/images/capture-242x128.png" data-holder-rendered="true" />
+                                              </a>
                                             <h2 class="name">
                                                 <a target="_blank" href="http://www.bluetech-sd.com">
                                                 BlueTech

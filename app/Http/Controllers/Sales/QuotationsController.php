@@ -45,7 +45,7 @@ class QuotationsController extends AppBaseController
      */
     public function getqty($id)
     {
-        $item = StockDetails::where('item_id', $id)->get();
+        $item = StockDetails::where('item_id', $id)->where('qty', '>', 0)->orderBy('expiry_date')->get();
 
         if (empty($item)) {
             Flash::error('item not found');

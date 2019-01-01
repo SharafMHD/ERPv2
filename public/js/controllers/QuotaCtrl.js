@@ -37,7 +37,7 @@ angular.module('mainCtrl', [])
         };
         /// get expires date
         $scope.getexpires = function(item_id) {
-            if (!item_id  !== 0 ) {
+            if (item_id  !== 0 ) {
             $scope.loading = true;
             Qouatation.getqty(item_id)
                 .success(function(data) {
