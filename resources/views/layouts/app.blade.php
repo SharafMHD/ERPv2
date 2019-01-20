@@ -29,8 +29,7 @@
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css"
-    />
+    <link href="/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css"/>
 
     <!-- BEGIN PAGE LEVEL PLUGINS -->
     <link href="/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
